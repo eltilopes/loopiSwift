@@ -6,4 +6,14 @@
 //  Copyright © 2018 Loopi. All rights reserved.
 //
 
-import Foundation
+class Route {
+    var legs : [Leg]
+    var summary: String
+    func  getAllSteps()  -> [Step] {
+        var result :[Step] = [Step]
+        for leg in legs {
+            result.addAll(leg.getStepList())
+        }
+        return result
+    }
+}

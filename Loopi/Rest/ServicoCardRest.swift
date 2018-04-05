@@ -6,4 +6,62 @@
 //  Copyright © 2018 Loopi. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import SwiftyJSON
+
+class ServicoCardRest : RestAdapeter {
+    
+    var servicoCards: [ServicoCard] = []
+    
+    @discardableResult
+    func carregarCardsServicos(filtro : Filtro, completionHandler: @escaping ([ServicoCard]?,NSError?) -> Void ) -> URLSessionTask {
+        let filtroDict = convertToDictionary(jsonString: filtro.toJSONString(prettyPrint: true)! )!
+        let url = NSURL(string: API_URL + URL_LISTAR_SERVICO )!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = POST_METHOD
+        request.cachePolicy = NSURLRequest.CachePolicy.reloadIgnoringCacheData
+        request.timeoutInterval = 10.0
+        request.addValue(HTTP_HEADER_VALUE_APPLICATION_JSON, forHTTPHeaderField: HTTP_HEADER_FIELD_CONTENT_TYPE)
+        request.addValue(HTTP_HEADER_VALUE_APPLICATION_JSON, forHTTPHeaderField: HTTP_HEADER_FIELD_ACCEPT)
+        if let jsonData = try? JSONSerialization.data(withJSONObject: filtroDict, options: []) {
+            request.httpBody = jsonData
+        }
+        
+        
+        
+        let task = URLSession.shared.dataTask(with: request as URLRequest){ data,response,error in
+            if error != nil{
+                completionHandler(nil, error as NSError?)
+                return
+            }
+            
+            let jsonString = String(data: data!, encoding: .utf8)
+            self.servicoCards = [ServicoCard].deserialize(from: jsonString!)! as! [ServicoCard]
+            self.prepareServicoCards()
+            completionHandler(self.servicoCards,nil)
+            
+        }
+        task.resume()
+        return task
+    }
+    
+    func prepareServicoCards() {
+        
+        for sc in servicoCards {
+            
+            let directionUtilsRest = GoogleDirectionsRest()
+            var googleDirectionsResponse :  GoogleDirectionsResponse = GoogleDirectionsResponse()
+            
+            directionUtilsRest.getGoogleDirectionsResponse(start:LatLng(lat: -3.75829, lng: -38.480949 ),end:LatLng(lat: -3.741433, lng: -38.499196 )){ gdr, error in
+                
+                if error == nil {
+                    googleDirectionsResponse = gdr!
+                    print("GoogleDirectionsResponse")
+                }else{
+                    print(error?.localizedDescription)
+                }
+            }
+        }
+    }
+}
+

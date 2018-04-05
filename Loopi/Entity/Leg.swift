@@ -6,4 +6,18 @@
 //  Copyright © 2018 Loopi. All rights reserved.
 //
 
-import Foundation
+class Leg {
+    var  distance:Distance
+    var  duration:Duration
+    var  end_address:String
+    var steps: [Step]
+    
+    func  getStepList()  -> [Step] {
+        var result :[Step] = [Step]
+        for step in steps {
+            result.addAll(step)
+        }
+        return result
+    }
+   
+}

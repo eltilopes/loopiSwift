@@ -6,4 +6,13 @@
 //  Copyright © 2018 Loopi. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class HomeController: UINavigationController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
+    
+}

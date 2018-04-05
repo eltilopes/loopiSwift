@@ -10,23 +10,23 @@ import UIKit
 
 class ActivityProgressLoopi: NSObject {
     
-    var myActivityIndicator:UIActivityIndicatorView!
+    var progressLoopiIndicator:UIActivityIndicatorView!
     
-    func StartActivityIndicator(obj:UIViewController) -> UIActivityIndicatorView
+    func startActivity(obj:UIViewController) -> UIActivityIndicatorView
     {
         
-        self.myActivityIndicator = UIActivityIndicatorView(frame:CGRect(x:100,y:100, width:100, height:100)) as UIActivityIndicatorView;
+        self.progressLoopiIndicator = UIActivityIndicatorView(frame:CGRect(x:100,y:100, width:100, height:100)) as UIActivityIndicatorView;
         
-        self.myActivityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
-        self.myActivityIndicator.center = obj.view.center;
+        self.progressLoopiIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.progressLoopiIndicator.center = obj.view.center;
         
-        obj.view.addSubview(myActivityIndicator);
+        obj.view.addSubview(progressLoopiIndicator);
         
-        self.myActivityIndicator.startAnimating();
-        return self.myActivityIndicator;
+        self.progressLoopiIndicator.startAnimating();
+        return self.progressLoopiIndicator;
     }
     
-    func StopActivityIndicator(obj:UIViewController,indicator:UIActivityIndicatorView)-> Void
+    func stopActivity(obj:UIViewController,indicator:UIActivityIndicatorView)-> Void
     {
         indicator.removeFromSuperview();
     }

@@ -25,12 +25,39 @@ extension UIColor {
 
 class GMColor {
     
+    // MARK: - appColor
+    
+    class func colorPrimary() -> UIColor {
+        return teal400Color()
+    }
+    
+    class func colorPrimaryDark() -> UIColor {
+        return teal700Color()
+    }
+    
+    class func colorAccent() -> UIColor {
+        return teal100Color()
+    }
+    
+    class func textColorPrimary() -> UIColor {
+        return grey500Color()
+    }
+    
+    class func backgroundAppColor() -> UIColor {
+        return grey300Color()
+    }
+    
+    class func backgroundHeaderColor() -> UIColor {
+        return blue300Color()
+    }
+    
     // MARK: - red
     
     class func red50Color() -> UIColor {
         return UIColor(rgb: 0xffebee)
     }
     
+   
     class func red100Color() -> UIColor {
         return UIColor(rgb: 0xffcdd2)
     }

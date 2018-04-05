@@ -6,4 +6,31 @@
 //  Copyright © 2018 Loopi. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class MainNavigationController: UINavigationController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let logged = isLoggedIn()
+        if logged {
+            // let cardsServiceController = CardsServiceController()
+            // viewControllers = [cardsServiceController]
+            UserDefaults.standard.setIsLoggedIn(value: false)
+        } else {
+            perform(#selector(presentLoginController), with: nil, afterDelay: 0.0)
+        }
+    }
+    
+    func isLoggedIn() -> Bool {
+        return UserDefaults.standard.isLoggedIn()
+    }
+
+    @objc func presentLoginController() {
+        let loginController = LoginController()
+        present(loginController, animated: true, completion: nil)
+    }
+   
+}
+

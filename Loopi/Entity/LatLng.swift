@@ -6,4 +6,16 @@
 //  Copyright © 2018 Loopi. All rights reserved.
 //
 
-import Foundation
+class LatLng  {
+    
+    var lat : Double?
+    var lng : Double?
+    
+    init() {}
+    init(lat : Double, lng : Double) {
+        self.lat = lat
+        self.lng = lng
+    }
+    
+}
+

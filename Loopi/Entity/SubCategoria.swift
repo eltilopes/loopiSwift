@@ -6,4 +6,19 @@
 //  Copyright © 2018 Loopi. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import HandyJSON
+
+class SubCategoria : Equatable,HandyJSON {
+    required init() {   }
+    
+    var id : Int?
+    var descricao : String?
+    var categoria : Categoria?
+    
+}
+
+func == (o1: SubCategoria, o2: SubCategoria) -> Bool {
+    return o1.id == o2.id
+}
+

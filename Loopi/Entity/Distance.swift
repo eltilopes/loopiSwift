@@ -6,4 +6,7 @@
 //  Copyright © 2018 Loopi. All rights reserved.
 //
 
-import Foundation
+class Distance {
+    var  text :String
+    var  value :Int
+}

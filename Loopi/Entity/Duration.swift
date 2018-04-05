@@ -6,4 +6,6 @@
 //  Copyright © 2018 Loopi. All rights reserved.
 //
 
-import Foundation
+class Duration {
+    var  text :String
+}
