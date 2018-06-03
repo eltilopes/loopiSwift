@@ -10,14 +10,16 @@ import UIKit
 
 class MainNavigationController: UINavigationController {
     
+    @IBOutlet var menu : UINavigationBar!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationBar.barTintColor = GMColor.colorPrimary()
         let logged = isLoggedIn()
         if logged {
             // let cardsServiceController = CardsServiceController()
             // viewControllers = [cardsServiceController]
-            UserDefaults.standard.setIsLoggedIn(value: false)
+             UserDefaults.standard.setIsLoggedIn(value: false)
         } else {
             perform(#selector(presentLoginController), with: nil, afterDelay: 0.0)
         }

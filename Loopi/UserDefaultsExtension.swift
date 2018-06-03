@@ -19,6 +19,18 @@ extension UserDefaults {
         synchronize()
     }
     
+    func setToken(token: String) {
+        set(token, forKey: RestConfig().TOKEN)
+        synchronize()
+    }
+    
+    func getToken() -> String {
+        if let token = string(forKey: RestConfig().TOKEN) {
+            return token
+        }
+        return ""
+    }
+    
     func isLoggedIn() -> Bool {
         return bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
     }

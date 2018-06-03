@@ -27,13 +27,16 @@
 		6E1DDEBD20410A7A00797B4F /* ActivityProgressLoopi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E1DDEBC20410A7A00797B4F /* ActivityProgressLoopi.swift */; };
 		6E2733D720649B9E00A01D51 /* CriarContaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2733D620649B9E00A01D51 /* CriarContaViewController.swift */; };
 		6E2733D92064B2AF00A01D51 /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2733D82064B2AF00A01D51 /* LeftPaddedTextField.swift */; };
+		6E2E925220893393009BDCCF /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2E925120893393009BDCCF /* PickerButton.swift */; };
 		6E32D7B020522B2E00A5ABF9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E32D7AF20522B2E00A5ABF9 /* MapViewController.swift */; };
 		6E32F081206B395B00AD83EB /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E32F080206B395B00AD83EB /* TextFieldEffects.swift */; };
 		6E38685F205854F700ADBCBF /* RestAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E38685E205854F700ADBCBF /* RestAdapter.swift */; };
 		6E3868612058580C00ADBCBF /* RestConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3868602058580C00ADBCBF /* RestConfig.swift */; };
+		6E386B3B2080775D00B31028 /* NovoProfissionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E386B3A2080775D00B31028 /* NovoProfissionalViewController.swift */; };
 		6E6EB21D2076C2DB00714B38 /* CategoriaRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6EB21C2076C2DB00714B38 /* CategoriaRest.swift */; };
 		6E6EB21F2076C8CE00714B38 /* CategoriaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6EB21E2076C8CE00714B38 /* CategoriaViewCell.swift */; };
 		6E6F2CFC20366E450032CFFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E6F2CFE20366E450032CFFB /* Main.storyboard */; };
+		6E6F2F0A20804D11004B0FC7 /* ProfissionalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6F2F0920804D11004B0FC7 /* ProfissionalViewController.swift */; };
 		6E7073E420450CD900EA50E0 /* ServicoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7073E320450CD900EA50E0 /* ServicoCard.swift */; };
 		6E7073E620450EDE00EA50E0 /* Categoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7073E520450EDE00EA50E0 /* Categoria.swift */; };
 		6E7073E820450F7F00EA50E0 /* SubCategoria.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7073E720450F7F00EA50E0 /* SubCategoria.swift */; };
@@ -49,9 +52,17 @@
 		6E72A33A202C09B20099E65C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E72A339202C09B20099E65C /* BaseViewController.swift */; };
 		6E72A33C202C0A840099E65C /* GMColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E72A33B202C0A840099E65C /* GMColor.swift */; };
 		6E739FF3D7E9A4CDB8F64807 /* Pods_LoopiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5BFD60A8109270064EE601D2 /* Pods_LoopiUITests.framework */; };
+		6E74C54E20995CD6006C4AC4 /* SaqueSolicitadoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E74C54D20995CD6006C4AC4 /* SaqueSolicitadoViewController.swift */; };
+		6E74C550209C0260006C4AC4 /* ServicoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E74C54F209C0260006C4AC4 /* ServicoViewCell.swift */; };
 		6E77713420523D9300EC2D37 /* Loopi.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6E77713220523D9300EC2D37 /* Loopi.xcdatamodeld */; };
+		6E7F3BA420785E6600C19474 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E7F3BA320785E6500C19474 /* GoogleService-Info.plist */; };
+		6E7F3BA62078630200C19474 /* FirebaseStorageRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F3BA52078630200C19474 /* FirebaseStorageRest.swift */; };
+		6E82DDFE2086D1CA0069EC64 /* BackgroundLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E82DDFD2086D1CA0069EC64 /* BackgroundLocationManager.swift */; };
 		6E833DD1205CEFFF007AE41E /* Banco.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E833DD0205CEFFF007AE41E /* Banco.swift */; };
 		6E833DD3205CF3D1007AE41E /* SolicitarSaqueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E833DD2205CF3D1007AE41E /* SolicitarSaqueViewController.swift */; };
+		6E850B0420A10CCD00A234EE /* FooterCollectionViewServicos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E850B0320A10CCD00A234EE /* FooterCollectionViewServicos.swift */; };
+		6E850B0620A10DAD00A234EE /* HeaderCollectionViewServicos.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E850B0520A10DAD00A234EE /* HeaderCollectionViewServicos.swift */; };
+		6E877DE3207EE6C2008DED3B /* LoopiTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E877DE2207EE6C2008DED3B /* LoopiTextField.swift */; };
 		6E936DE31FDF095A00AC1E54 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E936DE21FDF095A00AC1E54 /* AppDelegate.swift */; };
 		6E936DEA1FDF095A00AC1E54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6E936DE91FDF095A00AC1E54 /* Assets.xcassets */; };
 		6E936DED1FDF095A00AC1E54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E936DEB1FDF095A00AC1E54 /* LaunchScreen.storyboard */; };
@@ -66,6 +77,12 @@
 		6E95C3DA2057631F0051925E /* Polyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95C3D92057631F0051925E /* Polyline.swift */; };
 		6E95C3DC2057638C0051925E /* RoutePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95C3DB2057638C0051925E /* RoutePoint.swift */; };
 		6E95C3DE205766BF0051925E /* GoogleDirectionsRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95C3DD205766BF0051925E /* GoogleDirectionsRest.swift */; };
+		6EA307032091707B00ED1A81 /* ConfirmarSaqueViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA307022091707B00ED1A81 /* ConfirmarSaqueViewController.swift */; };
+		6EA6503D20B3877900A85FEF /* RestError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA6503C20B3877900A85FEF /* RestError.swift */; };
+		6EA9EF1720ABAF76007A1EFC /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EA9EF1620ABAF76007A1EFC /* Login.swift */; };
+		6EB55C7D2077B4690057579A /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB55C7C2077B4690057579A /* LocationViewController.swift */; };
+		6EB55C7F2077B6A60057579A /* LocationViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB55C7E2077B6A60057579A /* LocationViewCell.swift */; };
+		6EB55C812077B8B10057579A /* LocationFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB55C802077B8B10057579A /* LocationFooter.swift */; };
 		6EB9F6AD202BE7BA0040A199 /* AccessToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB9F6AC202BE7BA0040A199 /* AccessToken.swift */; };
 		6EE3DFBD20522C70007EF326 /* SearchMapResultsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3DFBC20522C70007EF326 /* SearchMapResultsController.swift */; };
 		6EE3DFC020522CDD007EF326 /* Floaty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3DFBF20522CDD007EF326 /* Floaty.swift */; };
@@ -74,10 +91,11 @@
 		6EE3DFC620522D4A007EF326 /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3DFC520522D4A007EF326 /* FloatyDelegate.swift */; };
 		6EE3DFC820522D6C007EF326 /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3DFC720522D6C007EF326 /* FloatyWindow.swift */; };
 		6EE3DFCA20522D89007EF326 /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3DFC920522D89007EF326 /* FloatyViewController.swift */; };
-		6EE3DFCC20523726007EF326 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6EE3DFCB20523726007EF326 /* GoogleService-Info.plist */; };
 		6EF8D33E203F674400B93B11 /* CardServico.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF8D33D203F674400B93B11 /* CardServico.swift */; };
 		6EF8D340203F67B100B93B11 /* CardServicoSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF8D33F203F67B100B93B11 /* CardServicoSearchResults.swift */; };
 		6EF8D344203F67F300B93B11 /* CardServicoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF8D343203F67F300B93B11 /* CardServicoViewCell.swift */; };
+		6EFE17FF208990A200928D05 /* LoopiDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE17FE208990A200928D05 /* LoopiDropDown.swift */; };
+		6EFE18012089A3BD00928D05 /* BancoRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE18002089A3BD00928D05 /* BancoRest.swift */; };
 		72E6150482B932CB2245986F /* Pods_Loopi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DB81F125BC910A3001EEC929 /* Pods_Loopi.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,13 +142,16 @@
 		6E1DDEBC20410A7A00797B4F /* ActivityProgressLoopi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityProgressLoopi.swift; sourceTree = "<group>"; };
 		6E2733D620649B9E00A01D51 /* CriarContaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarContaViewController.swift; sourceTree = "<group>"; };
 		6E2733D82064B2AF00A01D51 /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
+		6E2E925120893393009BDCCF /* PickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
 		6E32D7AF20522B2E00A5ABF9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6E32F080206B395B00AD83EB /* TextFieldEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldEffects.swift; sourceTree = "<group>"; };
 		6E38685E205854F700ADBCBF /* RestAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestAdapter.swift; sourceTree = "<group>"; };
 		6E3868602058580C00ADBCBF /* RestConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestConfig.swift; sourceTree = "<group>"; };
+		6E386B3A2080775D00B31028 /* NovoProfissionalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NovoProfissionalViewController.swift; path = ../../../../../../Desktop/NovoProfissionalViewController.swift; sourceTree = "<group>"; };
 		6E6EB21C2076C2DB00714B38 /* CategoriaRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriaRest.swift; sourceTree = "<group>"; };
 		6E6EB21E2076C8CE00714B38 /* CategoriaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriaViewCell.swift; sourceTree = "<group>"; };
 		6E6F2CFD20366E450032CFFB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		6E6F2F0920804D11004B0FC7 /* ProfissionalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfissionalViewController.swift; sourceTree = "<group>"; };
 		6E7073E320450CD900EA50E0 /* ServicoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicoCard.swift; sourceTree = "<group>"; };
 		6E7073E520450EDE00EA50E0 /* Categoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Categoria.swift; sourceTree = "<group>"; };
 		6E7073E720450F7F00EA50E0 /* SubCategoria.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoria.swift; sourceTree = "<group>"; };
@@ -145,10 +166,18 @@
 		6E72A337202C09870099E65C /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		6E72A339202C09B20099E65C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		6E72A33B202C0A840099E65C /* GMColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GMColor.swift; sourceTree = "<group>"; };
+		6E74C54D20995CD6006C4AC4 /* SaqueSolicitadoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaqueSolicitadoViewController.swift; sourceTree = "<group>"; };
+		6E74C54F209C0260006C4AC4 /* ServicoViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicoViewCell.swift; sourceTree = "<group>"; };
 		6E77713320523D9300EC2D37 /* loopi.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = loopi.xcdatamodel; sourceTree = "<group>"; };
 		6E77713520523F1100EC2D37 /* Loopi.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Loopi.entitlements; sourceTree = "<group>"; };
+		6E7F3BA320785E6500C19474 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6E7F3BA52078630200C19474 /* FirebaseStorageRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseStorageRest.swift; sourceTree = "<group>"; };
+		6E82DDFD2086D1CA0069EC64 /* BackgroundLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundLocationManager.swift; sourceTree = "<group>"; };
 		6E833DD0205CEFFF007AE41E /* Banco.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Banco.swift; sourceTree = "<group>"; };
 		6E833DD2205CF3D1007AE41E /* SolicitarSaqueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitarSaqueViewController.swift; sourceTree = "<group>"; };
+		6E850B0320A10CCD00A234EE /* FooterCollectionViewServicos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FooterCollectionViewServicos.swift; sourceTree = "<group>"; };
+		6E850B0520A10DAD00A234EE /* HeaderCollectionViewServicos.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCollectionViewServicos.swift; sourceTree = "<group>"; };
+		6E877DE2207EE6C2008DED3B /* LoopiTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopiTextField.swift; sourceTree = "<group>"; };
 		6E936DDF1FDF095A00AC1E54 /* Loopi.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Loopi.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E936DE21FDF095A00AC1E54 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E936DE91FDF095A00AC1E54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -169,6 +198,12 @@
 		6E95C3D92057631F0051925E /* Polyline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Polyline.swift; sourceTree = "<group>"; };
 		6E95C3DB2057638C0051925E /* RoutePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutePoint.swift; sourceTree = "<group>"; };
 		6E95C3DD205766BF0051925E /* GoogleDirectionsRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleDirectionsRest.swift; sourceTree = "<group>"; };
+		6EA307022091707B00ED1A81 /* ConfirmarSaqueViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmarSaqueViewController.swift; sourceTree = "<group>"; };
+		6EA6503C20B3877900A85FEF /* RestError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RestError.swift; sourceTree = "<group>"; };
+		6EA9EF1620ABAF76007A1EFC /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		6EB55C7C2077B4690057579A /* LocationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		6EB55C7E2077B6A60057579A /* LocationViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewCell.swift; sourceTree = "<group>"; };
+		6EB55C802077B8B10057579A /* LocationFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationFooter.swift; sourceTree = "<group>"; };
 		6EB9F6AC202BE7BA0040A199 /* AccessToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessToken.swift; sourceTree = "<group>"; };
 		6EE3DFBC20522C70007EF326 /* SearchMapResultsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchMapResultsController.swift; sourceTree = "<group>"; };
 		6EE3DFBF20522CDD007EF326 /* Floaty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Floaty.swift; sourceTree = "<group>"; };
@@ -177,11 +212,12 @@
 		6EE3DFC520522D4A007EF326 /* FloatyDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatyDelegate.swift; sourceTree = "<group>"; };
 		6EE3DFC720522D6C007EF326 /* FloatyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatyWindow.swift; sourceTree = "<group>"; };
 		6EE3DFC920522D89007EF326 /* FloatyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatyViewController.swift; sourceTree = "<group>"; };
-		6EE3DFCB20523726007EF326 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6EE3DFCD20523C10007EF326 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6EF8D33D203F674400B93B11 /* CardServico.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardServico.swift; path = "../../../../../examples/AKSwiftSlideMenu-master/AKSwiftSlideMenu/Entity/CardServico.swift"; sourceTree = "<group>"; };
 		6EF8D33F203F67B100B93B11 /* CardServicoSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardServicoSearchResults.swift; path = "../../../../../examples/AKSwiftSlideMenu-master/AKSwiftSlideMenu/Entity/CardServicoSearchResults.swift"; sourceTree = "<group>"; };
 		6EF8D343203F67F300B93B11 /* CardServicoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardServicoViewCell.swift; path = "../../../../../examples/AKSwiftSlideMenu-master/AKSwiftSlideMenu/CardServicoViewCell.swift"; sourceTree = "<group>"; };
+		6EFE17FE208990A200928D05 /* LoopiDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopiDropDown.swift; sourceTree = "<group>"; };
+		6EFE18002089A3BD00928D05 /* BancoRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BancoRest.swift; sourceTree = "<group>"; };
 		6FE670FE0E5383AE8D2C3DE0 /* Pods-Loopi.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Loopi.release.xcconfig"; path = "Pods/Target Support Files/Pods-Loopi/Pods-Loopi.release.xcconfig"; sourceTree = "<group>"; };
 		82EA021A37E571A34711FB09 /* Pods_LoopiTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LoopiTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E015D1C4882B1F4712D2CA8 /* Pods-LoopiUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LoopiUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-LoopiUITests/Pods-LoopiUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -220,6 +256,7 @@
 		6E07ACB7202BACA700041DCC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6E386B3A2080775D00B31028 /* NovoProfissionalViewController.swift */,
 				6E07ACB8202BACC000041DCC /* MainNavigationController.swift */,
 				6E07ACBA202BAD7100041DCC /* LoginController.swift */,
 				6E72A337202C09870099E65C /* MenuViewController.swift */,
@@ -231,6 +268,10 @@
 				6E12410C205C2E0D000FA8C5 /* ExtratoViewController.swift */,
 				6E833DD2205CF3D1007AE41E /* SolicitarSaqueViewController.swift */,
 				6E2733D620649B9E00A01D51 /* CriarContaViewController.swift */,
+				6EB55C7C2077B4690057579A /* LocationViewController.swift */,
+				6E6F2F0920804D11004B0FC7 /* ProfissionalViewController.swift */,
+				6EA307022091707B00ED1A81 /* ConfirmarSaqueViewController.swift */,
+				6E74C54D20995CD6006C4AC4 /* SaqueSolicitadoViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -251,6 +292,13 @@
 				6E2733D82064B2AF00A01D51 /* LeftPaddedTextField.swift */,
 				6E32F080206B395B00AD83EB /* TextFieldEffects.swift */,
 				6E6EB21E2076C8CE00714B38 /* CategoriaViewCell.swift */,
+				6EB55C7E2077B6A60057579A /* LocationViewCell.swift */,
+				6E877DE2207EE6C2008DED3B /* LoopiTextField.swift */,
+				6E2E925120893393009BDCCF /* PickerButton.swift */,
+				6EFE17FE208990A200928D05 /* LoopiDropDown.swift */,
+				6E74C54F209C0260006C4AC4 /* ServicoViewCell.swift */,
+				6E850B0320A10CCD00A234EE /* FooterCollectionViewServicos.swift */,
+				6E850B0520A10DAD00A234EE /* HeaderCollectionViewServicos.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -259,6 +307,7 @@
 			isa = PBXGroup;
 			children = (
 				6E07ACC1202BC31C00041DCC /* Page.swift */,
+				6EB55C802077B8B10057579A /* LocationFooter.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -266,12 +315,15 @@
 		6E4644DE2027E9E8003A65A6 /* Rest */ = {
 			isa = PBXGroup;
 			children = (
+				6EA6503C20B3877900A85FEF /* RestError.swift */,
 				6EB9F6AC202BE7BA0040A199 /* AccessToken.swift */,
 				6E38685E205854F700ADBCBF /* RestAdapter.swift */,
 				6E14823B20496DDD0092F98A /* ServicoCardRest.swift */,
 				6E95C3DD205766BF0051925E /* GoogleDirectionsRest.swift */,
 				6E3868602058580C00ADBCBF /* RestConfig.swift */,
 				6E6EB21C2076C2DB00714B38 /* CategoriaRest.swift */,
+				6E7F3BA52078630200C19474 /* FirebaseStorageRest.swift */,
+				6EFE18002089A3BD00928D05 /* BancoRest.swift */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -291,6 +343,14 @@
 				6E726BEE20505DBD000895E6 /* ConstraintsView.swift */,
 			);
 			path = LoopiValues;
+			sourceTree = "<group>";
+		};
+		6E82DDFC2086D1B40069EC64 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				6E82DDFD2086D1CA0069EC64 /* BackgroundLocationManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		6E936DD61FDF095A00AC1E54 = {
@@ -319,8 +379,9 @@
 		6E936DE11FDF095A00AC1E54 /* Loopi */ = {
 			isa = PBXGroup;
 			children = (
+				6E82DDFC2086D1B40069EC64 /* Manager */,
+				6E7F3BA320785E6500C19474 /* GoogleService-Info.plist */,
 				6E77713520523F1100EC2D37 /* Loopi.entitlements */,
-				6EE3DFCB20523726007EF326 /* GoogleService-Info.plist */,
 				6E726BED20505D83000895E6 /* LoopiValues */,
 				6E7073F120452FE200EA50E0 /* Enumeration */,
 				6EF8D33C203F672100B93B11 /* Entity */,
@@ -372,28 +433,29 @@
 		6EF8D33C203F672100B93B11 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				6E833DD0205CEFFF007AE41E /* Banco.swift */,
+				6EF8D33D203F674400B93B11 /* CardServico.swift */,
+				6EF8D33F203F67B100B93B11 /* CardServicoSearchResults.swift */,
+				6E7073E520450EDE00EA50E0 /* Categoria.swift */,
 				6E95C3CD205761680051925E /* Distance.swift */,
 				6E95C3D0205761680051925E /* Duration.swift */,
+				6E7073E920450FFF00EA50E0 /* Especialidade.swift */,
+				6E14823D204979000092F98A /* Filtro.swift */,
 				6E95C3D2205761690051925E /* GoogleDirectionsResponse.swift */,
+				6E14823F20497A630092F98A /* LatLng.swift */,
 				6E95C3D1205761690051925E /* Leg.swift */,
+				6E7073EF20452DA000EA50E0 /* Localizacao.swift */,
+				6E12410E205C3392000FA8C5 /* Movimentacao.swift */,
+				6E95C3D92057631F0051925E /* Polyline.swift */,
+				6E7073EB2045105700EA50E0 /* Profissional.swift */,
 				6E95C3CE205761680051925E /* Route.swift */,
 				6E95C3DB2057638C0051925E /* RoutePoint.swift */,
-				6E95C3D92057631F0051925E /* Polyline.swift */,
-				6E95C3CF205761680051925E /* Step.swift */,
-				6EF8D33F203F67B100B93B11 /* CardServicoSearchResults.swift */,
-				6EF8D33D203F674400B93B11 /* CardServico.swift */,
 				6E7073E320450CD900EA50E0 /* ServicoCard.swift */,
-				6E7073E520450EDE00EA50E0 /* Categoria.swift */,
-				6E7073E720450F7F00EA50E0 /* SubCategoria.swift */,
-				6E7073E920450FFF00EA50E0 /* Especialidade.swift */,
-				6E7073EB2045105700EA50E0 /* Profissional.swift */,
 				6E7073ED20452CCE00EA50E0 /* ServicoProfissional.swift */,
-				6E7073EF20452DA000EA50E0 /* Localizacao.swift */,
+				6E95C3CF205761680051925E /* Step.swift */,
+				6E7073E720450F7F00EA50E0 /* SubCategoria.swift */,
 				6E7073F4204530C800EA50E0 /* UsuarioSession.swift */,
-				6E14823D204979000092F98A /* Filtro.swift */,
-				6E14823F20497A630092F98A /* LatLng.swift */,
-				6E12410E205C3392000FA8C5 /* Movimentacao.swift */,
-				6E833DD0205CEFFF007AE41E /* Banco.swift */,
+				6EA9EF1620ABAF76007A1EFC /* Login.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -545,7 +607,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6E936DED1FDF095A00AC1E54 /* LaunchScreen.storyboard in Resources */,
-				6EE3DFCC20523726007EF326 /* GoogleService-Info.plist in Resources */,
+				6E7F3BA420785E6600C19474 /* GoogleService-Info.plist in Resources */,
 				6E936DEA1FDF095A00AC1E54 /* Assets.xcassets in Resources */,
 				6E6F2CFC20366E450032CFFB /* Main.storyboard in Resources */,
 			);
@@ -593,17 +655,25 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Loopi/Pods-Loopi-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
+				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -738,9 +808,11 @@
 				6EE3DFBD20522C70007EF326 /* SearchMapResultsController.swift in Sources */,
 				6E7073EE20452CCE00EA50E0 /* ServicoProfissional.swift in Sources */,
 				6E2733D92064B2AF00A01D51 /* LeftPaddedTextField.swift in Sources */,
+				6E877DE3207EE6C2008DED3B /* LoopiTextField.swift in Sources */,
 				6E95C3D5205761690051925E /* Step.swift in Sources */,
 				6E7073E820450F7F00EA50E0 /* SubCategoria.swift in Sources */,
 				6EB9F6AD202BE7BA0040A199 /* AccessToken.swift in Sources */,
+				6E850B0420A10CCD00A234EE /* FooterCollectionViewServicos.swift in Sources */,
 				6E07ACC6202BC39E00041DCC /* CardsServiceController.swift in Sources */,
 				6E7073F020452DA000EA50E0 /* Localizacao.swift in Sources */,
 				6E95C3D3205761690051925E /* Distance.swift in Sources */,
@@ -749,6 +821,7 @@
 				6EF8D344203F67F300B93B11 /* CardServicoViewCell.swift in Sources */,
 				6E38685F205854F700ADBCBF /* RestAdapter.swift in Sources */,
 				6EF8D340203F67B100B93B11 /* CardServicoSearchResults.swift in Sources */,
+				6E2E925220893393009BDCCF /* PickerButton.swift in Sources */,
 				6E14823C20496DDD0092F98A /* ServicoCardRest.swift in Sources */,
 				6E726BEF20505DBD000895E6 /* ConstraintsView.swift in Sources */,
 				6E07ACBE202BC29B00041DCC /* PageCell.swift in Sources */,
@@ -758,19 +831,27 @@
 				6EE3DFC420522D2E007EF326 /* FloatyManager.swift in Sources */,
 				6E833DD1205CEFFF007AE41E /* Banco.swift in Sources */,
 				6E77713420523D9300EC2D37 /* Loopi.xcdatamodeld in Sources */,
+				6EB55C812077B8B10057579A /* LocationFooter.swift in Sources */,
 				6E95C3DA2057631F0051925E /* Polyline.swift in Sources */,
+				6EFE17FF208990A200928D05 /* LoopiDropDown.swift in Sources */,
 				6E12410D205C2E0D000FA8C5 /* ExtratoViewController.swift in Sources */,
 				6E07ACC4202BC34200041DCC /* LoginCell.swift in Sources */,
+				6EA9EF1720ABAF76007A1EFC /* Login.swift in Sources */,
 				6E7073EA20450FFF00EA50E0 /* Especialidade.swift in Sources */,
 				6E72A338202C09880099E65C /* MenuViewController.swift in Sources */,
 				6E72A33A202C09B20099E65C /* BaseViewController.swift in Sources */,
 				6EE3DFC620522D4A007EF326 /* FloatyDelegate.swift in Sources */,
+				6E7F3BA62078630200C19474 /* FirebaseStorageRest.swift in Sources */,
+				6EFE18012089A3BD00928D05 /* BancoRest.swift in Sources */,
 				6E07ACB9202BACC000041DCC /* MainNavigationController.swift in Sources */,
+				6EA307032091707B00ED1A81 /* ConfirmarSaqueViewController.swift in Sources */,
 				6E7073E620450EDE00EA50E0 /* Categoria.swift in Sources */,
 				6E95C3DC2057638C0051925E /* RoutePoint.swift in Sources */,
 				6EE3DFC820522D6C007EF326 /* FloatyWindow.swift in Sources */,
 				6EE3DFC020522CDD007EF326 /* Floaty.swift in Sources */,
 				6E833DD3205CF3D1007AE41E /* SolicitarSaqueViewController.swift in Sources */,
+				6E74C54E20995CD6006C4AC4 /* SaqueSolicitadoViewController.swift in Sources */,
+				6E386B3B2080775D00B31028 /* NovoProfissionalViewController.swift in Sources */,
 				6E14823E204979000092F98A /* Filtro.swift in Sources */,
 				6EF8D33E203F674400B93B11 /* CardServico.swift in Sources */,
 				6EE3DFC220522D10007EF326 /* FloatyItem.swift in Sources */,
@@ -781,10 +862,16 @@
 				6E936DE31FDF095A00AC1E54 /* AppDelegate.swift in Sources */,
 				6E95C3D6205761690051925E /* Duration.swift in Sources */,
 				6E6EB21D2076C2DB00714B38 /* CategoriaRest.swift in Sources */,
+				6EA6503D20B3877900A85FEF /* RestError.swift in Sources */,
+				6E82DDFE2086D1CA0069EC64 /* BackgroundLocationManager.swift in Sources */,
+				6E850B0620A10DAD00A234EE /* HeaderCollectionViewServicos.swift in Sources */,
 				6E7073F320452FF700EA50E0 /* TipoLocalizacao.swift in Sources */,
+				6EB55C7D2077B4690057579A /* LocationViewController.swift in Sources */,
 				6E7073E420450CD900EA50E0 /* ServicoCard.swift in Sources */,
 				6E1DDEBB2040F27E00797B4F /* CardViewController.swift in Sources */,
 				6E1240F6205C2B69000FA8C5 /* ExtratoTableViewCell.swift in Sources */,
+				6E6F2F0A20804D11004B0FC7 /* ProfissionalViewController.swift in Sources */,
+				6EB55C7F2077B6A60057579A /* LocationViewCell.swift in Sources */,
 				6E146FBA204EE9600012D15A /* FiltroAlertController.swift in Sources */,
 				6E6EB21F2076C8CE00714B38 /* CategoriaViewCell.swift in Sources */,
 				6E2733D720649B9E00A01D51 /* CriarContaViewController.swift in Sources */,
@@ -792,6 +879,7 @@
 				6E7073EC2045105700EA50E0 /* Profissional.swift in Sources */,
 				6E12410F205C3392000FA8C5 /* Movimentacao.swift in Sources */,
 				6E95C3D8205761690051925E /* GoogleDirectionsResponse.swift in Sources */,
+				6E74C550209C0260006C4AC4 /* ServicoViewCell.swift in Sources */,
 				6E72A33C202C0A840099E65C /* GMColor.swift in Sources */,
 				6E1DDEBD20410A7A00797B4F /* ActivityProgressLoopi.swift in Sources */,
 				6E07ACBB202BAD7100041DCC /* LoginController.swift in Sources */,

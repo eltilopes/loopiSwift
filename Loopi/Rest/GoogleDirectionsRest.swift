@@ -27,6 +27,7 @@ class GoogleDirectionsRest{
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
             (data, response, error) -> Void in
             if error != nil {
+                completionHandler(nil, error as NSError?)
                 return
             }
             
@@ -36,7 +37,7 @@ class GoogleDirectionsRest{
             print(self.googleDirectionsResponse?.getDistance() as Any)
             print(self.googleDirectionsResponse?.getDuration() as Any)
             print(self.googleDirectionsResponse?.getDistanceMeters() ?? 0)
-            
+            completionHandler(self.googleDirectionsResponse, nil)
         }
         task.resume()
         return task

@@ -60,7 +60,7 @@ class CriarContaViewController: UIViewController , UITextFieldDelegate {
         buttonPedirConvite.setTitleColor(GMColor.whiteColor(), for: .normal)
         buttonPedirConvite.backgroundColor = GMColor.colorPrimary()
         buttonPedirConvite.addTarget(self, action: #selector(pedirConvite), for: .touchUpInside)
-        buttonPedirConvite.layer.cornerRadius = 5.0
+        buttonPedirConvite.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
         return buttonPedirConvite
     }()
     

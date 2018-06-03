@@ -11,5 +11,11 @@ class ConstraintsView {
     class func heightHeaderTitleLabel() -> Int { return 30 }
     class func heightSeparatorLineView() -> Int { return 10 }
     class func widhtSeparatorLineView() -> Int { return 2 }
+    class func widthBorderLoopiTextField() -> Int { return 2 }
     class func heightHeaderApp() -> CGFloat { return 120.0 }
+    class func cornerRadiusApp() -> CGFloat { return 2.0 }
+    class func fontSmall() -> CGFloat { return 16.0 }
+    class func fontMedium() -> CGFloat { return 20.0 }
+    class func fontBig() -> CGFloat { return 24.0 }
+    
 }

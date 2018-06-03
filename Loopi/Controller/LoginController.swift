@@ -216,7 +216,7 @@ class LoginController: UIViewController, LoginControllerDelegate {
                     //mainNavigationController.viewControllers = [CardsServiceController()]
                     
                     UserDefaults.standard.setIsLoggedIn(value: true)
-                    
+                    UserDefaults.standard.setToken(token: retorno)
                     self.dismiss(animated: true, completion: nil)
                 }else{
                     self.showToast(message: "Usuario invalido")

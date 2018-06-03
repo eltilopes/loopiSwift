@@ -8,20 +8,23 @@
 
 import UIKit
 import SwiftyJSON
+import Firebase
+import FirebaseStorage
 
 
 class CardsServiceController: BaseViewController, UICollectionViewDataSource,UICollectionViewDelegate{
     
-    
+   
     var selectedRow = -1
     var servicoCard = ServicoCard()
     var servicoCards: [ServicoCard] = []
     var servicoCardsCount = 0
     let servicoCardRest = ServicoCardRest()
-    
+    let categoriaRest = CategoriaRest()
+    var lastPositionScroll: CGFloat = 0
     var categorias: [Categoria] = []
     var categoriasCount = 0
-    let categoriaRest = CategoriaRest()
+    var storageRef: StorageReference!
     
     var filtro : Filtro = Filtro()
     
@@ -32,30 +35,35 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        storageRef = Storage.storage().reference()
         addHeaderButtons()
         addFooterLocation()
         showFooterLocation()
         carregarCategorias()
         carregarCardsServicos(filtro: filtro)
+        collectionViewCategorias.backgroundColor = GMColor.backgroundAppColor()
+        collectionViewServicosCard.backgroundColor = GMColor.backgroundAppColor()
+        collectionViewCategorias.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
+        collectionViewCategorias.layer.borderColor = GMColor.backgroundAppColor().cgColor
+        collectionViewCategorias.layer.borderWidth = CGFloat(ConstraintsView.widthBorderLoopiTextField())
     }
     
     func carregarCategorias() {
-        let c1 = Categoria()
-        c1.descricao = "Saude"
-        c1.id = 1
-        let c2 = Categoria()
-        c2.descricao = "Alimentacao"
-        c2.id = 2
-        let c3 = Categoria()
-        c3.descricao = "Pet"
-        c3.id = 3
-        self.categorias.append(c1)
-        self.categorias.append(c2)
-        self.categorias.append(c3)
-        self.categoriasCount = self.categorias.count
-        self.collectionViewCategorias.delegate = self
-        self.collectionViewCategorias.dataSource = self
-        self.collectionViewCategorias.reloadData()
+        
+        categoriaRest.carregarCategorias(){ categorias, error in
+            let activityProgressLoopi = ActivityProgressLoopi()
+            let indicator = activityProgressLoopi.startActivity(obj: self)
+            if error == nil {
+                self.categorias = categorias!
+                self.categoriasCount = self.categorias.count
+                self.collectionViewCategorias.delegate = self
+                self.collectionViewCategorias.dataSource = self
+                self.collectionViewCategorias.reloadData()
+            }else{
+                self.showToast(message: (error?.localizedDescription)!)
+            }
+            ActivityProgressLoopi().stopActivity(obj: self,indicator: indicator)
+        }
     }
     
     func carregarCardsServicos(filtro: Filtro) {
@@ -99,6 +107,7 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
     
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let firebaseStorageRest = FirebaseStorageRest(storage: Storage.storage())
         if collectionView == self.collectionViewCategorias {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewCategoriasIdentifier, for: indexPath as IndexPath) as! CategoriaViewCell
             // let margin: CGFloat = 15
@@ -106,39 +115,96 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
             let categoria = self.categorias[indexPath.item]
             cell.descricao.text = categoria.descricao
-            cell.backgroundColor = UIColor.white // make cell more visible in our example project
-            cell.imageView.backgroundColor = GMColor.backgroundAppColor()
-            let imageURL = URL(string: "encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3O_DjKwfXWtgCIQjJxzHzMhw5T1haqpjjnzkwDZJL582E-OUO")
+            cell.descricao.font = UIFont.boldSystemFont(ofSize: ConstraintsView.fontBig())
+            cell.descricao.textColor = GMColor.whiteColor()
+            cell.descricao.tintColor = GMColor.whiteColor()
+            cell.backgroundColor = GMColor.whiteColor()
             var image: UIImage?
-            if let url = imageURL {
-                //All network operations has to run on different thread(not on main thread).
-                DispatchQueue.global(qos: .userInitiated).async {
-                    let imageData = NSData(contentsOf: url)
-                    //All UI operations has to run on main thread.
-                    DispatchQueue.main.async {
-                        if imageData != nil {
-                            image = UIImage(data: imageData! as Data)
-                            cell.imageView.image = image
-                            cell.imageView.contentMode = .scaleAspectFill;
-                        } else {
-                            image = nil
-                        }
-                    }
+            firebaseStorageRest.getImageFirebaseStorage(tipoImage : ImageType.PNG,urlImage: categoria.urlImagem!) { (imageIcon, error) in
+                if error == nil {
+                    image = imageIcon
+                    cell.imageView.image = image
+                    cell.imageView.contentMode = .scaleToFill;
+                }else{
+                    self.showToast(message: (error?.localizedDescription)!)
                 }
             }
             return cell
         }else {
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewServicosCardIdentifier, for: indexPath as IndexPath) as! CardServicoViewCell
             // let margin: CGFloat = 15
             
+            firebaseStorageRest.getImageFirebaseStorage(tipoImage : ImageType.SVG,urlImage: "https://firebasestorage.googleapis.com/v0/b/allinone-bd141.appspot.com/o/ic_thumb_up_white_24px.svg?alt=media&token=388dc9ea-7fbf-4e9e-b3a0-ceeefb0fff8b") { (imageIcon, error) in
+                if error == nil {
+                    cell.cardLike.image = imageIcon
+                    cell.cardLike.image = cell.cardLike.image!.withRenderingMode(.alwaysTemplate)
+                    cell.cardLike.tintColor = GMColor.colorPrimary()
+                    cell.cardLike.contentMode = .center;
+                }else{
+                    self.showToast(message: (error?.localizedDescription)!)
+                }
+            }
+            firebaseStorageRest.getImageFirebaseStorage(tipoImage : ImageType.SVG,urlImage: "https://firebasestorage.googleapis.com/v0/b/allinone-bd141.appspot.com/o/ic_star_white_24px.svg?alt=media&token=3759e51e-f225-4b33-8eb6-7ba589dd2cd2") { (imageIcon, error) in
+                if error == nil {
+                    cell.cardStar1.image = imageIcon
+                    cell.cardStar1.image = cell.cardStar1.image!.withRenderingMode(.alwaysTemplate)
+                    cell.cardStar1.tintColor = GMColor.colorPrimary()
+                    cell.cardStar1.contentMode = .center;
+                }else{
+                    self.showToast(message: (error?.localizedDescription)!)
+                }
+            }
+            firebaseStorageRest.getImageFirebaseStorage(tipoImage : ImageType.SVG,urlImage: "https://firebasestorage.googleapis.com/v0/b/allinone-bd141.appspot.com/o/ic_star_white_24px.svg?alt=media&token=3759e51e-f225-4b33-8eb6-7ba589dd2cd2") { (imageIcon, error) in
+                if error == nil {
+                    cell.cardStar2.image = imageIcon
+                    cell.cardStar2.image = cell.cardStar2.image!.withRenderingMode(.alwaysTemplate)
+                    cell.cardStar2.tintColor = GMColor.colorPrimary()
+                    cell.cardStar2.contentMode = .center;
+                }else{
+                    self.showToast(message: (error?.localizedDescription)!)
+                }
+            }
+            firebaseStorageRest.getImageFirebaseStorage(tipoImage : ImageType.SVG,urlImage: "https://firebasestorage.googleapis.com/v0/b/allinone-bd141.appspot.com/o/ic_star_white_24px.svg?alt=media&token=3759e51e-f225-4b33-8eb6-7ba589dd2cd2") { (imageIcon, error) in
+                if error == nil {
+                    cell.cardStar3.image = imageIcon
+                    cell.cardStar3.image = cell.cardStar3.image!.withRenderingMode(.alwaysTemplate)
+                    cell.cardStar3.tintColor = GMColor.colorPrimary()
+                    cell.cardStar3.contentMode = .center;
+                }else{
+                    self.showToast(message: (error?.localizedDescription)!)
+                }
+            }
+            firebaseStorageRest.getImageFirebaseStorage(tipoImage : ImageType.SVG,urlImage: "https://firebasestorage.googleapis.com/v0/b/allinone-bd141.appspot.com/o/ic_star_half_white_24px.svg?alt=media&token=03d63f57-ce0c-491f-a279-89e5824c4f0a") { (imageIcon, error) in
+                if error == nil {
+                    cell.cardStar4.image = imageIcon
+                    cell.cardStar4.image = cell.cardStar4.image!.withRenderingMode(.alwaysTemplate)
+                    cell.cardStar4.tintColor = GMColor.colorPrimary()
+                    cell.cardStar4.contentMode = .center;
+                }else{
+                    self.showToast(message: (error?.localizedDescription)!)
+                }
+            }
+            firebaseStorageRest.getImageFirebaseStorage(tipoImage : ImageType.SVG,urlImage: "https://firebasestorage.googleapis.com/v0/b/allinone-bd141.appspot.com/o/ic_star_border_white_24px.svg?alt=media&token=6b8f4766-f37a-447a-acc5-3512f1380faf") { (imageIcon, error) in
+                if error == nil {
+                    cell.cardStar5.image = imageIcon
+                    cell.cardStar5.image = cell.cardStar5.image!.withRenderingMode(.alwaysTemplate)
+                    cell.cardStar5.tintColor = GMColor.colorPrimary()
+                    cell.cardStar5.contentMode = .center;
+                }else{
+                    self.showToast(message: (error?.localizedDescription)!)
+                }
+            }
+            cell.cardLikeQuantidade.text = "3"
+            cell.cardLikeQuantidade.textColor = GMColor.colorPrimary()
             // Use the outlet in our custom class to get a reference to the UILabel in the cell
             let cardServico = self.servicoCards[indexPath.item]
             cell.myLabel.text = cardServico.title
             cell.cardCategoria.text = cardServico.categoria.descricao
-            cell.cardSubCategoria.text = cardServico.subCategoria.descricao
+            cell.cardCategoria.textColor = GMColor.colorPrimary()
             cell.cardEspecialidade.text = cardServico.especialidade.descricao
             cell.cardTempo.text = cardServico.duracao
-            cell.cardDistancia.text = cardServico.latitude
+            cell.cardDistancia.text = cardServico.distancia
             cell.backgroundColor = UIColor.white // make cell more visible in our example project
             let imageURL = URL(string: cardServico.thumbnail!)
             var image: UIImage?
@@ -175,7 +241,14 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        showFooterLocation()
+        if (self.lastPositionScroll > scrollView.contentOffset.y) {
+            hiddenFooterLocation()	
+        }
+        else if (self.lastPositionScroll < scrollView.contentOffset.y) {
+            showFooterLocation()
+        }
+        self.lastPositionScroll = scrollView.contentOffset.y
+        
     }
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -185,6 +258,8 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
         // get a reference to the second view controller
         if segue.identifier == "openMapsSegue" {
            //  let mapViewController  = segue.destination as! MapViewController
+        }else if segue.identifier == "locationSegue" {
+            _  = segue.destination as! LocationViewController
         }else{
             let cardServicoVC  = segue.destination as! CardViewController
             
@@ -192,9 +267,7 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
              cardServicoVC.servicoCard = servicoCard
         }
     }
-    
-    
-    
-    
+
 }
+
 

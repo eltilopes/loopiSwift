@@ -17,7 +17,8 @@ class ActivityProgressLoopi: NSObject {
         
         self.progressLoopiIndicator = UIActivityIndicatorView(frame:CGRect(x:100,y:100, width:100, height:100)) as UIActivityIndicatorView;
         
-        self.progressLoopiIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        //self.progressLoopiIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        self.progressLoopiIndicator.color = GMColor.colorPrimaryDark()
         self.progressLoopiIndicator.center = obj.view.center;
         
         obj.view.addSubview(progressLoopiIndicator);

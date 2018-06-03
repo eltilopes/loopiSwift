@@ -11,14 +11,14 @@ import UIKit
 class LoginCell: UICollectionViewCell {
     
     let logoImageView: UIImageView = {
-        let image = UIImage(named: "logo")
+        let image = UIImage(named: "logo_loopi")
         let imageView = UIImageView(image: image)
         return imageView
     }()
     
     let emailTextField: LeftPaddedTextField = {
         let textField = LeftPaddedTextField()
-        textField.layer.cornerRadius = 5.0
+        textField.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
         textField.layer.borderColor = GMColor.whiteColor().cgColor
         textField.layer.borderWidth = 2
         textField.textColor = GMColor.whiteColor()
@@ -29,7 +29,7 @@ class LoginCell: UICollectionViewCell {
     
     let passwordTextField: LeftPaddedTextField = {
         let textField = LeftPaddedTextField()
-        textField.layer.cornerRadius = 5.0
+        textField.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
         textField.layer.borderColor = GMColor.whiteColor().cgColor
         textField.layer.borderWidth = 2
         textField.textColor = GMColor.whiteColor()
@@ -40,7 +40,7 @@ class LoginCell: UICollectionViewCell {
     
     lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = 5.0
+        button.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
         button.backgroundColor = GMColor.colorPrimary()
         button.setTitleColor(.white, for: .normal)
         button.setTitle("ENTRAR", for: .normal)

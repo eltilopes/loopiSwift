@@ -28,7 +28,7 @@ class GMColor {
     // MARK: - appColor
     
     class func colorPrimary() -> UIColor {
-        return teal400Color()
+        return teal300Color()
     }
     
     class func colorPrimaryDark() -> UIColor {
@@ -43,12 +43,24 @@ class GMColor {
         return grey500Color()
     }
     
+    class func textColorBlue() -> UIColor {
+        return blue500Color()
+    }
+    
+    class func textColorError() -> UIColor {
+        return red500Color()
+    }
+    
     class func backgroundAppColor() -> UIColor {
         return grey300Color()
     }
     
     class func backgroundHeaderColor() -> UIColor {
         return blue300Color()
+    }
+    
+    class func buttonBlueColor() -> UIColor {
+        return blue400Color()
     }
     
     // MARK: - red

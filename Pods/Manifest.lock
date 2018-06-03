@@ -1,4 +1,11 @@
 PODS:
+  - CocoaLumberjack (3.4.1):
+    - CocoaLumberjack/Default (= 3.4.1)
+    - CocoaLumberjack/Extensions (= 3.4.1)
+  - CocoaLumberjack/Default (3.4.1)
+  - CocoaLumberjack/Extensions (3.4.1):
+    - CocoaLumberjack/Default
+  - DropDown (2.3.1)
   - Firebase (4.8.2):
     - Firebase/Core (= 4.8.2)
   - Firebase/Core (4.8.2):
@@ -9,6 +16,10 @@ PODS:
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
     - nanopb (~> 0.3)
+  - FirebaseAuth (4.4.2):
+    - FirebaseAnalytics (~> 4.0)
+    - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
+    - GTMSessionFetcher/Core (~> 1.1)
   - FirebaseCore (4.0.14):
     - GoogleToolboxForMac/NSData+zlib (~> 2.1)
   - FirebaseInstanceID (2.0.8):
@@ -19,6 +30,10 @@ PODS:
     - FirebaseInstanceID (~> 2.0)
     - GoogleToolboxForMac/Logger (~> 2.1)
     - Protobuf (~> 3.1)
+  - FirebaseStorage (2.1.2):
+    - FirebaseAnalytics (~> 4.0)
+    - FirebaseCore (~> 4.0)
+    - GTMSessionFetcher/Core (~> 1.1)
   - GoogleMaps (2.2.0):
     - GoogleMaps/Maps (= 2.2.0)
   - GoogleMaps/Base (2.2.0)
@@ -26,11 +41,19 @@ PODS:
     - GoogleMaps/Base
   - GooglePlaces (2.2.0):
     - GoogleMaps/Base (= 2.2.0)
+  - GoogleToolboxForMac/DebugUtils (2.1.3):
+    - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/Defines (2.1.3)
   - GoogleToolboxForMac/Logger (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
   - GoogleToolboxForMac/NSData+zlib (2.1.3):
     - GoogleToolboxForMac/Defines (= 2.1.3)
+  - GoogleToolboxForMac/NSDictionary+URLArguments (2.1.3):
+    - GoogleToolboxForMac/DebugUtils (= 2.1.3)
+    - GoogleToolboxForMac/Defines (= 2.1.3)
+    - GoogleToolboxForMac/NSString+URLArguments (= 2.1.3)
+  - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
+  - GTMSessionFetcher/Core (1.1.13)
   - HandyJSON (4.0.0-beta.1)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
@@ -38,31 +61,53 @@ PODS:
   - nanopb/decode (0.3.8)
   - nanopb/encode (0.3.8)
   - Protobuf (3.5.0)
+  - SVGKit (2.0.1):
+    - CocoaLumberjack (~> 3.x)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
+  - DropDown
   - Firebase
+  - FirebaseAuth
   - FirebaseCore
   - FirebaseMessaging
+  - FirebaseStorage
   - GoogleMaps (= 2.2)
   - GooglePlaces (= 2.2)
   - HandyJSON (~> 4.0.0-beta.1)
+  - SVGKit (from `https://github.com/SVGKit/SVGKit.git`, branch `2.x`)
   - SwiftyJSON
 
+EXTERNAL SOURCES:
+  SVGKit:
+    :branch: 2.x
+    :git: https://github.com/SVGKit/SVGKit.git
+
+CHECKOUT OPTIONS:
+  SVGKit:
+    :commit: 0799e49c6ccd387888c5a6592b93f8b42e41bfeb
+    :git: https://github.com/SVGKit/SVGKit.git
+
 SPEC CHECKSUMS:
+  CocoaLumberjack: 2e258a064cacc8eb9a2aca318e24d02a0a7fd56d
+  DropDown: 20499c7b2731b0d21609af924e47c7677a2be50d
   Firebase: 7d3b8cd837ad9fcd391657734c0d56dab8e9a5a3
   FirebaseAnalytics: 388b630c15713f5dbf364071f5f3d6077fb52f4e
+  FirebaseAuth: bd2738c5c1e92b108ba5f7f7335908097a4e50bb
   FirebaseCore: 2e0b98fb2d64ca8140136beff15772bdd14d2dd7
   FirebaseInstanceID: 81df5805a08001e69138664bdd02c6719a9ac80f
   FirebaseMessaging: dfdcd307c2382290a1e297a81d0f18370f5b1bcd
+  FirebaseStorage: 181bb543d39ee3c53e0558de7ba86b1286a0427f
   GoogleMaps: 104c418d61ab8a05dff06ed0784c25ea9d37da45
   GooglePlaces: bca867d5e9da15384c794b945e4226848bc6e9d9
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
+  GTMSessionFetcher: 5bb1eae636127de695590f50e7d248483eb891e6
   HandyJSON: 428bb18e2c34c2a77361accebf90cf64e4f74118
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
   Protobuf: 8a9838fba8dae3389230e1b7f8c104aa32389c03
+  SVGKit: 4055d9e809b5db8633755979cfb3b02dc5a8c20d
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 8f44a5f67e36c87f7e88ce2c9d1d264374632fb6
+PODFILE CHECKSUM: 8d83cf998f0b9bc77775ab593fac4c57f5800b22
 
 COCOAPODS: 1.4.0

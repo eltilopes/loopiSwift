@@ -17,7 +17,7 @@ class ServicoCard : Equatable,HandyJSON {
     var thumbnail : String?
     var latitude : String?
     var longitude : String?
-    // var distancia : String = "Distância não calculada"
+    var distancia : String = "Distância não calculada"
     // var distanciaMetros : Int = 0
     // var quantidadeFavorito : Int = 0
     var duracao : String = "Tempo não calculado"
@@ -30,6 +30,7 @@ class ServicoCard : Equatable,HandyJSON {
     var subCategoria : SubCategoria = SubCategoria()
     var especialidade : Especialidade = Especialidade()
     var profissional : Profissional = Profissional()
+    var servicos : [ServicoProfissional]?
   
 }
 

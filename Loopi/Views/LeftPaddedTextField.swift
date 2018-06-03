@@ -63,7 +63,7 @@ class LeftPaddedTextField: TextFieldEffects, UITextFieldDelegate {
     private var activePlaceholderPoint: CGPoint = CGPoint.zero
     
     func createBorder(){
-        self.layer.cornerRadius = 5.0
+        self.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
         self.layer.borderColor = GMColor.whiteColor().cgColor
         self.layer.borderWidth = 2
         self.textColor = GMColor.whiteColor()

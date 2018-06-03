@@ -14,6 +14,7 @@ class Categoria : Equatable,HandyJSON {
     
     var id : Int?
     var descricao : String?
+    var urlImagem : String?
     
 }
 

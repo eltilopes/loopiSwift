@@ -51,16 +51,23 @@ class ServicoCardRest : RestAdapeter {
             
             let directionUtilsRest = GoogleDirectionsRest()
             var googleDirectionsResponse :  GoogleDirectionsResponse = GoogleDirectionsResponse()
-            
-            directionUtilsRest.getGoogleDirectionsResponse(start:LatLng(lat: -3.75829, lng: -38.480949 ),end:LatLng(lat: -3.741433, lng: -38.499196 )){ gdr, error in
-                
-                if error == nil {
-                    googleDirectionsResponse = gdr!
-                    print("GoogleDirectionsResponse")
-                }else{
-                    print(error?.localizedDescription)
+            if let localizacao = UserDefaults.standard.object(forKey: "localizacao") as? Dictionary<String, Any> {
+                guard let lat = localizacao["lat"], let long = localizacao["long"] else { return }
+                let start = LatLng(lat: lat as! Double, lng: long as! Double )
+                let end = LatLng(lat: (NumberFormatter().number(from: sc.latitude!)?.doubleValue)!, lng: (NumberFormatter().number(from: sc.longitude!)?.doubleValue)!)
+                directionUtilsRest.getGoogleDirectionsResponse(start: start,end:end){ gdr, error in
+                    
+                    if error == nil {
+                        googleDirectionsResponse = gdr!
+                        sc.duracao = googleDirectionsResponse.getDuration()
+                        sc.distancia = googleDirectionsResponse.getDistance()
+                        print("GoogleDirectionsResponse")
+                    }else{
+                        print(error?.localizedDescription)
+                    }
                 }
             }
+            
         }
     }
 }

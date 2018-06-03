@@ -21,6 +21,14 @@ class RestAdapeter : RestConfig{
         }
         return nil
     }
+    
+    func getError(jsonString: String)->RestError?{
+        if jsonString.contains(ERROR) &&  jsonString.contains(ERROR_DESCRIPTION) {
+            return RestError.deserialize(from: jsonString)
+        }
+        return RestError()
+    }
+    
 }
 
 

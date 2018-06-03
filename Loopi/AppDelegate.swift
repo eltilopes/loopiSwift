@@ -48,8 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         
         application.registerForRemoteNotifications()
-        
-        
+        // BackgroundLocationManager.instance.start()
         return true
     }
     

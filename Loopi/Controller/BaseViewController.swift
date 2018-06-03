@@ -7,44 +7,55 @@
 //
 
 import UIKit
+import CoreLocation
 
-class BaseViewController: UIViewController, SlideMenuDelegate {
+class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerDelegate  {
     
     let footer = UIButton(type: .system)
-    
+    let locationManager = CLLocationManager()
     override func viewDidLoad() {
         super.viewDidLoad()
+        locationManager.desiredAccuracy = 1000
+        locationManager.delegate = self
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
     }
-    
+   
     func showFooterLocation() {
         if footer.isHidden {
-            footer.isHidden = false
+            UIView.animate(withDuration: 0.3, animations: { () -> Void in
+                self.footer.isHidden = false
+            }, completion:nil)
             Timer.scheduledTimer(timeInterval: 3.0, target: self, selector: #selector(hiddenFooterLocation), userInfo: nil, repeats: false)
         }
     }
     
     @objc func hiddenFooterLocation() {
-        footer.isHidden = true
+        UIView.animate(withDuration: 0.3, animations: { () -> Void in
+            self.footer.isHidden = true
+        }, completion:nil)
     }
     
-    @objc func openViewMaps(_ sender : UIButton) {
-        let alert = FiltroAlertController(filtro: Filtro() )
-        alert.show(animated: true)
-        // performSegue(withIdentifier: "openMapsSegue", sender: sender)
+    @objc func openLocationViewController(_ sender : UIButton) {
+        self.openViewControllerBasedOnIdentifier("LocationViewController")
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "openMapsSegue" {
-            let mapViewController  = segue.destination as! MapViewController
-        }
-    }
+    
     func addFooterLocation() {
-        footer.setTitle("Endereco", for: .normal)
+        let enderecoString = "Voce esta em\nAv. Rogaciano Leite,54"
+        let endereco = NSMutableAttributedString(string: enderecoString )
+        endereco.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 12), range: NSMakeRange(0, 12))
+        endereco.addAttribute(NSAttributedStringKey.font, value: UIFont.systemFont(ofSize: 17), range: NSMakeRange(13, 19))
+        endereco.addAttribute(NSAttributedStringKey.foregroundColor, value: GMColor.whiteColor(), range: NSMakeRange(0, endereco.length))
+
+        footer.setAttributedTitle(endereco, for: .normal)
+        footer.titleLabel!.textAlignment = .center
+        footer.titleLabel?.lineBreakMode = .byWordWrapping
         footer.setTitleColor(GMColor.whiteColor(), for: .normal)
-        footer.backgroundColor = GMColor.backgroundHeaderColor()
+        footer.backgroundColor = GMColor.colorPrimary()
         footer.translatesAutoresizingMaskIntoConstraints = false
         hiddenFooterLocation()
-        footer.addTarget(self, action: #selector(openViewMaps), for: .touchUpInside)
+        footer.addTarget(self, action: #selector(openLocationViewController), for: .touchUpInside)
         view.addSubview(footer)
         
         
@@ -68,6 +79,9 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             break
         case 1:
             self.openViewControllerBasedOnIdentifier("MeusPedidos")
+            break
+        case 2:
+            self.openViewControllerBasedOnIdentifier("Profissional")
             break
         default:
             break
@@ -207,6 +221,23 @@ class BaseViewController: UIViewController, SlideMenuDelegate {
             menuVC.view.frame=CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height);
             sender.isEnabled = true
         }, completion:nil)
+    }
+    
+    private func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let location = locations.first {
+            //let locationData = ["lat": location.coordinate.latitude, "long": location.coordinate.longitude]
+            let locationData = ["lat": -3.741433, "long": -38.499196]
+            UserDefaults.standard.set(locationData, forKey: "localizacao")
+            UserDefaults.standard.synchronize()
+            locationManager.stopUpdatingLocation()
+        }
+        
     }
 }
 
