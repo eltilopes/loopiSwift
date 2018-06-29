@@ -83,6 +83,12 @@ class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerD
         case 2:
             self.openViewControllerBasedOnIdentifier("Profissional")
             break
+        case 3:
+            self.openViewControllerBasedOnIdentifier("Convites")
+            break
+        case 4:
+            self.openViewControllerBasedOnIdentifier("Termos")
+            break
         default:
             break
         }
@@ -116,14 +122,22 @@ class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerD
     
     func addFiltroButton(){
         let btnShowFiltro = UIButton(type: UIButtonType.system)
-        // let filtroImage = UIImage(named: "ic_filtro")
-        btnShowFiltro.setImage(self.defaultFiltroImage(), for: UIControlState())
+        let filtroImage = UIImage(named: "ic_filtro")
+        btnShowFiltro.setImage(filtroImage, for: UIControlState())
         btnShowFiltro.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         btnShowFiltro.addTarget(self, action: #selector(CardsServiceController.onFiltroButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         let customBarItemFiltro = UIBarButtonItem(customView: btnShowFiltro)
-        self.navigationItem.rightBarButtonItem = customBarItemFiltro;
+        
+        let btnShowPesquisar = UIButton(type: UIButtonType.system)
+        let pesquisarImage = UIImage(named: "ic_pesquisar")
+        btnShowPesquisar.setImage(pesquisarImage, for: UIControlState())
+        btnShowPesquisar.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        btnShowPesquisar.addTarget(self, action: #selector(CardsServiceController.onPesquisarButtonPressed(_:)), for: UIControlEvents.touchUpInside)
+        let customBarItemPesquisar = UIBarButtonItem(customView: btnShowPesquisar)
+        
+        self.navigationItem.rightBarButtonItems = [ customBarItemFiltro, customBarItemPesquisar];
     }
-    
+ 
     func defaultMenuImage() -> UIImage {
         var defaultMenuImage = UIImage()
         
@@ -154,6 +168,8 @@ class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerD
  
         
         UIColor.white.setFill()
+        
+        
         let shape = UIBezierPath()
         shape.move(to: CGPoint(x: 10, y: 18))
         shape.addLine(to: CGPoint(x: 14, y: 18))
@@ -171,7 +187,6 @@ class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerD
         shape.addLine(to: CGPoint(x: 6, y: 11))
         shape.addLine(to: CGPoint(x: 6, y: 13))
         shape.lineWidth = 1
-
         shape.fill()
         
         defaultFiltroImage = UIGraphicsGetImageFromCurrentImageContext()!
@@ -236,7 +251,7 @@ class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerD
             UserDefaults.standard.set(locationData, forKey: "localizacao")
             UserDefaults.standard.synchronize()
             locationManager.stopUpdatingLocation()
-        }
+        }	
         
     }
 }

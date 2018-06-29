@@ -19,7 +19,7 @@ class MainNavigationController: UINavigationController {
         if logged {
             // let cardsServiceController = CardsServiceController()
             // viewControllers = [cardsServiceController]
-             UserDefaults.standard.setIsLoggedIn(value: false)
+            UserDefaults.standard.setIsLoggedIn(value: true)
         } else {
             perform(#selector(presentLoginController), with: nil, afterDelay: 0.0)
         }

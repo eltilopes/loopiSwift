@@ -2,11 +2,12 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "ic_profissional.jpg",
+      "filename" : "ic_profissional.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "baseline_person_black_18dp.png",
       "scale" : "2x"
     },
     {

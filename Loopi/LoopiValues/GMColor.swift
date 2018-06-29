@@ -43,8 +43,24 @@ class GMColor {
         return grey500Color()
     }
     
+    class func colorRadioAndCheckButtonFill() -> UIColor {
+        return grey300Color()
+    }
+    
     class func textColorBlue() -> UIColor {
         return blue500Color()
+    }
+    
+    class func textColorGreen() -> UIColor {
+        return green400Color()
+    }
+    
+    class func textColorRed() -> UIColor {
+        return red400Color()
+    }
+    
+    class func textColorYellow() -> UIColor {
+        return yellow400Color()
     }
     
     class func textColorError() -> UIColor {
@@ -61,6 +77,9 @@ class GMColor {
     
     class func buttonBlueColor() -> UIColor {
         return blue400Color()
+    }
+    class func buttonOrangeColor() -> UIColor {
+        return orange400Color()
     }
     
     // MARK: - red

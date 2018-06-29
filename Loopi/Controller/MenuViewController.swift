@@ -34,7 +34,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
      *  Menu button which was tapped to display the menu
      */
     var btnMenu : UIButton!
-    
+    let switchDemo = UISwitch()
     /**
      *  Delegate of the MenuVC
      */
@@ -56,14 +56,12 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func updateArrayMenuOptions(){
-        arrayMenuOptions.append(["title":"Extrato/Saque", "icon":"ic_money"])
-        arrayMenuOptions.append(["title":"Meus Pedidos", "icon":"ic_assignment"])
+        arrayMenuOptions.append(["title":"Extrato/Saque", "icon":"ic_extrato"])
+        arrayMenuOptions.append(["title":"Meus Pedidos", "icon":"ic_meus_pedidos"])
         arrayMenuOptions.append(["title":"Profissional", "icon":"ic_profissional"])
-        arrayMenuOptions.append(["title":"Configuracoes", "icon":"ic_configuracoes"])
-        
-        arrayMenuOptions.append(["title":"Relate um Problema", "icon":"ic_relate"])
-        
-        arrayMenuOptions.append(["title":"Indique e Ganhe CashBack", "icon":"ic_indique"])
+        arrayMenuOptions.append(["title":"Convites", "icon":"ic_convite"])
+        arrayMenuOptions.append(["title":"Termos", "icon":"ic_termos"])
+        arrayMenuOptions.append(["title":"Sair", "icon":"ic_sair"])
         
         tblMenuOptions.reloadData()
     }
@@ -91,36 +89,66 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let vw = UIView()
-        let heightImageView = heightHeader - 10
-        vw.backgroundColor = GMColor.blue200Color()
+        let heightTableView = tableView.frame.size.height / 4
+        let heightImageView = tableView.frame.size.height / 6 - 10
+        vw.backgroundColor = GMColor.colorPrimary()
         let headerImage = UIImage(named: "perfil")
         let headerImageView = UIImageView(image: headerImage)
-        headerImageView.tintColor = UIColor.white
-        headerImageView.frame = CGRect(x:5, y:0, width:heightImageView, height:heightImageView)
+        headerImageView.frame = CGRect(x:10, y:10, width:heightImageView, height:heightImageView)
         headerImageView.contentMode = .scaleAspectFit
+        headerImageView.layer.borderWidth = 1
+        headerImageView.layer.masksToBounds = false
+        headerImageView.layer.borderColor = GMColor.colorPrimaryDark().cgColor
+        headerImageView.layer.cornerRadius = headerImageView.frame.height/2
+        headerImageView.clipsToBounds = true
         vw.addSubview(headerImageView)
         
-        let headerLabel = UILabel(frame: CGRect(x:20, y:heightImageView - 10, width:heightImageView + 10, height:18))
+        var attrString = NSMutableAttributedString()
+        let stringValor = "R$ 50,00"
+        let stringCashBack = "Cash Back"
+        
+        attrString += (NSMutableAttributedString(string : stringValor, font: UIFont.boldSystemFont(ofSize: ConstraintsView.fontBig()), maxWidth: 100)! + "\n" )
+        attrString += (NSMutableAttributedString(string : stringCashBack , font: UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium()), maxWidth: 100)!  + "\n" )
+        attrString.addAttribute(NSAttributedStringKey.foregroundColor, value: GMColor.whiteColor(), range: NSMakeRange(0, (stringValor.count )))
+        
+        let headerCashBack = UILabel(frame: CGRect(x: 2 * tableView.frame.size.width / 3 , y:10, width:tableView.frame.size.width / 3, height:heightImageView ))
+        headerCashBack.textColor = GMColor.blackColor()
+        headerCashBack.attributedText = attrString
+        headerCashBack.lineBreakMode = .byWordWrapping
+        headerCashBack.layer.masksToBounds = true
+        headerCashBack.numberOfLines = 2
+        vw.addSubview(headerCashBack)
+        
+        let headerLabel = UILabel(frame: CGRect(x:10, y:heightTableView - ConstraintsView.fontBig() , width:heightImageView + 10, height:ConstraintsView.fontBig()))
         headerLabel.textColor = UIColor.white
-        headerLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        headerLabel.font = UIFont.boldSystemFont(ofSize: ConstraintsView.fontBig())
         headerLabel.text = "Usuario";
         vw.addSubview(headerLabel)
+        
+        let editarUsuarioImage = UIImage(named: "ic_editar")
+        let editarUsuarioImageView = UIImageView(image: editarUsuarioImage)
+        editarUsuarioImageView.frame = CGRect(x:tableView.frame.size.width - 2 * ConstraintsView.fontBig() , y:heightTableView - ConstraintsView.fontBig() , width: ConstraintsView.fontBig() , height:ConstraintsView.fontBig())
+        editarUsuarioImageView.contentMode = .scaleAspectFill
+        vw.addSubview(editarUsuarioImageView)
         return vw
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let vw = UIView()
-        vw.backgroundColor = GMColor.blue200Color()
-        let headerLabel = UILabel(frame: CGRect(x:5, y:5, width:300, height:18))
+        vw.backgroundColor = GMColor.colorPrimary()
+        let headerLabel = UILabel(frame: CGRect(x:10, y:0, width:tableView.frame.size.width, height:ConstraintsView.fontBig() ))
         headerLabel.textColor = UIColor.white
-        headerLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        headerLabel.font = UIFont.boldSystemFont(ofSize: ConstraintsView.fontBig())
         headerLabel.text = "Ativar Profissional";
         vw.addSubview(headerLabel)
         
-        let switchDemo = UISwitch()
+        
         switchDemo.frame = CGRect(x: 300, y: 30, width: 200, height: 40)
         switchDemo.isOn = true
         switchDemo.setOn(true, animated: false)
+        switchDemo.tintColor = GMColor.colorAccent()
+        switchDemo.onTintColor = GMColor.colorPrimaryDark()
+        switchDemo.thumbTintColor = GMColor.backgroundAppColor()
         switchDemo.addTarget(self, action: Selector(("switchValueDidChange:")), for: .valueChanged)
         vw.addSubview(switchDemo)
         
@@ -131,13 +159,16 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
     {
         if (sender.isOn == true){
             print("on")
+            switchDemo.setOn(true, animated: true)
         }
         else{
             print("off")
+            switchDemo.setOn(false, animated: true)
         }
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        heightHeader = tableView.frame.size.height / 4
         return heightHeader;
     }
     
@@ -152,10 +183,11 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let lblTitle : UILabel = cell.contentView.viewWithTag(101) as! UILabel
         let imgIcon : UIImageView = cell.contentView.viewWithTag(100) as! UIImageView
-        
         imgIcon.image = UIImage(named: arrayMenuOptions[indexPath.row]["icon"]!)
         lblTitle.text = arrayMenuOptions[indexPath.row]["title"]!
-        
+        lblTitle.textColor = GMColor.textColorPrimary()
+        lblTitle.font = UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
+        imgIcon.contentMode = .scaleAspectFit
         return cell
     }
     

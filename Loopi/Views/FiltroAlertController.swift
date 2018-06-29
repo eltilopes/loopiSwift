@@ -21,6 +21,13 @@ class FiltroAlertController: UIView, Modal{
     var ordemAlfabeticaZA = Bool()
     var valorMenor = Bool()
     var valorMaior = Bool()
+    
+    let sizeImage = 20
+    let sizeUIImage = 30
+    let marginTitle = CGFloat(55)
+    var dialogViewHeight = CGFloat(0)
+    var dialogViewWidth = CGFloat(0)
+    
     var filtro : Filtro = Filtro()
     convenience init(filtro: Filtro ) {
         self.init(frame: UIScreen.main.bounds)
@@ -48,25 +55,44 @@ class FiltroAlertController: UIView, Modal{
         backgroundView.alpha = 0.6
         backgroundView.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTappedOnBackgroundView)))
         addSubview(backgroundView)
-        let dialogViewWidth = frame.width-64
-        dialogView.addArrangedSubview(getTitleLabel(title: "Filtro", dialogViewWidth: Int(dialogViewWidth)))
-        dialogView.addArrangedSubview(getSeparatorLineView(dialogViewWidth: Int(dialogViewWidth)))
-        dialogView.addArrangedSubview(getOrdemAlfabeticaView(dialogViewWidth: Int(dialogViewWidth)))
-        dialogView.addArrangedSubview(getSeparatorLineView(dialogViewWidth: Int(dialogViewWidth)))
-        dialogView.addArrangedSubview(getDistanciaCheckBoxView(dialogViewWidth: Int(dialogViewWidth)))
-        dialogView.addArrangedSubview(getSeparatorLineView(dialogViewWidth: Int(dialogViewWidth)))
-        dialogView.addArrangedSubview(getValorView(dialogViewWidth: Int(dialogViewWidth)))
-        dialogView.addArrangedSubview(getSeparatorLineView(dialogViewWidth: Int(dialogViewWidth)))
-        dialogView.addArrangedSubview(getControllerButtonsView(dialogViewWidth: Int(dialogViewWidth)))
+        //dialogViewWidth = frame.width-64
+        dialogViewWidth = frame.width*2/3
+        //dialogView.addArrangedSubview(getTitleLabel(title: "Filtro", dialogViewWidth: Int(dialogViewWidth)))
+        dialogView.addArrangedSubview(getSeparatorLineView())
+        dialogView.addArrangedSubview(getSeparatorLineView())
+        dialogView.addArrangedSubview(getSeparatorLineView())
+        dialogView.addArrangedSubview(getSeparatorLineView())
+        dialogView.addArrangedSubview(getOrdemAlfabeticaView())
+        dialogView.addArrangedSubview(getSeparatorLineView())
+        dialogView.addArrangedSubview(getSeparatorLineView())
+        dialogView.addArrangedSubview(getDistanciaCheckBoxView())
+        dialogView.addArrangedSubview(getSeparatorLineView())
+        dialogView.addArrangedSubview(getSeparatorLineView())
+        dialogView.addArrangedSubview(getValorView())
+        dialogView.addArrangedSubview(getSeparatorLineView())
+        dialogView.addArrangedSubview(getSeparatorLineView())
+        dialogView.addArrangedSubview(getControllerButtonsView())
         dialogView.translatesAutoresizingMaskIntoConstraints = false
         dialogView.backgroundColor = UIColor.white
-        dialogView.layer.cornerRadius = 6
+        dialogView.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
+        dialogView.layer.masksToBounds = true
+        
+        
+        let x = frame.width/2 - dialogViewWidth/2 - CGFloat(sizeImage )
+        let y = frame.height/2 - dialogViewHeight/2
+        let width = dialogViewWidth + CGFloat(sizeImage * 2)
+        let height = dialogViewHeight
+        
+        let viewBorder = UIView(frame: CGRect(x: x, y: y, width: width , height: height))
+        viewBorder.backgroundColor = GMColor.whiteColor()
+        viewBorder.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
+        viewBorder.layer.masksToBounds = true
+        addSubview(viewBorder)
         addSubview(dialogView)
         dialogView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         dialogView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
 
     }
-    
     
     @objc func buttonAction(sender: UIButton!) {
         switch sender.tag {
@@ -106,44 +132,45 @@ class FiltroAlertController: UIView, Modal{
     }
     
     func defaultRadioButtonImage(full: Bool ) -> UIImage {
+        
         var defaultRadioButtonEmptyImage = UIImage()
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 30, height: 30), false, 0.0)
-        UIColor.white.setFill()
-        let path = UIBezierPath(ovalIn: CGRect(x: 5, y: 5, width: 20, height: 20))
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: sizeUIImage, height: sizeUIImage), false, 0.0)
+        GMColor.colorRadioAndCheckButtonFill().setFill()
+        let ovalInRect = CGRect(x: 5, y: 5, width: sizeImage, height: sizeImage)
+        GMColor.colorRadioAndCheckButtonFill().setFill()
+        UIBezierPath(ovalIn: ovalInRect).fill()
         if full {
-            GMColor.cyan300Color().setFill()
-        }else{
             GMColor.whiteColor().setFill()
+            UIBezierPath(ovalIn: CGRect(x: 10, y: 10, width: 10, height: 10)).fill()
+            GMColor.textColorPrimary().setFill()
+            UIBezierPath(ovalIn: CGRect(x: 11.5, y: 11.5, width: 7, height: 7)).fill()
         }
-        GMColor.cyan300Color().setStroke()
-        path.lineWidth = 5
-        path.stroke()
-        path.fill()
+        
         defaultRadioButtonEmptyImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return defaultRadioButtonEmptyImage;
     }
+    
+   
     
     func defaultCheckBoxButtonImage(full: Bool ) -> UIImage {
         var defaultRadioButtonEmptyImage = UIImage()
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: 30, height: 30), false, 0.0)
-        UIColor.white.setFill()
-        let path = UIBezierPath(rect: CGRect(x: 5, y: 5, width: 20, height: 20))
+        UIGraphicsBeginImageContextWithOptions(CGSize(width: sizeUIImage, height: sizeUIImage), false, 0.0)
+        GMColor.colorRadioAndCheckButtonFill().setFill()
+        UIBezierPath(rect: CGRect(x: 5, y: 5, width: sizeImage, height: sizeImage)).fill()
         if full {
-            GMColor.cyan300Color().setFill()
-        }else{
             GMColor.whiteColor().setFill()
+            UIBezierPath(rect: CGRect(x: 10, y: 10, width: 10, height: 10)).fill()
+            GMColor.textColorPrimary().setFill()
+            UIBezierPath(rect: CGRect(x: 11.5, y: 11.5, width: 7, height: 7)).fill()
         }
-        GMColor.cyan300Color().setStroke()
-        path.lineWidth = 5
-        path.stroke()
-        path.fill()
+        
         defaultRadioButtonEmptyImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         return defaultRadioButtonEmptyImage;
     }
     
-    func getTitleLabel(title: String,dialogViewWidth : Int) -> UILabel {
+    func getTitleLabel(title: String) -> UILabel {
         let titleLabel = UILabel()
         titleLabel.text = title
         titleLabel.tintColor = GMColor.whiteColor()
@@ -154,16 +181,22 @@ class FiltroAlertController: UIView, Modal{
         return titleLabel
     }
     
-    func getSeparatorLineView(dialogViewWidth : Int) -> UIView {
+    func getSeparatorLineView() -> UIView {
+        let heightSeparatorLineView  = CGFloat(ConstraintsView.heightSeparatorLineView() )
+        dialogViewHeight = dialogViewHeight + heightSeparatorLineView
         let separatorLineView = UIView()
         separatorLineView.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
-        separatorLineView.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightSeparatorLineView())).isActive = true
+        separatorLineView.heightAnchor.constraint(equalToConstant: heightSeparatorLineView).isActive = true
         separatorLineView.backgroundColor = GMColor.whiteColor()
         return separatorLineView
     }
     
     
-    func getOrdemAlfabeticaView(dialogViewWidth : Int) -> UIStackView {
+    func getOrdemAlfabeticaView() -> UIStackView {
+        
+        dialogViewHeight = dialogViewHeight + CGFloat(ConstraintsView.heightHeaderTitleLabel())
+        dialogViewHeight = dialogViewHeight +  CGFloat(sizeUIImage)
+        dialogViewHeight = dialogViewHeight +  CGFloat(sizeUIImage)
         
         let ordemAlfabeticaView = UIStackView()
         ordemAlfabeticaView.clipsToBounds = true
@@ -175,13 +208,13 @@ class FiltroAlertController: UIView, Modal{
         ordemAlfabeticaZA = false
         
         let titleOrdemAlfabetica = UILabel()
-        titleOrdemAlfabetica.tintColor = GMColor.grey500Color()
+        titleOrdemAlfabetica.tintColor = GMColor.textColorPrimary()
         titleOrdemAlfabetica.backgroundColor = GMColor.whiteColor()
-        titleOrdemAlfabetica.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
+        titleOrdemAlfabetica.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth - marginTitle)).isActive = true
         titleOrdemAlfabetica.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
-        titleOrdemAlfabetica.text = "Nome do Prestador"
-        titleOrdemAlfabetica.font = UIFont.boldSystemFont(ofSize: 20.0)
-        titleOrdemAlfabetica.textAlignment = .center
+        titleOrdemAlfabetica.text = "NOME DO PRESTADOR"
+        titleOrdemAlfabetica.font = UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
+        titleOrdemAlfabetica.textAlignment = .left
         ordemAlfabeticaView.addArrangedSubview(titleOrdemAlfabetica)
         
         buttonnOrdemAlfabeticaAZ = UIButton()
@@ -192,9 +225,11 @@ class FiltroAlertController: UIView, Modal{
         buttonnOrdemAlfabeticaAZ.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         buttonnOrdemAlfabeticaAZ.setTitle("A - Z", for: UIControlState.normal)
         buttonnOrdemAlfabeticaAZ.setTitle("A - Z", for: UIControlState.selected)
-        buttonnOrdemAlfabeticaAZ.setTitleColor(GMColor.grey500Color(), for: .normal)
-        buttonnOrdemAlfabeticaAZ.setTitleColor(GMColor.grey500Color(), for: .selected)
+        buttonnOrdemAlfabeticaAZ.setTitleColor(GMColor.textColorPrimary(), for: .normal)
+        buttonnOrdemAlfabeticaAZ.setTitleColor(GMColor.colorPrimary(), for: .selected)
+        buttonnOrdemAlfabeticaAZ.isSelected = true
         buttonnOrdemAlfabeticaAZ.semanticContentAttribute = .forceLeftToRight
+        buttonnOrdemAlfabeticaAZ.contentHorizontalAlignment = .left
         buttonnOrdemAlfabeticaAZ.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
         buttonnOrdemAlfabeticaAZ.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
         ordemAlfabeticaView.addArrangedSubview(buttonnOrdemAlfabeticaAZ)
@@ -207,9 +242,10 @@ class FiltroAlertController: UIView, Modal{
         buttonnOrdemAlfabeticaZA.addTarget(self, action: #selector(buttonAction), for: .touchUpInside)
         buttonnOrdemAlfabeticaZA.setTitle("Z - A", for: UIControlState.normal)
         buttonnOrdemAlfabeticaZA.setTitle("Z - A", for: UIControlState.selected)
-        buttonnOrdemAlfabeticaZA.setTitleColor(GMColor.grey500Color(), for: .normal)
-        buttonnOrdemAlfabeticaZA.setTitleColor(GMColor.grey500Color(), for: .selected)
+        buttonnOrdemAlfabeticaZA.setTitleColor(GMColor.textColorPrimary(), for: .normal)
+        buttonnOrdemAlfabeticaZA.setTitleColor(GMColor.colorPrimary(), for: .selected)
         buttonnOrdemAlfabeticaZA.semanticContentAttribute = .forceLeftToRight
+        buttonnOrdemAlfabeticaZA.contentHorizontalAlignment = .left
         buttonnOrdemAlfabeticaZA.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
         buttonnOrdemAlfabeticaZA.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
         
@@ -217,11 +253,15 @@ class FiltroAlertController: UIView, Modal{
         ordemAlfabeticaView.translatesAutoresizingMaskIntoConstraints = false
         ordemAlfabeticaView.backgroundColor = UIColor.white
         ordemAlfabeticaView.layer.cornerRadius = 6
+        
+
         return ordemAlfabeticaView
     }
     
-    func getValorView(dialogViewWidth : Int) -> UIStackView {
-        
+    func getValorView() -> UIStackView {
+        dialogViewHeight = dialogViewHeight + CGFloat(ConstraintsView.heightHeaderTitleLabel() )
+        dialogViewHeight = dialogViewHeight +  CGFloat(sizeUIImage)
+        dialogViewHeight = dialogViewHeight +  CGFloat(sizeUIImage)
         let valorView = UIStackView()
         valorView.clipsToBounds = true
         valorView.axis  = UILayoutConstraintAxis.vertical
@@ -234,10 +274,10 @@ class FiltroAlertController: UIView, Modal{
         let titleValor = UILabel()
         titleValor.tintColor = GMColor.grey500Color()
         titleValor.backgroundColor = GMColor.whiteColor()
-        titleValor.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
+        titleValor.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth - marginTitle)).isActive = true
         titleValor.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
-        titleValor.text = "Valor"
-        titleValor.textAlignment = .center
+        titleValor.text = "VALOR"
+        titleValor.textAlignment = .left
         titleValor.font = UIFont.boldSystemFont(ofSize: 20.0)
         valorView.addArrangedSubview(titleValor)
         
@@ -249,9 +289,11 @@ class FiltroAlertController: UIView, Modal{
         buttonnValorMenor.addTarget(self, action: #selector(buttonActionValor), for: .touchUpInside)
         buttonnValorMenor.setTitle("Menor Valor", for: UIControlState.normal)
         buttonnValorMenor.setTitle("Menor Valor", for: UIControlState.selected)
-        buttonnValorMenor.setTitleColor(GMColor.grey500Color(), for: .normal)
-        buttonnValorMenor.setTitleColor(GMColor.grey500Color(), for: .selected)
+        buttonnValorMenor.setTitleColor(GMColor.textColorPrimary(), for: .normal)
+        buttonnValorMenor.setTitleColor(GMColor.colorPrimary(), for: .selected)
+        buttonnValorMenor.isSelected = true
         buttonnValorMenor.semanticContentAttribute = .forceLeftToRight
+        buttonnValorMenor.contentHorizontalAlignment = .left
         buttonnValorMenor.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
         buttonnValorMenor.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
         valorView.addArrangedSubview(buttonnValorMenor)
@@ -264,9 +306,10 @@ class FiltroAlertController: UIView, Modal{
         buttonnValorMaior.addTarget(self, action: #selector(buttonActionValor), for: .touchUpInside)
         buttonnValorMaior.setTitle("Maior Valor", for: UIControlState.normal)
         buttonnValorMaior.setTitle("Maior Valor", for: UIControlState.selected)
-        buttonnValorMaior.setTitleColor(GMColor.grey500Color(), for: .normal)
-        buttonnValorMaior.setTitleColor(GMColor.grey500Color(), for: .selected)
+        buttonnValorMaior.setTitleColor(GMColor.textColorPrimary(), for: .normal)
+        buttonnValorMaior.setTitleColor(GMColor.colorPrimary(), for: .selected)
         buttonnValorMaior.semanticContentAttribute = .forceLeftToRight
+        buttonnValorMaior.contentHorizontalAlignment = .left
         buttonnValorMaior.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
         buttonnValorMaior.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
         
@@ -278,8 +321,10 @@ class FiltroAlertController: UIView, Modal{
     }
     
     
-    func getDistanciaCheckBoxView(dialogViewWidth : Int) -> UIStackView {
-        
+    func getDistanciaCheckBoxView() -> UIStackView {
+        dialogViewHeight = dialogViewHeight + CGFloat(ConstraintsView.heightHeaderTitleLabel() )
+        dialogViewHeight = dialogViewHeight +  CGFloat(sizeImage)
+        dialogViewHeight = dialogViewHeight +  CGFloat(sizeImage)
         let distanciaCheckBoxView = UIStackView()
         distanciaCheckBoxView.clipsToBounds = true
         distanciaCheckBoxView.axis  = UILayoutConstraintAxis.vertical
@@ -289,10 +334,10 @@ class FiltroAlertController: UIView, Modal{
         let titleDistanciaCheckBoxView = UILabel()
         titleDistanciaCheckBoxView.tintColor = GMColor.grey500Color()
         titleDistanciaCheckBoxView.backgroundColor = GMColor.whiteColor()
-        titleDistanciaCheckBoxView.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
+        titleDistanciaCheckBoxView.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth - marginTitle)).isActive = true
         titleDistanciaCheckBoxView.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
-        titleDistanciaCheckBoxView.text = "Distancia"
-        titleDistanciaCheckBoxView.textAlignment = .center
+        titleDistanciaCheckBoxView.text = "DISTANCIA"
+        titleDistanciaCheckBoxView.textAlignment = .left
         titleDistanciaCheckBoxView.font = UIFont.boldSystemFont(ofSize: 20.0)
         distanciaCheckBoxView.addArrangedSubview(titleDistanciaCheckBoxView)
         
@@ -304,9 +349,11 @@ class FiltroAlertController: UIView, Modal{
         buttonnDistanciaCheckBoxView.addTarget(self, action: #selector(self.checkBoxAction(_:)), for: .touchUpInside)
         buttonnDistanciaCheckBoxView.setTitle("Mais Proximo", for: UIControlState.normal)
         buttonnDistanciaCheckBoxView.setTitle("Mais Proximo", for: UIControlState.selected)
-        buttonnDistanciaCheckBoxView.setTitleColor(GMColor.grey500Color(), for: .normal)
-        buttonnDistanciaCheckBoxView.setTitleColor(GMColor.grey500Color(), for: .selected)
+        buttonnDistanciaCheckBoxView.setTitleColor(GMColor.textColorPrimary(), for: .normal)
+        buttonnDistanciaCheckBoxView.setTitleColor(GMColor.colorPrimary(), for: .selected)
+        buttonnDistanciaCheckBoxView.isSelected = true
         buttonnDistanciaCheckBoxView.semanticContentAttribute = .forceLeftToRight
+        buttonnDistanciaCheckBoxView.contentHorizontalAlignment = .left
         buttonnDistanciaCheckBoxView.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
         buttonnDistanciaCheckBoxView.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
         distanciaCheckBoxView.addArrangedSubview(buttonnDistanciaCheckBoxView)
@@ -317,40 +364,49 @@ class FiltroAlertController: UIView, Modal{
         return distanciaCheckBoxView
     }
     
-    func getControllerButtonsView(dialogViewWidth : Int) -> UIStackView {
-        
+    func getControllerButtonsView() -> UIStackView {
+        dialogViewHeight = dialogViewHeight + CGFloat(ConstraintsView.heightHeaderTitleLabel() )
         let controllerButtonsView = UIStackView()
         controllerButtonsView.clipsToBounds = true
         controllerButtonsView.axis  = UILayoutConstraintAxis.horizontal
         controllerButtonsView.distribution  = UIStackViewDistribution.equalSpacing
         controllerButtonsView.alignment = UIStackViewAlignment.center
-        
+       
+        let viewPadding = UIView()
+        viewPadding.backgroundColor = GMColor.whiteColor()
+        viewPadding.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth/2)).isActive = true
+        viewPadding.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
+        viewPadding.layer.masksToBounds = true
+        controllerButtonsView.addArrangedSubview(viewPadding)
         
         let buttonFiltrar = UIButton()
-        buttonFiltrar.backgroundColor = GMColor.cyan300Color()
+        buttonFiltrar.backgroundColor = GMColor.colorPrimary()
         buttonFiltrar.addTarget(self, action: #selector(didTappedOnBackgroundView), for: .touchUpInside)
-        buttonFiltrar.setTitle("Filtrar", for: UIControlState.normal)
-        buttonFiltrar.setTitle("Filtrar", for: UIControlState.selected)
+        buttonFiltrar.setTitle("APLICAR", for: UIControlState.normal)
+        buttonFiltrar.setTitle("APLICAR", for: UIControlState.selected)
         buttonFiltrar.setTitleColor(GMColor.whiteColor(), for: .normal)
         buttonFiltrar.setTitleColor(GMColor.whiteColor(), for: .selected)
+        buttonFiltrar.titleLabel?.font = UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
         buttonFiltrar.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth/2)).isActive = true
         buttonFiltrar.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
+        buttonFiltrar.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
+        buttonFiltrar.layer.masksToBounds = true
         controllerButtonsView.addArrangedSubview(buttonFiltrar)
         
         let buttonCancelar = UIButton()
         buttonCancelar.backgroundColor = GMColor.red300Color()
         buttonCancelar.addTarget(self, action: #selector(didTappedOnBackgroundView), for: .touchUpInside)
-        buttonCancelar.setTitle("Cancelar", for: UIControlState.normal)
-        buttonCancelar.setTitle("Cancelar", for: UIControlState.selected)
+        buttonCancelar.setTitle("CANCELAR", for: UIControlState.normal)
+        buttonCancelar.setTitle("CANCELAR", for: UIControlState.selected)
         buttonCancelar.setTitleColor(GMColor.whiteColor(), for: .normal)
         buttonCancelar.setTitleColor(GMColor.whiteColor(), for: .selected)
         buttonCancelar.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth/2)).isActive = true
         buttonCancelar.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
-        controllerButtonsView.addArrangedSubview(buttonCancelar)
+        //controllerButtonsView.addArrangedSubview(buttonCancelar)
         
         controllerButtonsView.translatesAutoresizingMaskIntoConstraints = false
         controllerButtonsView.backgroundColor = UIColor.white
-        controllerButtonsView.layer.cornerRadius = 6
+        controllerButtonsView.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
         return controllerButtonsView
     }
     

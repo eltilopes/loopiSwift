@@ -31,6 +31,30 @@ extension UserDefaults {
         return ""
     }
     
+    func setLogin(login: String) {
+        set(login, forKey: RestConfig().LOGIN)
+        synchronize()
+    }
+    
+    func getLogin() -> String {
+        if let login = string(forKey: RestConfig().LOGIN) {
+            return login
+        }
+        return ""
+    }
+    
+    func setLocalizacao(localizacao: String) {
+        set(localizacao, forKey: RestConfig().LOCALIZACAO)
+        synchronize()
+    }
+    
+    func getLocalizacao() -> String {
+        if let localizacao = string(forKey: RestConfig().LOCALIZACAO) {
+            return localizacao
+        }
+        return ""
+    }
+    
     func isLoggedIn() -> Bool {
         return bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
     }

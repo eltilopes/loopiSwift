@@ -32,12 +32,16 @@ extension Modal where Self:UIView{
             })
             UIView.animate(withDuration: 0.33, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 10, options: UIViewAnimationOptions(rawValue: 0), animations: {
                 self.dialogView.center  = self.center
+                self.dialogView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+                self.dialogView.isLayoutMarginsRelativeArrangement = true
             }, completion: { (completed) in
                 
             })
         }else{
             self.backgroundView.alpha = 0.66
             self.dialogView.center  = self.center
+            self.dialogView.layoutMargins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+            self.dialogView.isLayoutMarginsRelativeArrangement = true
         }
     }
     

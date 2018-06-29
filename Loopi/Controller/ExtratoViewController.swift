@@ -102,9 +102,9 @@ class ExtratoViewController: UIViewController, UITableViewDataSource, UITableVie
         cell.historico.textColor = GMColor.textColorPrimary()
         cell.valor.text = "\(movimentacao.valor.magnitude ?? 0)"
         if movimentacao.valor < 0 {
-            cell.valor.textColor = GMColor.red300Color()
+            cell.valor.textColor = GMColor.textColorRed()
         }else {
-            cell.valor.textColor = GMColor.blue300Color()
+            cell.valor.textColor = GMColor.textColorBlue()
         }
         cell.layoutMargins = UIEdgeInsets(top: margin, left: margin,
                                           bottom: margin, right: margin)

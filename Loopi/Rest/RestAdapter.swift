@@ -23,12 +23,32 @@ class RestAdapeter : RestConfig{
     }
     
     func getError(jsonString: String)->RestError?{
+        
+        if jsonString.contains(ERROR) &&  jsonString.contains(ERROR_DESCRIPTION)  &&  jsonString.contains(INVALID_ACCESS_TOKEN) {
+            reLogIn()
+            return RestError.deserialize(from: jsonString)
+        }
         if jsonString.contains(ERROR) &&  jsonString.contains(ERROR_DESCRIPTION) {
             return RestError.deserialize(from: jsonString)
         }
+        //UserDefaults.standard.setToken(token: "b10680c7-9439-471c-a1e3-e051960f1000")
         return RestError()
     }
     
+    
+    func reLogIn() {
+        let accessToken = AccessToken()
+        var retorno = ""
+        accessToken.getAccessToken(){ tok, error in
+            if error == nil {
+                retorno = tok!
+                if !retorno.isEmpty {
+                    UserDefaults.standard.setIsLoggedIn(value: true)
+                    UserDefaults.standard.setToken(token: retorno)
+                }
+            }
+        }   
+    }
 }
 
 

@@ -12,7 +12,7 @@ import Firebase
 import FirebaseStorage
 
 
-class CardsServiceController: BaseViewController, UICollectionViewDataSource,UICollectionViewDelegate{
+class CardsServiceController: BaseViewController, UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout{
     
    
     var selectedRow = -1
@@ -35,17 +35,25 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = GMColor.backgroundAppColor()
         storageRef = Storage.storage().reference()
         addHeaderButtons()
         addFooterLocation()
         showFooterLocation()
         carregarCategorias()
         carregarCardsServicos(filtro: filtro)
-        collectionViewCategorias.backgroundColor = GMColor.backgroundAppColor()
         collectionViewServicosCard.backgroundColor = GMColor.backgroundAppColor()
-        collectionViewCategorias.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
-        collectionViewCategorias.layer.borderColor = GMColor.backgroundAppColor().cgColor
-        collectionViewCategorias.layer.borderWidth = CGFloat(ConstraintsView.widthBorderLoopiTextField())
+        collectionViewCategorias.backgroundColor = GMColor.backgroundAppColor()
+        collectionViewServicosCard.showsVerticalScrollIndicator = true
+        collectionViewServicosCard.showsHorizontalScrollIndicator = false
+        collectionViewCategorias.showsVerticalScrollIndicator = false
+        collectionViewCategorias.showsHorizontalScrollIndicator = true
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        carregarCategorias()
+        carregarCardsServicos(filtro: filtro)
     }
     
     func carregarCategorias() {
@@ -89,7 +97,13 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
         alert.show(animated: true)
         
     }
+    
+    @objc func onPesquisarButtonPressed(_ sender : UIButton){
+        let alert = FiltroController()
+        alert.show(animated: true)
         
+    }
+    
    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -105,6 +119,29 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
         
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        if collectionView == self.collectionViewCategorias {
+            return UIEdgeInsets(top: 20, left: 0, bottom: 20, right: 0)
+        }
+        return UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+    }
+    
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        if collectionView == self.collectionViewCategorias {
+            return CGSize(width: self.view.frame.size.width / 2.5, height: self.view.frame.size.height * 0.5)
+        }
+        return CGSize(width: self.view.frame.size.width  , height: self.view.frame.size.height / 4.5)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 10
+    }
     // make a cell for each cell index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let firebaseStorageRest = FirebaseStorageRest(storage: Storage.storage())
@@ -124,7 +161,7 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
                 if error == nil {
                     image = imageIcon
                     cell.imageView.image = image
-                    cell.imageView.contentMode = .scaleToFill;
+                    cell.imageView.contentMode = .scaleAspectFill;
                 }else{
                     self.showToast(message: (error?.localizedDescription)!)
                 }
@@ -205,7 +242,7 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
             cell.cardEspecialidade.text = cardServico.especialidade.descricao
             cell.cardTempo.text = cardServico.duracao
             cell.cardDistancia.text = cardServico.distancia
-            cell.backgroundColor = UIColor.white // make cell more visible in our example project
+            cell.backgroundColor = UIColor.white
             let imageURL = URL(string: cardServico.thumbnail!)
             var image: UIImage?
             if let url = imageURL {
@@ -230,13 +267,16 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
     }
     
     // MARK: - UICollectionViewDelegate protocol
-    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         showFooterLocation()
         if collectionView == self.collectionViewCategorias {
+            //colocar regra para abrir a lista de especialidades
+            filtro.categoria = self.categorias[indexPath.item]
+            carregarCardsServicos(filtro: filtro)
         }else {
-            servicoCard = self.servicoCards[indexPath.item]
-            performSegue(withIdentifier: "cardServicoSegue", sender: servicoCard)
+            self.servicoCard = self.servicoCards[indexPath.item]
+            //openViewControllerBasedOnIdentifier("CardViewController")
+            self.performSegue(withIdentifier: "cardServicoSegue", sender: self.servicoCard)
         }
     }
     
@@ -260,14 +300,10 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
            //  let mapViewController  = segue.destination as! MapViewController
         }else if segue.identifier == "locationSegue" {
             _  = segue.destination as! LocationViewController
-        }else{
-            let cardServicoVC  = segue.destination as! CardViewController
-            
-            // set a variable in the second view controller with the data to pass
-             cardServicoVC.servicoCard = servicoCard
+        }else if segue.identifier == "cardServicoSegue" {
+            let cardViewController = segue.destination as! CardViewController
+            cardViewController.servicoCard = self.servicoCard
         }
     }
 
 }
-
-
