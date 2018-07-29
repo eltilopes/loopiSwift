@@ -54,6 +54,29 @@ extension UserDefaults {
         }
         return ""
     }
+    func setUsuario(usuario: Usuario) {
+        set(usuario.toJSONString(prettyPrint: true), forKey: RestConfig().USUARIO)
+        synchronize()
+    }
+    
+    func getUsuario() -> Usuario {
+        if let usuario = string(forKey: RestConfig().USUARIO) {
+            return Usuario.deserialize(from: usuario)!
+        }
+        return Usuario()
+    }
+    
+    func setProfissional(profissional: Profissional) {
+        set(profissional.toJSONString(prettyPrint: true), forKey: RestConfig().PROFISSIONAL)
+        synchronize()
+    }
+    
+    func getProfissional() -> Profissional {
+        if let profissional = string(forKey: RestConfig().PROFISSIONAL) {
+            return Profissional.deserialize(from: profissional)!
+        }
+        return Profissional()
+    }
     
     func isLoggedIn() -> Bool {
         return bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue)

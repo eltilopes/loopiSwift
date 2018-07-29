@@ -11,6 +11,7 @@ import CoreData
 import GoogleMaps
 import GooglePlaces
 import Firebase
+import FirebaseMessaging
 import UserNotifications
 
 @UIApplicationMain
@@ -21,19 +22,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let gcmMessageIDKey = "gcm.message_id"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        GMSServices.provideAPIKey("AIzaSyCXuNEWDOjSXCoQbDyl8dd-Xobe-4vwaGM")
-        GMSPlacesClient.provideAPIKey("AIzaSyCXuNEWDOjSXCoQbDyl8dd-Xobe-4vwaGM")
+        //GMSServices.provideAPIKey("AIzaSyCXuNEWDOjSXCoQbDyl8dd-Xobe-4vwaGM")
+        //GMSPlacesClient.provideAPIKey("AIzaSyCXuNEWDOjSXCoQbDyl8dd-Xobe-4vwaGM")
+        GMSServices.provideAPIKey("AIzaSyBcU9bk64c7cOig4us1WMlO_o_k7Ococ6o")
+        GMSPlacesClient.provideAPIKey("AIzaSyBcU9bk64c7cOig4us1WMlO_o_k7Ococ6o")
+        
+        
         // FirebaseApp.configure()
         
         FirebaseApp.configure()
         
-        // [START set_messaging_delegate]
-        Messaging.messaging().delegate = self
-        // [END set_messaging_delegate]
         // Register for remote notifications. This shows a permission dialog on first run, to
         // show the dialog at a more appropriate time move this registration accordingly.
         // [START register_for_notifications]
+      
         if #available(iOS 10.0, *) {
+            UNUserNotificationCenter.current().requestAuthorization(options:[.badge, .alert, .sound]) { (granted, error) in
+                
+                if granted {
+                    UIApplication.shared.registerForRemoteNotifications()
+                }
+                
+            }
+            
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
             
@@ -45,14 +56,59 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
             application.registerUserNotificationSettings(settings)
+            
+            NotificationsController.shared.registerForUserFacingNotificationsFor(application)
         }
         
         application.registerForRemoteNotifications()
+
+        
+ 
+        // [START set_messaging_delegate]
+        Messaging.messaging().delegate = self
+        Messaging.messaging().shouldEstablishDirectChannel = true
+        // Just for logging to the console when we establish/tear down our socket connection.
+        listenForDirectChannelStateChanges();
+        NotificationsController.configure()
+        // [END set_messaging_delegate]
         // BackgroundLocationManager.instance.start()
+        let token = Messaging.messaging().fcmToken
+        print("***** MY FCM token: \(token ?? "")")
+        NotificationCenter.default.addObserver(self, selector: "tokenRefreshNotification:", name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
+
         return true
     }
     
+    func application(_ application: UIApplication,
+                     didRegister notificationSettings: UIUserNotificationSettings) {
+        NotificationCenter.default.post(name: UserNotificationsChangedNotification, object: nil)
+    }
     
+    // Handle refresh notification token
+    func tokenRefreshNotification(notification: NSNotification) {
+        let refreshedToken = InstanceID.instanceID().token()
+        print("InstanceID token: \(refreshedToken)")
+        
+        // Connect to FCM since connection may have failed when attempted before having a token.
+        if (refreshedToken != nil)
+        {
+            connectToFcm()
+            
+            Messaging.messaging().subscribe(toTopic: "/topics/topic")
+        }
+        
+    }
+    
+    // Connect to FCM
+    func connectToFcm() {
+        Messaging.messaging().connect { (error) in
+            if (error != nil) {
+                print("Unable to connect with FCM. \(error)")
+            } else {
+                print("Connected to FCM.")
+            }
+        }
+    }
     
     // [START receive_message]
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
@@ -60,7 +116,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
         // With swizzling disabled you must let Messaging know about the message, for Analytics
-        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
@@ -76,7 +132,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // this callback will not be fired till the user taps on the notification launching the application.
         // TODO: Handle data of notification
         // With swizzling disabled you must let Messaging know about the message, for Analytics
-        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        Messaging.messaging().appDidReceiveMessage(userInfo)
         // Print message ID.
         if let messageID = userInfo[gcmMessageIDKey] {
             print("Message ID: \(messageID)")
@@ -99,20 +155,33 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("APNs token retrieved: \(deviceToken)")
         
         // With swizzling disabled you must set the APNs token here.
-        // Messaging.messaging().apnsToken = deviceToken
-        
+        Messaging.messaging().apnsToken = deviceToken
+        InstanceID.instanceID().setAPNSToken(deviceToken, type: InstanceIDAPNSTokenType.unknown)
+        NotificationCenter.default.post(name: APNSTokenReceivedNotification, object: nil)
+        if #available(iOS 8.0, *) {
+        } else {
+            // On iOS 7, receiving a device token also means our user notifications were granted, so fire
+            // the notification to update our user notifications UI
+            NotificationCenter.default.post(name: UserNotificationsChangedNotification, object: nil)
+        }
         // Forward the token to your provider, using a custom method.
         
     }
     
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        NotificationCenter.default.addObserver(self, selector: "tokenRefreshNotification:", name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
     }
     
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        Messaging.messaging().shouldEstablishDirectChannel = true
+        print("Disconnected from FCM.")
+        NotificationCenter.default.addObserver(self, selector: "tokenRefreshNotification:", name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
+        print("Loopi")
     }
     
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -121,6 +190,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        Messaging.messaging().shouldEstablishDirectChannel = true
+        
+        application.applicationIconBadgeNumber = 0;
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
@@ -198,13 +270,29 @@ extension AppDelegate : UNUserNotificationCenterDelegate {
         // Change this to your preferred presentation option
         completionHandler([])
     }
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        // Print message ID.
+        if let messageID = userInfo[gcmMessageIDKey] {
+            print("Message ID: \(messageID)")
+        }
+        
+        // Print full message.
+        print(userInfo)
+        
+        completionHandler()
+    }
 }
 
 extension AppDelegate : MessagingDelegate {
     // [START refresh_token]
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
         print("Firebase registration token: \(fcmToken)")
-        
+        Messaging.messaging().shouldEstablishDirectChannel = true
+        connectToFcm()
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.
     }
@@ -212,10 +300,44 @@ extension AppDelegate : MessagingDelegate {
     // [START ios_10_data_message]
     // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
     // To enable direct data messages, you can set Messaging.messaging().shouldEstablishDirectChannel to true.
+
     func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        print("Received data message: \(remoteMessage.appData)")
+
+        guard let data =
+            try? JSONSerialization.data(withJSONObject: remoteMessage.appData, options: .prettyPrinted),
+            let jsonString = String(data: data, encoding: .utf8) else {
+                return
+        }
+        let firebaseMessage = FirebaseMessage.deserialize(from: jsonString)!
+        print("--------------")
+        print("--------------")
+        print("FirebaseMessage:\n\(firebaseMessage.titulo)")
+        
+        let viewController = self.window?.rootViewController?.storyboard?.instantiateViewController(withIdentifier: "AceitarServico") as! UIViewController
+        self.window?.rootViewController = viewController
     }
     // [END ios_10_data_message]
+    
+   
 }
 
+extension AppDelegate {
+    func listenForDirectChannelStateChanges() {
+        NotificationCenter.default.addObserver(self, selector: #selector(onMessagingDirectChannelStateChanged(_:)), name: .MessagingConnectionStateChanged, object: nil)
+    }
+    
+    @objc func onMessagingDirectChannelStateChanged(_ notification: Notification) {
+        print("FCM Direct Channel Established: \(Messaging.messaging().isDirectChannelEstablished)")
+    }
+}
 
+extension Dictionary {
+    /// Utility method for printing Dictionaries as pretty-printed JSON.
+    var jsonString: String? {
+        if let jsonData = try? JSONSerialization.data(withJSONObject: self, options: [.prettyPrinted]),
+            let jsonString = String(data: jsonData, encoding: .utf8) {
+            return jsonString
+        }
+        return nil
+    }
+}

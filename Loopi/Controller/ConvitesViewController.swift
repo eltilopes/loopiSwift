@@ -21,7 +21,7 @@ class ConvitesViewController: UIViewController{
     @IBAction func shareTextButton(_ sender: UIButton) {
         
         // text to share
-        let text = "This is some text that I want to share."
+        let text = "Testando o compartilhamento"
         
         // set up activity view controller
         let textToShare = [ text ]
@@ -29,8 +29,8 @@ class ConvitesViewController: UIViewController{
         activityViewController.popoverPresentationController?.sourceView = self.view // so that iPads won't crash
         
         // exclude some activity types from the list (optional)
-        activityViewController.excludedActivityTypes = [ UIActivityType.airDrop, UIActivityType.postToFacebook ]
-        
+        let excludeActivities = [UIActivityType.airDrop, UIActivityType.print, UIActivityType.assignToContact, UIActivityType.saveToCameraRoll, UIActivityType.addToReadingList, UIActivityType.postToFlickr, UIActivityType.postToVimeo, UIActivityType.postToFacebook, UIActivityType.message, UIActivityType.postToWeibo]
+        activityViewController.excludedActivityTypes = excludeActivities
         // present the view controller
         self.present(activityViewController, animated: true, completion: nil)
         

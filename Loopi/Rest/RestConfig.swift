@@ -10,6 +10,8 @@ class RestConfig{
     
     public var TOKEN = "token"
     public var LOGIN = "login"
+    public var USUARIO = "USUARIO"
+    public var PROFISSIONAL = "PROFISSIONAL"
     public var LOCALIZACAO = "LOCALIZACAO"
     public var ERROR = "error"
     public var ERROR_DESCRIPTION = "error_description"

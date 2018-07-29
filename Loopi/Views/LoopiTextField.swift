@@ -53,6 +53,17 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         self.leftView = label
     }
     
+    func setTitle(frameLoopiTextField : CGRect) {
+        label.frame = frameLoopiTextField
+        label.textAlignment = alignment
+        label.text = labelString
+        label.font = fontLoopiTextField
+        label.tintColor = GMColor.textColorPrimary()
+        self.leftViewMode = UITextFieldViewMode.always
+        self.leftView = label
+        textRect(forBounds: frameLoopiTextField)
+    }
+    
     func setFontLoopiTextField(fontLoopiTextField : UIFont) {
         self.fontLoopiTextField = fontLoopiTextField
     }

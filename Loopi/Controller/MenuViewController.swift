@@ -62,7 +62,7 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         arrayMenuOptions.append(["title":"Convites", "icon":"ic_convite"])
         arrayMenuOptions.append(["title":"Termos", "icon":"ic_termos"])
         arrayMenuOptions.append(["title":"Sair", "icon":"ic_sair"])
-        
+        tblMenuOptions.separatorStyle = .none
         tblMenuOptions.reloadData()
     }
     

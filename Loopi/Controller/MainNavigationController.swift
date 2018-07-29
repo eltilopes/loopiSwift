@@ -15,6 +15,7 @@ class MainNavigationController: UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationBar.barTintColor = GMColor.colorPrimary()
+        
         let logged = isLoggedIn()
         if logged {
             // let cardsServiceController = CardsServiceController()
@@ -23,6 +24,8 @@ class MainNavigationController: UINavigationController {
         } else {
             perform(#selector(presentLoginController), with: nil, afterDelay: 0.0)
         }
+        
+        //perform(#selector(presentLoginController), with: nil, afterDelay: 0.0)
     }
     
     func isLoggedIn() -> Bool {

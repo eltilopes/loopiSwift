@@ -130,9 +130,9 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         if collectionView == self.collectionViewCategorias {
-            return CGSize(width: self.view.frame.size.width / 2.5, height: self.view.frame.size.height * 0.5)
+            return CGSize(width: self.view.frame.size.width / 2.2, height: self.view.frame.size.height * 0.5)
         }
-        return CGSize(width: self.view.frame.size.width  , height: self.view.frame.size.height / 4.5)
+        return CGSize(width: self.view.frame.size.width  , height: self.view.frame.size.height / 3.5)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {

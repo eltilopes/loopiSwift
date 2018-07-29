@@ -54,14 +54,14 @@ class ServicoCardRest : RestAdapeter {
             if let localizacao = UserDefaults.standard.object(forKey: "localizacao") as? Dictionary<String, Any> {
                 guard let lat = localizacao["lat"], let long = localizacao["long"] else { return }
                 let start = LatLng(lat: lat as! Double, lng: long as! Double )
-                let end = LatLng(lat: (NumberFormatter().number(from: sc.latitude!)?.doubleValue)!, lng: (NumberFormatter().number(from: sc.longitude!)?.doubleValue)!)
+                let end = LatLng(lat: (sc.latitude! as NSString).doubleValue, lng: (sc.longitude! as NSString).doubleValue)
                 directionUtilsRest.getGoogleDirectionsResponse(start: start,end:end){ gdr, error in
                     
                     if error == nil {
                         googleDirectionsResponse = gdr!
                         sc.duracao = googleDirectionsResponse.getDuration()
                         sc.distancia = googleDirectionsResponse.getDistance()
-                        print("GoogleDirectionsResponse")
+                        print(googleDirectionsResponse.getBairro())
                     }else{
                         print(error?.localizedDescription)
                     }

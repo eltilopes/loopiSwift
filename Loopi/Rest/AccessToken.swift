@@ -39,6 +39,10 @@ class AccessToken{
                 do {
                     let tokenDictionary:NSDictionary = try JSONSerialization.jsonObject(with: unwrappedData, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
                     let user = tokenDictionary["user"] as? NSDictionary
+                    
+                    let usuario = Usuario.init(dictionary: user!)
+                    
+                    UserDefaults.standard.setUsuario(usuario: usuario)
                     let login = (user!["login"] as? String)!
                     self.token = (tokenDictionary["access_token"] as? String)!
                     UserDefaults.standard.setLogin(login: login)

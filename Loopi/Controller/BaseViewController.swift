@@ -246,8 +246,8 @@ class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerD
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let location = locations.first {
-            //let locationData = ["lat": location.coordinate.latitude, "long": location.coordinate.longitude]
-            let locationData = ["lat": -3.741433, "long": -38.499196]
+            let locationData = ["lat": location.coordinate.latitude, "long": location.coordinate.longitude]
+            print(location.coordinate.latitude)
             UserDefaults.standard.set(locationData, forKey: "localizacao")
             UserDefaults.standard.synchronize()
             locationManager.stopUpdatingLocation()

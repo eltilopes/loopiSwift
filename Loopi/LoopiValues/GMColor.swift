@@ -76,10 +76,13 @@ class GMColor {
     }
     
     class func buttonBlueColor() -> UIColor {
-        return blue400Color()
+        return blue300Color()
     }
     class func buttonOrangeColor() -> UIColor {
-        return orange400Color()
+        return orange300Color()
+    }
+    class func buttonRedColor() -> UIColor {
+        return red300Color()
     }
     
     // MARK: - red
