@@ -305,7 +305,7 @@ class CardViewController: UIViewController, UICollectionViewDataSource,UICollect
         
     }
    
-    
+    /*
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
                         at indexPath: IndexPath) -> UICollectionReusableView {
@@ -337,8 +337,9 @@ class CardViewController: UIViewController, UICollectionViewDataSource,UICollect
         default:
             assert(false, "Unexpected element kind")
         }
+        return nil // NOPE, not allowed
     }
-    
+    */
     
     
     func collectionView(_ collectionView: UICollectionView, indexPathForIndexTitle title: String, at index: Int) -> IndexPath {

@@ -81,9 +81,11 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
     }
     
     func setError(erro : String) {
-        let widthTextField = frame.size.width
-        let heightTextField = frame.size.height
-        error.frame = CGRect(x:0, y: heightTextField, width: widthTextField , height:heightTextField)
+        setError(erro : erro, widthTextField: frame.size.width , heightTextField:frame.size.height , y:frame.size.height)
+    }
+    
+    func setError(erro : String, widthTextField: CGFloat , heightTextField:CGFloat, y:CGFloat) {
+        error.frame = CGRect(x:0, y: y, width: widthTextField , height:heightTextField)
         error.textAlignment = NSTextAlignment.right
         error.text = erro
         error.font = UIFont.italicSystemFont(ofSize: 16.0)
@@ -146,6 +148,21 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         return bounds.insetBy(dx: horizontalInset , dy: verticalInset)
     }
    
+    /**
+     * Called when 'return' key pressed. return NO to ignore.
+     */
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    /**
+     * Called when the user click on the view (outside the UITextField).
+     */
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
+    }
 }
 
 extension String {

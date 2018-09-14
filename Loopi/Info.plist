@@ -22,16 +22,16 @@
 	<true/>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
-    <key>NSCameraUsageDescription</key>
-    <string>This app will use camera.</string>
-    <key>NSPhotoLibraryUsageDescription</key>
-    <string>You can select photos to attach to reports.</string>
-    <key>NSPhotoLibraryAddUsageDescription</key>
-    <string>Please allow access to save photo in your photo library</string>
+	<key>NSCameraUsageDescription</key>
+	<string>This app will use camera.</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>location</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>location</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>Please allow access to save photo in your photo library</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>You can select photos to attach to reports.</string>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>fetch</string>

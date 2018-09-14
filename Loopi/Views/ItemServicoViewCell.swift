@@ -1,19 +1,18 @@
 //
-//  ProfissionalCardServicoViewCell.swift
+//  ItemServicoViewCell.swift
 //  Loopi
 //
-//  Created by Loopi on 19/07/18.
+//  Created by Loopi on 16/08/18.
 //  Copyright © 2018 Loopi. All rights reserved.
 //
 
 import UIKit
 
-class ProfissionalCardServicoViewCell: UICollectionViewCell{
+class ItemServicoViewCell: UICollectionViewCell{
     
-    @IBOutlet weak var servicoValor: UILabel!
-    @IBOutlet weak var servicoNome: UILabel!
-    @IBOutlet weak var servicoDescricao: UILabel!
-    @IBOutlet weak var itens: UILabel!
+    @IBOutlet weak var itemValor: UILabel!
+    @IBOutlet weak var itemNome: UILabel!
+    @IBOutlet weak var itemDescricao: UILabel!
     
     override func hitTest(_ point: CGPoint, with event: UIEvent?) -> UIView? {
         if let hitView = super.hitTest(point, with: event) {
@@ -26,5 +25,5 @@ class ProfissionalCardServicoViewCell: UICollectionViewCell{
             return nil
         }
     }
-  
+    
 }

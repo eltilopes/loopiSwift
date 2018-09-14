@@ -18,19 +18,18 @@ class ProfissionalCardViewController: UIViewController, UICollectionViewDataSour
     var servicoCard = ServicoCard()
     var servicoCards: [ServicoCard] = []
     var servicoProfissional = ServicoProfissional()
+    var itemServico = ItemServico()
     var servicos: [ServicoProfissional] = []
     let servicoCardRest = ServicoCardRest()
     var lastPositionScroll: CGFloat = 0
     var storageRefCard: StorageReference!
-    var valorServicos = 0.0
     var indexSet = IndexSet(integer: 0)
-    var heightCellServico : CGFloat = 400
-    
     
     var x : CGFloat = 0
     var y : CGFloat = 0
     var width : CGFloat = 0
     var height : CGFloat = 0
+    var heightServicos : CGFloat = 0
     
     @IBOutlet var collectionViewServicoCard: UICollectionView!
     @IBOutlet var collectionViewServicos: UICollectionView!
@@ -39,9 +38,7 @@ class ProfissionalCardViewController: UIViewController, UICollectionViewDataSour
     @IBOutlet var buttonAdicionarServico: UIButton!
     @IBOutlet var stackView: UIView!
     
-    var textFieldNome = UITextField()
-    var textFieldDescricao = UITextField()
-    var textFieldValor = UITextField()
+    var servicoProfissionalAlertController : ServicoProfissionalAlertController!
     
     let collectionViewServicosCardIdentifier = "ProfissionalCardViewCell"
     let collectionViewServicosIdentifier = "ProfissionalCardServicoViewCell"
@@ -50,6 +47,17 @@ class ProfissionalCardViewController: UIViewController, UICollectionViewDataSour
     override func viewDidLoad() {
         super.viewDidLoad()
         montarServicoCard()
+        
+        let backButtonImage = UIImage(named: "ic_arrow_left_white")?.withRenderingMode(.alwaysTemplate)
+        
+        let backButton = UIButton(type: .custom)
+        backButton.setImage(backButtonImage, for: .normal)
+        backButton.tintColor = .white
+        backButton.setTitle("Voltar", for: .normal)
+        backButton.setTitleColor(.white, for: .normal)
+        backButton.addTarget(self, action: #selector(self.backAction(sender:)), for: .touchUpInside)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(customView: backButton)
+        
         self.view.backgroundColor = GMColor.backgroundAppColor()
         storageRefCard = Storage.storage().reference()
         self.servicoCards.append(servicoCard)
@@ -78,8 +86,8 @@ class ProfissionalCardViewController: UIViewController, UICollectionViewDataSour
 
         self.stackView.backgroundColor = GMColor.blue50Color()
         self.stackView.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
-        self.stackView.frame = CGRect(x: self.collectionViewServicos.frame.origin.x, y: self.collectionViewServicos.frame.origin.y, width: self.collectionViewServicos.frame.size.width , height: self.collectionViewServicos.frame.size.height )
-        self.collectionViewServicos.frame = CGRect(x: self.collectionViewServicos.frame.origin.x, y: self.collectionViewServicos.frame.origin.y, width: self.collectionViewServicos.frame.size.width , height: self.collectionViewServicos.frame.size.height )
+        self.stackView.frame = CGRect(x: self.collectionViewServicos.frame.origin.x, y: self.collectionViewServicos.frame.origin.y, width: self.collectionViewServicos.frame.size.width , height: self.collectionViewServicos.frame.size.height * 1.1)
+        self.collectionViewServicos.frame = CGRect(x: self.collectionViewServicos.frame.origin.x, y: self.collectionViewServicos.frame.origin.y, width: self.collectionViewServicos.frame.size.width , height: self.collectionViewServicos.frame.size.height * 1.1)
         self.stackView.addSubview(self.collectionViewServicos)
     }
     
@@ -96,6 +104,11 @@ class ProfissionalCardViewController: UIViewController, UICollectionViewDataSour
         }
     }
     
+    @objc func backAction(sender: UIBarButtonItem) {
+        // custom actions here
+        navigationController?.popViewController(animated: true)
+    }
+    
     func montarServicoCard() {
         
         var usuario : Usuario
@@ -110,12 +123,12 @@ class ProfissionalCardViewController: UIViewController, UICollectionViewDataSour
         UserDefaults.standard.setProfissional(profissional: prof)
         usuario = UserDefaults.standard.getUsuario()
         profissional = UserDefaults.standard.getProfissional()
-        servicoCard.categoria = profissional.categoria
-        servicoCard.especialidade = profissional.especialidade
-        servicoCard.title = usuario.nome?.uppercased()
-        servicoProfissional.nome = "Nome do Servico"
-        servicoProfissional.descricao = "Descricao do Servico"
-        servicoProfissional.valor = 55.2
+        self.servicoCard.categoria = profissional.categoria
+        self.servicoCard.especialidade = profissional.especialidade
+        self.servicoCard.title = usuario.nome?.uppercased()
+        self.servicoProfissional.nome = "Nome do Servico"
+        self.servicoProfissional.descricao = "Descricao do Servico"
+        self.servicoProfissional.valor = 55.2
     }
     
     override func didReceiveMemoryWarning() {
@@ -148,11 +161,11 @@ class ProfissionalCardViewController: UIViewController, UICollectionViewDataSour
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        
         if collectionView == self.collectionViewServicoCard {
-            return CGSize(width: self.view.frame.size.width  , height: self.view.frame.size.height / 4.5)
+            //return CGSize(width: self.collectionViewServicoCard.frame.size.width  , height: self.collectionViewServicoCard.frame.size.height / 4.5)
+            return CGSize(width: self.collectionViewServicoCard.frame.size.width  , height: self.collectionViewServicoCard.frame.size.height )
         }
-        return CGSize(width: self.view.frame.size.width  , height: self.view.frame.size.height / 6)
+        return CGSize(width: self.collectionViewServicos.frame.size.width  , height: self.collectionViewServicos.frame.size.height  )
     }
     
     // make a cell for each cell index path
@@ -167,180 +180,84 @@ class ProfissionalCardViewController: UIViewController, UICollectionViewDataSour
             cellSelecionado.cardEspecialidade.text = cardServico.especialidade.descricao
             cellSelecionado.backgroundColor = UIColor.white // make cell more visible in our example project
             cellSelecionado.imageView.image = UIImage(named: "ic_profissional")
-            cellSelecionado.imageView.contentMode = .scaleAspectFill
+            cellSelecionado.imageView.contentMode = .center
             return cellSelecionado
         }else{
+            if indexPath.item == 0 {
+                self.heightServicos = 0
+            }
             let cellServico = collectionView.dequeueReusableCell(withReuseIdentifier: collectionViewServicosIdentifier, for: indexPath as IndexPath) as! ProfissionalCardServicoViewCell
             let servico = self.servicos[indexPath.item]
             cellServico.backgroundColor = GMColor.whiteColor()
             cellServico.servicoNome.text = servico.nome
             cellServico.servicoNome.tintColor = GMColor.textColorPrimary()
+            cellServico.servicoNome.textColor = GMColor.textColorPrimary()
             cellServico.servicoDescricao.text = servico.descricao
+            cellServico.servicoDescricao.textColor = GMColor.textColorPrimary()
             cellServico.servicoDescricao.tintColor = GMColor.textColorPrimary()
             cellServico.servicoValor.text = String(format: "R$ %.2f", (servico.valor?.magnitude ?? 0))
+            cellServico.servicoValor.textColor = GMColor.colorPrimary()
             cellServico.servicoValor.tintColor = GMColor.colorPrimary()
-           
+            cellServico.itens.textColor = GMColor.textColorRed()
+            cellServico.itens.tintColor = GMColor.textColorRed()
+            cellServico.itens.text =  "Servico sem Itens, deseja adicionar?"
+            cellServico.itens.isHidden = servico.itens.isEmpty 
+            
             return cellServico
         }
         
     }
     
+    @objc func onSalvarServicoButtonPressed( ){
+        didTappedOnButtonSalvar()
+        
+    }
     
     @objc func didTappedOnButtonSalvar(){
-        
+        self.servicos.append(self.servicoProfissional)
+        self.collectionViewServicos.reloadData()
         self.view.bringSubview(toFront: collectionViewServicos)
         self.view.sendSubview(toBack: stackView)
         self.collectionViewServicos.isHidden = false
         self.buttonAdicionarServico.isHidden = false
         self.stackView.frame = CGRect(x: x, y: y, width: width , height: height)
+        self.collectionViewServicos.frame = CGRect(x: x, y: y, width: width , height: height)
         self.stackView.addSubview(collectionViewServicos)
-        self.servicoProfissional.descricao = textFieldDescricao.text
-        self.servicoProfissional.nome = textFieldNome.text
-        self.servicoProfissional.valor = 58
-        self.servicos.append(servicoProfissional)
-        self.collectionViewServicos.reloadData()
+        self.stackView.layoutSubviews()
     }
     
-    fileprivate func montarTextFieldDescricao(_ heightSalvarServico: CGFloat) -> UITextField {
-        textFieldDescricao = UITextField()
-        textFieldDescricao.placeholder = "DESCRICAO:"
-        textFieldDescricao.textAlignment = .left
-        textFieldDescricao.backgroundColor = GMColor.whiteColor()
-        textFieldDescricao.textColor = GMColor.textColorPrimary()
-        textFieldDescricao.tintColor = GMColor.textColorPrimary()
-        textFieldDescricao.font = UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
-        textFieldDescricao.frame = CGRect(x: x, y: y +  heightSalvarServico, width: width , height:  heightSalvarServico)
-        textFieldDescricao.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
-        textFieldDescricao.layer.borderColor = GMColor.backgroundHeaderColor().cgColor
-        textFieldDescricao.layer.borderWidth = CGFloat(ConstraintsView.widthBorderLoopiTextField())
-        return textFieldDescricao
-    }
-    
-    fileprivate func montarTextFieldNome(_ heightSalvarServico: CGFloat) -> UITextField {
-        textFieldNome = UITextField()
-        textFieldNome.text = "NOME:"
-        //textFieldNome.frame = CGRect(x: x, y: y, width: width , height: 50)
-        textFieldNome.textAlignment = .left
-        textFieldNome.backgroundColor = GMColor.whiteColor()
-        textFieldNome.textColor = GMColor.textColorPrimary()
-        textFieldNome.tintColor = GMColor.textColorPrimary()
-        textFieldNome.font = UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
-        textFieldNome.frame = CGRect(x: x, y: y, width: width , height: heightSalvarServico)
-        textFieldNome.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
-        textFieldNome.layer.borderColor = GMColor.backgroundHeaderColor().cgColor
-        textFieldNome.layer.borderWidth = CGFloat(ConstraintsView.widthBorderLoopiTextField())
-        return textFieldNome
-    }
-    
-    fileprivate func montarTextFieldValor(_ heightSalvarServico: CGFloat) -> UITextField {
-        textFieldValor = UITextField()
-        textFieldValor.text = "VALOR:"
-        textFieldValor.textAlignment = .left
-        textFieldValor.backgroundColor = GMColor.whiteColor()
-        textFieldValor.textColor = GMColor.textColorPrimary()
-        textFieldValor.tintColor = GMColor.textColorPrimary()
-        textFieldValor.font = UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
-        textFieldValor.frame = CGRect(x: x, y: y + (2*heightSalvarServico), width: width , height:  heightSalvarServico)
-        textFieldValor.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
-        textFieldValor.layer.borderColor = GMColor.backgroundHeaderColor().cgColor
-        textFieldValor.layer.borderWidth = CGFloat(ConstraintsView.widthBorderLoopiTextField())
-        return textFieldValor
-    }
     @objc func tappedAddServico(){
+        self.servicoProfissional = ServicoProfissional()
+        servicoProfissionalAlertController = ServicoProfissionalAlertController(servicoProfissional: self.servicoProfissional, profissionalCardViewController: self )
+        servicoProfissionalAlertController.show(animated: true)
         
-        self.x = self.collectionViewServicos.frame.origin.x
-        self.y = self.collectionViewServicos.frame.origin.y
-        self.width = self.collectionViewServicos.frame.size.width
-        self.height = self.collectionViewServicos.frame.size.height
-        self.view.bringSubview(toFront: stackView)
-        self.view.sendSubview(toBack: collectionViewServicos)
-        self.buttonAdicionarServico.isHidden = true
-        self.collectionViewServicos.isHidden = true
-        let viewBorder = UIView(frame: CGRect(x: x, y: y, width: width , height: height))
-        viewBorder.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
-        viewBorder.layer.masksToBounds = true
-        
-        let heightSalvarServico = height/4
-        
-        
-        
-        viewBorder.addSubview(montarTextFieldNome(heightSalvarServico))
-        viewBorder.addSubview(montarTextFieldDescricao(heightSalvarServico))
-        viewBorder.addSubview(montarTextFieldValor(heightSalvarServico))
-        
-        let buttonSalvar = UIButton()
-        buttonSalvar.backgroundColor = GMColor.colorPrimary()
-        buttonSalvar.addTarget(self, action: #selector(didTappedOnButtonSalvar), for: .touchUpInside)
-        buttonSalvar.setTitle("SALVAR", for: UIControlState.normal)
-        buttonSalvar.setTitle("SALVAR", for: UIControlState.selected)
-        buttonSalvar.setTitleColor(GMColor.whiteColor(), for: .normal)
-        buttonSalvar.setTitleColor(GMColor.whiteColor(), for: .selected)
-        buttonSalvar.titleLabel?.font = UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
-        buttonSalvar.frame = CGRect(x: x, y: y +  (3*heightSalvarServico), width: width , height:  heightSalvarServico)
-        buttonSalvar.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
-        buttonSalvar.layer.masksToBounds = true
-        viewBorder.addSubview(buttonSalvar)
-        /*
-        let titleNome = UILabel()
-        titleNome.tintColor = GMColor.textColorPrimary()
-        titleNome.backgroundColor = GMColor.whiteColor()
-        //titleNome.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth - marginTitle)).isActive = true
-        //titleNome.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
-        titleNome.text = "NOME"
-        titleNome.frame = CGRect(x: x, y: y, width: width , height: 50)
-        titleNome.font = UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
-        titleNome.textAlignment = .left
-         */
-        
-        self.stackView.frame = CGRect(x: x, y: y, width: width , height: height)
-        self.stackView.addSubview(viewBorder)
 
+    }
+    
+ 
+    
+    // MARK: - UICollectionViewDelegate protocol
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+
+        self.servicoProfissional = self.servicos[indexPath.item]
+        //openViewControllerBasedOnIdentifier("CardViewController")
+        self.performSegue(withIdentifier: "servicoProfisionalSegue", sender: self.servicoProfissional)
         
     }
     
     
-    func collectionView(_ collectionView: UICollectionView,
-                        viewForSupplementaryElementOfKind kind: String,
-                        at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        switch kind {
-            
-        case UICollectionElementKindSectionHeader:
-            print(indexPath)
-            let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "HeaderServicos", for: indexPath) as! HeaderCollectionViewServicos
-            reusableview.backgroundColor = GMColor.whiteColor()
-            reusableview.title.text = "Servicos"
-            reusableview.title.tintColor = GMColor.colorPrimary()
-            reusableview.title.textColor = GMColor.colorPrimary()
-            reusableview.title.font = UIFont.boldSystemFont(ofSize: 22)
-            return reusableview
-            
-            
-        case UICollectionElementKindSectionFooter:
-            print(indexPath)
-            indexSet = IndexSet(integer: indexPath.section)
-            let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionElementKindSectionFooter, withReuseIdentifier: "FooterServicos", for: indexPath) as! FooterCollectionViewServicos
-            
-            reusableview.backgroundColor = GMColor.whiteColor()
-            reusableview.valor.text = "Valor Total: " + String(format: "R$ %.2f", (valorServicos.magnitude ))
-            reusableview.valor.tintColor = GMColor.colorPrimary()
-            reusableview.valor.textColor = GMColor.colorPrimary()
-            reusableview.valor.font = UIFont.boldSystemFont(ofSize: 18)
-            return reusableview
-        default:
-            assert(false, "Unexpected element kind")
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        // get a reference to the second view controller
+
+        if segue.identifier == "servicoProfisionalSegue" {
+           let servicoProfissionalViewController = segue.destination as! ServicoProfissionalViewController
+            servicoProfissionalViewController.servicoProfissional = self.servicoProfissional
         }
     }
-    
-    
-    
-    func collectionView(_ collectionView: UICollectionView, indexPathForIndexTitle title: String, at index: Int) -> IndexPath {
-        print(title)
-        return [0, 0]
-    }
-    
-    
-    
+
    
     
 }

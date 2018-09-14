@@ -21,6 +21,7 @@ class ServicoProfissional : Equatable,HandyJSON {
     var especialidade : Especialidade = Especialidade()
     var profissional : Profissional = Profissional()
     var selecionado = false
+    var itens : [ItemServico] = []
     
 }
 
