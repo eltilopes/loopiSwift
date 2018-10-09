@@ -196,6 +196,9 @@
 		6E386B3A2080775D00B31028 /* NovoProfissionalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = NovoProfissionalViewController.swift; path = ../../../../../../Desktop/NovoProfissionalViewController.swift; sourceTree = "<group>"; };
 		6E3CA008211A8A8F005E2752 /* ServicoProfissionalAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicoProfissionalAlertController.swift; sourceTree = "<group>"; };
 		6E3E37BF20EC09560041B8D0 /* PushKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PushKit.framework; path = System/Library/Frameworks/PushKit.framework; sourceTree = SDKROOT; };
+		6E4807CD21630D93008E0E4D /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E4807CF21630DA0008E0E4D /* HandyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HandyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6E4807D121630EDA008E0E4D /* DropDown.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DropDown.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E506C1620E1AADB009A7944 /* BuscarEnderecoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscarEnderecoViewController.swift; sourceTree = "<group>"; };
 		6E506C1820E1C205009A7944 /* EnderecoCEP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnderecoCEP.swift; sourceTree = "<group>"; };
 		6E506C1A20E1C3BE009A7944 /* EnderecoRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnderecoRest.swift; sourceTree = "<group>"; };
@@ -335,32 +338,32 @@
 		6E07ACB7202BACA700041DCC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6E386B3A2080775D00B31028 /* NovoProfissionalViewController.swift */,
-				6E07ACB8202BACC000041DCC /* MainNavigationController.swift */,
-				6E07ACBA202BAD7100041DCC /* LoginController.swift */,
-				6E72A337202C09870099E65C /* MenuViewController.swift */,
-				6E07ACC5202BC39E00041DCC /* CardsServiceController.swift */,
-				6E72A339202C09B20099E65C /* BaseViewController.swift */,
-				6E1DDEBA2040F27E00797B4F /* CardViewController.swift */,
-				6E32D7AF20522B2E00A5ABF9 /* MapViewController.swift */,
-				6EE3DFBC20522C70007EF326 /* SearchMapResultsController.swift */,
-				6E12410C205C2E0D000FA8C5 /* ExtratoViewController.swift */,
-				6E833DD2205CF3D1007AE41E /* SolicitarSaqueViewController.swift */,
-				6E2733D620649B9E00A01D51 /* CriarContaViewController.swift */,
-				6EB55C7C2077B4690057579A /* LocationViewController.swift */,
-				6E6F2F0920804D11004B0FC7 /* ProfissionalViewController.swift */,
-				6EA307022091707B00ED1A81 /* ConfirmarSaqueViewController.swift */,
-				6E74C54D20995CD6006C4AC4 /* SaqueSolicitadoViewController.swift */,
-				6E85F4F020D0D523005845D6 /* EditarProfissionalViewController.swift */,
-				6E506C1620E1AADB009A7944 /* BuscarEnderecoViewController.swift */,
-				6E6D3FA120E3B819008B498A /* ConvitesViewController.swift */,
-				6E90488820E5A38E00DFD21B /* TermosViewController.swift */,
 				6E2F296220EEE8A0003F5A81 /* AceitarServicoViewController.swift */,
+				6E72A339202C09B20099E65C /* BaseViewController.swift */,
+				6E506C1620E1AADB009A7944 /* BuscarEnderecoViewController.swift */,
+				6E07ACC5202BC39E00041DCC /* CardsServiceController.swift */,
+				6E1DDEBA2040F27E00797B4F /* CardViewController.swift */,
+				6EA307022091707B00ED1A81 /* ConfirmarSaqueViewController.swift */,
+				6E6D3FA120E3B819008B498A /* ConvitesViewController.swift */,
+				6E2733D620649B9E00A01D51 /* CriarContaViewController.swift */,
+				6E85F4F020D0D523005845D6 /* EditarProfissionalViewController.swift */,
+				6E12410C205C2E0D000FA8C5 /* ExtratoViewController.swift */,
+				6EB55C7C2077B4690057579A /* LocationViewController.swift */,
+				6E07ACBA202BAD7100041DCC /* LoginController.swift */,
+				6E07ACB8202BACC000041DCC /* MainNavigationController.swift */,
+				6E32D7AF20522B2E00A5ABF9 /* MapViewController.swift */,
+				6E72A337202C09870099E65C /* MenuViewController.swift */,
 				6E24AFA620F415D1004606A9 /* NotificationsController.swift */,
-				6E75D89820F6D15A008F0F9F /* ProfissionalDocumentosViewController.swift */,
+				6E386B3A2080775D00B31028 /* NovoProfissionalViewController.swift */,
 				6EA434B12101560800C347FC /* ProfissionalAbrangenciaViewController.swift */,
 				6EA434B7210179DB00C347FC /* ProfissionalCardViewController.swift */,
+				6E75D89820F6D15A008F0F9F /* ProfissionalDocumentosViewController.swift */,
+				6E6F2F0920804D11004B0FC7 /* ProfissionalViewController.swift */,
+				6E74C54D20995CD6006C4AC4 /* SaqueSolicitadoViewController.swift */,
+				6EE3DFBC20522C70007EF326 /* SearchMapResultsController.swift */,
 				6E77321B2125985600A35BA0 /* ServicoProfissionalViewController.swift */,
+				6E833DD2205CF3D1007AE41E /* SolicitarSaqueViewController.swift */,
+				6E90488820E5A38E00DFD21B /* TermosViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -462,6 +465,7 @@
 		6E936DD61FDF095A00AC1E54 = {
 			isa = PBXGroup;
 			children = (
+				6E4807D121630EDA008E0E4D /* DropDown.framework */,
 				6E1B81F92027EDDB00AD71D4 /* Alamofire.framework */,
 				6E936DE11FDF095A00AC1E54 /* Loopi */,
 				6E936DF61FDF095A00AC1E54 /* LoopiTests */,
@@ -577,6 +581,8 @@
 		88EA315878EEB98A683D4715 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E4807CF21630DA0008E0E4D /* HandyJSON.framework */,
+				6E4807CD21630D93008E0E4D /* DropDown.framework */,
 				6E3E37BF20EC09560041B8D0 /* PushKit.framework */,
 				6E75D79520EBFE9C00D7F603 /* ExternalAccessory.framework */,
 				6E75D79320EBFE9400D7F603 /* MapKit.framework */,
@@ -633,8 +639,6 @@
 				6E936DEF1FDF095A00AC1E54 /* Sources */,
 				6E936DF01FDF095A00AC1E54 /* Frameworks */,
 				6E936DF11FDF095A00AC1E54 /* Resources */,
-				9CFC291128FC3953DE9B4CCA /* [CP] Embed Pods Frameworks */,
-				59254D7C66EB03A325BBF720 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -654,8 +658,6 @@
 				6E936DFA1FDF095A00AC1E54 /* Sources */,
 				6E936DFB1FDF095A00AC1E54 /* Frameworks */,
 				6E936DFC1FDF095A00AC1E54 /* Resources */,
-				BF9EA127A0AD934946B2BA45 /* [CP] Embed Pods Frameworks */,
-				79E4D0C3704C74451D6CF0F7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -674,7 +676,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0910;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = Loopi;
 				TargetAttributes = {
 					6E936DDE1FDF095A00AC1E54 = {
@@ -784,7 +786,7 @@
 				"${BUILT_PRODUCTS_DIR}/CocoaLumberjack/CocoaLumberjack.framework",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
-				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
 				"${BUILT_PRODUCTS_DIR}/SVGKit/SVGKit.framework",
@@ -796,7 +798,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaLumberjack.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVGKit.framework",
@@ -806,21 +808,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Loopi/Pods-Loopi-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		59254D7C66EB03A325BBF720 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoopiTests/Pods-LoopiTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		5E947017094B58022F7B9E41 /* [CP] Check Pods Manifest.lock */ = {
@@ -857,51 +844,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		79E4D0C3704C74451D6CF0F7 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoopiUITests/Pods-LoopiUITests-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		9CFC291128FC3953DE9B4CCA /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoopiTests/Pods-LoopiTests-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BF9EA127A0AD934946B2BA45 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-LoopiUITests/Pods-LoopiUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CF0643532335D896346D3A91 /* [CP] Copy Pods Resources */ = {
@@ -1116,6 +1058,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1123,6 +1066,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1150,12 +1094,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -1173,6 +1118,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -1180,6 +1126,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -1201,11 +1148,12 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1214,6 +1162,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D077C4EDF5EB55B012E51AC9 /* Pods-Loopi.debug.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Loopi/Loopi.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1233,6 +1182,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6FE670FE0E5383AE8D2C3DE0 /* Pods-Loopi.release.xcconfig */;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = Loopi/Loopi.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
@@ -1255,6 +1205,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6QBXR68WG7;
 				INFOPLIST_FILE = LoopiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.loopi.LoopiTests;
@@ -1272,6 +1223,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6QBXR68WG7;
 				INFOPLIST_FILE = LoopiTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.loopi.LoopiTests;
@@ -1288,6 +1240,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6QBXR68WG7;
 				INFOPLIST_FILE = LoopiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.loopi.LoopiUITests;
@@ -1304,6 +1257,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 6QBXR68WG7;
 				INFOPLIST_FILE = LoopiUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.loopi.LoopiUITests;

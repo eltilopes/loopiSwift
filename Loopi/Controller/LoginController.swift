@@ -214,11 +214,11 @@ class LoginController: UIViewController, LoginControllerDelegate {
                     guard let mainNavigationController = rootViewController as? MainNavigationController else { return }
                     
                     //mainNavigationController.viewControllers = [CardsServiceController()]
-                    
+                    /*
                     UserDefaults.standard.setIsLoggedIn(value: true)
                     UserDefaults.standard.setToken(token: retorno)
                     UserDefaults.standard.setToken(token: "b10680c7-9439-471c-a1e3-e051960f1000")
-                    
+                    */
                     self.dismiss(animated: true, completion: nil)
                 }else{
                     self.showToast(message: "Usuario invalido")

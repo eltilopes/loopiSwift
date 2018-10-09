@@ -49,6 +49,7 @@ open class TextFieldEffects : UITextField {
         fatalError("\(#function) must be overridden")
     }
     
+   
     /**
      Creates all the animations that are used to leave the textfield in the "display input text" state.
      */

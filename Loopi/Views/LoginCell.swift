@@ -22,7 +22,7 @@ class LoginCell: UICollectionViewCell {
         textField.layer.borderColor = GMColor.whiteColor().cgColor
         textField.layer.borderWidth = 2
         textField.textColor = GMColor.whiteColor()
-        textField.attributedPlaceholder = NSAttributedString(string: "Cpf/Cnpj", attributes: [NSAttributedStringKey.foregroundColor : GMColor.textColorPrimary()])
+        textField.attributedPlaceholder = NSAttributedString(string: "CPF / CNPJ", attributes: [NSAttributedStringKey.foregroundColor : GMColor.textColorPrimary()])
         textField.keyboardType = .emailAddress
         return textField
     }()
@@ -33,7 +33,7 @@ class LoginCell: UICollectionViewCell {
         textField.layer.borderColor = GMColor.whiteColor().cgColor
         textField.layer.borderWidth = 2
         textField.textColor = GMColor.whiteColor()
-        textField.attributedPlaceholder = NSAttributedString(string: "Senha", attributes: [NSAttributedStringKey.foregroundColor : GMColor.textColorPrimary()])
+        textField.attributedPlaceholder = NSAttributedString(string: "SENHA", attributes: [NSAttributedStringKey.foregroundColor : GMColor.textColorPrimary()])
         textField.isSecureTextEntry = true
         return textField
     }()
@@ -48,43 +48,52 @@ class LoginCell: UICollectionViewCell {
         return button
     }()
     
-    lazy var contaView: UIStackView = {
-        let contaView = UIStackView()
-        contaView.clipsToBounds = true
-        contaView.axis  = UILayoutConstraintAxis.horizontal
-        contaView.distribution  = UIStackViewDistribution.equalSpacing
-        contaView.alignment = UIStackViewAlignment.center
+    lazy var criarContaView: UIStackView = {
+        let criarContaView = UIStackView()
+        criarContaView.clipsToBounds = true
+        criarContaView.axis  = UILayoutConstraintAxis.horizontal
+        criarContaView.distribution  = UIStackViewDistribution.equalSpacing
+        criarContaView.alignment = UIStackViewAlignment.center
         
         let dialogViewWidth = frame.width-64
         
         let buttonCriarConta = UIButton()
         buttonCriarConta.backgroundColor = GMColor.grey300Color()
         buttonCriarConta.addTarget(self, action: #selector(criarConta), for: .touchUpInside)
-        buttonCriarConta.setTitleColor(GMColor.textColorPrimary(), for: .normal)
+        buttonCriarConta.setTitleColor(GMColor.colorPrimary(), for: .normal)
         buttonCriarConta.setTitle("CRIAR CONTA", for: .normal)
-        buttonCriarConta.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth * 3/7)).isActive = true
+        buttonCriarConta.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
         buttonCriarConta.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
-        contaView.addArrangedSubview(buttonCriarConta)
+        criarContaView.addArrangedSubview(buttonCriarConta)
         
-        let separatorLineView = UIView()
-        separatorLineView.widthAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.widhtSeparatorLineView())).isActive = true
-        separatorLineView.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
-        separatorLineView.backgroundColor = GMColor.textColorPrimary()
-        contaView.addArrangedSubview(separatorLineView)
+        criarContaView.translatesAutoresizingMaskIntoConstraints = false
+        criarContaView.backgroundColor = UIColor.white
+        criarContaView.layer.cornerRadius = 6
+        return criarContaView
+    }()
+    
+    lazy var pedirConviteView: UIStackView = {
+        let pedirConviteView = UIStackView()
+        pedirConviteView.clipsToBounds = true
+        pedirConviteView.axis  = UILayoutConstraintAxis.horizontal
+        pedirConviteView.distribution  = UIStackViewDistribution.equalSpacing
+        pedirConviteView.alignment = UIStackViewAlignment.center
+        
+        let dialogViewWidth = frame.width-64
         
         let buttonPedirConvite = UIButton()
         buttonPedirConvite.backgroundColor = GMColor.grey300Color()
         buttonPedirConvite.addTarget(self, action: #selector(pedirConvite), for: .touchUpInside)
-        buttonPedirConvite.setTitleColor(GMColor.textColorPrimary(), for: .normal)
+        buttonPedirConvite.setTitleColor(GMColor.colorPrimary(), for: .normal)
         buttonPedirConvite.setTitle("PEDIR CONVITE", for: .normal)
-        buttonPedirConvite.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth * 3/7)).isActive = true
+        buttonPedirConvite.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
         buttonPedirConvite.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
-        contaView.addArrangedSubview(buttonPedirConvite)
+        pedirConviteView.addArrangedSubview(buttonPedirConvite)
         
-        contaView.translatesAutoresizingMaskIntoConstraints = false
-        contaView.backgroundColor = UIColor.white
-        contaView.layer.cornerRadius = 6
-        return contaView
+        pedirConviteView.translatesAutoresizingMaskIntoConstraints = false
+        pedirConviteView.backgroundColor = UIColor.white
+        pedirConviteView.layer.cornerRadius = 6
+        return pedirConviteView
     }()
     
     weak var delegate: LoginControllerDelegate?
@@ -96,7 +105,8 @@ class LoginCell: UICollectionViewCell {
         addSubview(emailTextField)
         addSubview(passwordTextField)
         addSubview(loginButton)
-        addSubview(contaView)
+        addSubview(criarContaView)
+        addSubview(pedirConviteView)
         
         _ = logoImageView.anchor(top: centerYAnchor, left: nil, bottom: nil, right: nil, topConstant: -200, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 160, heightConstant: 160)
         logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
@@ -107,7 +117,9 @@ class LoginCell: UICollectionViewCell {
         
         _ = loginButton.anchor(top: passwordTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 15, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
         
-        _ = contaView.anchor(top: loginButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 15, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
+        _ = criarContaView.anchor(top: loginButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 15, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
+        
+        _ = pedirConviteView.anchor(top: criarContaView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 0, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
     }
     
     

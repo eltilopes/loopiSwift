@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AccessToken{
+class AccessToken : RestAdapeter {
     
     var token = ""
     
@@ -17,12 +17,11 @@ class AccessToken{
         
         let bodyStr = "username=eltilopes@gmail.com&password=12345678&scope=read&client_id=smemobile&client_secret=lamperouge&grant_type=password"
 
-        let myURL = NSURL(string: "http://192.168.0.13:8080/allinoneserver/oauth/token")!
-
-        let request = NSMutableURLRequest(url: myURL as URL)
-        request.httpMethod = "POST"
-        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "content-type")
-        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        let url = NSURL(string: API_URL + URL_OAUTH_TOKEN )!
+        let request = NSMutableURLRequest(url: url as URL)
+        request.httpMethod = POST_METHOD
+        request.setValue(HTTP_HEADER_VALUE_APPLICATION_FORM, forHTTPHeaderField: HTTP_HEADER_FIELD_CONTENT_TYPE)
+        request.setValue(HTTP_HEADER_VALUE_APPLICATION_JSON, forHTTPHeaderField: HTTP_HEADER_FIELD_ACCEPT)
         request.httpBody = bodyStr.data(using: String.Encoding.utf8)!
 
         let task = URLSession.shared.dataTask(with: request as URLRequest) {
@@ -38,14 +37,16 @@ class AccessToken{
                 
                 do {
                     let tokenDictionary:NSDictionary = try JSONSerialization.jsonObject(with: unwrappedData, options: JSONSerialization.ReadingOptions.mutableContainers) as! NSDictionary
-                    let user = tokenDictionary["user"] as? NSDictionary
+                    let user = tokenDictionary[self.USER] as? NSDictionary
                     
                     let usuario = Usuario.init(dictionary: user!)
                     
                     UserDefaults.standard.setUsuario(usuario: usuario)
-                    let login = (user!["login"] as? String)!
-                    self.token = (tokenDictionary["access_token"] as? String)!
+                    let login = (user![self.LOGIN] as? String)!
+                    self.token = (tokenDictionary[self.ACCESS_TOKEN] as? String)!
                     UserDefaults.standard.setLogin(login: login)
+                    UserDefaults.standard.setIsLoggedIn(value: true)
+                    UserDefaults.standard.setToken(token: self.token)
                     completionHandler(self.token,nil)
                 }
                 catch {

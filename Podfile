@@ -13,7 +13,7 @@ target 'Loopi' do
 	pod 'FirebaseStorage'
 	pod 'FirebaseAuth'
 	pod 'SwiftyJSON'
-	pod 'HandyJSON', '~> 4.0.0-beta.1'
+pod 'HandyJSON', '~> 4.2.0'
 	pod 'SVGKit', :git => 'https://github.com/SVGKit/SVGKit.git', :branch => '2.x'
 
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks

@@ -35,25 +35,35 @@ class CardsServiceController: BaseViewController, UICollectionViewDataSource,UIC
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = GMColor.backgroundAppColor()
-        storageRef = Storage.storage().reference()
-        addHeaderButtons()
-        addFooterLocation()
-        showFooterLocation()
-        carregarCategorias()
-        carregarCardsServicos(filtro: filtro)
-        collectionViewServicosCard.backgroundColor = GMColor.backgroundAppColor()
-        collectionViewCategorias.backgroundColor = GMColor.backgroundAppColor()
-        collectionViewServicosCard.showsVerticalScrollIndicator = true
-        collectionViewServicosCard.showsHorizontalScrollIndicator = false
-        collectionViewCategorias.showsVerticalScrollIndicator = false
-        collectionViewCategorias.showsHorizontalScrollIndicator = true
+        
+            view.backgroundColor = GMColor.backgroundAppColor()
+            storageRef = Storage.storage().reference()
+            addHeaderButtons()
+            addFooterLocation()
+            showFooterLocation()
+            carregarCategorias()
+            carregarCardsServicos(filtro: filtro)
+            collectionViewServicosCard.backgroundColor = GMColor.backgroundAppColor()
+            collectionViewCategorias.backgroundColor = GMColor.backgroundAppColor()
+            collectionViewServicosCard.showsVerticalScrollIndicator = true
+            collectionViewServicosCard.showsHorizontalScrollIndicator = false
+            collectionViewCategorias.showsVerticalScrollIndicator = false
+            collectionViewCategorias.showsHorizontalScrollIndicator = true
+        
+        
     }
+    
+    func isLoggedIn() -> Bool {
+        return UserDefaults.standard.isLoggedIn()
+    }
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        carregarCategorias()
-        carregarCardsServicos(filtro: filtro)
+        
+            carregarCategorias()
+            carregarCardsServicos(filtro: filtro)
+        
     }
     
     func carregarCategorias() {

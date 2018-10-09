@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CriarContaViewController: UIViewController , UITextFieldDelegate {
+class CriarContaViewController: UIViewController , UITextFieldDelegate, UIScrollViewDelegate  {
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +20,7 @@ class CriarContaViewController: UIViewController , UITextFieldDelegate {
     let email: LeftPaddedTextField =  LeftPaddedTextField(placeHolder: "E-mail")
     let cpf: LeftPaddedTextField = LeftPaddedTextField(placeHolder: "CPF")
     let codigoConvite: LeftPaddedTextField = LeftPaddedTextField(placeHolder: "Codigo do Convite")
+    
     
     lazy var headerView: UIStackView = {
         let headerView = UIStackView()
@@ -64,6 +65,41 @@ class CriarContaViewController: UIViewController , UITextFieldDelegate {
         return buttonPedirConvite
     }()
     
+    lazy var buttonVoltar: UIButton = {
+        let buttonVoltar = UIButton(type: .system)
+        buttonVoltar.setTitle("VOLTAR", for: .normal)
+        buttonVoltar.setTitleColor(GMColor.whiteColor(), for: .normal)
+        buttonVoltar.backgroundColor = GMColor.buttonOrangeColor()
+        buttonVoltar.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        buttonVoltar.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
+        return buttonVoltar
+    }()
+  
+    @objc func backAction() {
+        if let nav = self.navigationController {
+            nav.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    let scrollView = UIScrollView()
+    
+    /*
+    lazy var  scrollView: UIScrollView = {
+        
+        let scrollView = UIScrollView()
+        let screensize: CGRect = UIScreen.main.bounds
+        let screenWidth = screensize.width
+        let screenHeight = screensize.height
+        scrollView.backgroundColor = GMColor.backgroundHeaderColor()
+        scrollView.widthAnchor.constraint(equalToConstant: CGFloat(screenWidth)).isActive = true
+        scrollView.heightAnchor.constraint(equalToConstant: CGFloat(screenHeight) ).isActive = true
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        scrollView.contentSize = CGSize(width: screenWidth, height: 2000)
+        return scrollView
+    }()
+    */
     @objc func pedirConvite() {
         animatePage()
     }
@@ -75,29 +111,53 @@ class CriarContaViewController: UIViewController , UITextFieldDelegate {
         }, completion: nil)
     }
     
+    func aplicarScrollView() {
+        
+        let screensize: CGRect = UIScreen.main.bounds
+        let screenWidth = screensize.width - 60
+        scrollView.isScrollEnabled = true
+        scrollView.alwaysBounceVertical = true
+        scrollView.alwaysBounceHorizontal = false
+        scrollView.delegate = self
+        scrollView.backgroundColor = GMColor.backgroundAppColor()
+        scrollView.canCancelContentTouches = true
+        scrollView.addSubview(nome)
+        scrollView.addSubview(telefone)
+        scrollView.addSubview(email)
+        scrollView.addSubview(cpf)
+        scrollView.addSubview(codigoConvite)
+        scrollView.addSubview(buttonVoltar)
+        scrollView.addSubview(buttonPedirConvite)
+        
+        _ = nome.anchor(top: scrollView.topAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 35, leftConstant: 10, bottomConstant: 0, rightConstant: 10, widthConstant: screenWidth, heightConstant: 50)
+        
+        _ = telefone.anchor(top: nome.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 30, leftConstant: 10, bottomConstant: 0, rightConstant: 10, widthConstant: screenWidth, heightConstant: 50)
+        
+        _ = email.anchor(top: telefone.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 30, leftConstant: 10, bottomConstant: 0, rightConstant: 10, widthConstant: screenWidth, heightConstant: 50)
+        
+        _ = cpf.anchor(top: email.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 30, leftConstant: 10, bottomConstant: 0, rightConstant: 10, widthConstant: screenWidth, heightConstant: 50)
+        
+        _ = codigoConvite.anchor(top: cpf.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 30, leftConstant: 10, bottomConstant: 0, rightConstant: 10, widthConstant: screenWidth, heightConstant: 50)
+        
+        _ = buttonVoltar.anchor(top: codigoConvite.bottomAnchor, left: scrollView.leftAnchor, bottom: scrollView.bottomAnchor, right: nil, topConstant: 40, leftConstant: 10, bottomConstant: 30, rightConstant: 5, widthConstant: screenWidth / 2 , heightConstant: 50)
+        
+        _ = buttonPedirConvite.anchor(top: codigoConvite.bottomAnchor, left: buttonVoltar.rightAnchor, bottom: scrollView.bottomAnchor, right: scrollView.rightAnchor, topConstant: 40, leftConstant: 5, bottomConstant: 30, rightConstant: 10, widthConstant: screenWidth / 2 , heightConstant: 50)
+    }
+    
     func aplicarLayout() {
         view.backgroundColor = GMColor.backgroundAppColor()
-        view.addSubview(nome)
+        let screensize: CGRect = UIScreen.main.bounds
+        let screenHeight = screensize.height
+        let screenWidth = screensize.width - 80
         view.addSubview(headerView)
-        view.addSubview(telefone)
-        view.addSubview(email)
-        view.addSubview(cpf)
-        view.addSubview(codigoConvite)
-        view.addSubview(buttonPedirConvite)
+        view.addSubview(scrollView)
+        aplicarScrollView()
        
         _ = headerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 0, heightConstant: 0)
         
-        _ = nome.anchor(top: headerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 60, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
+        _ = scrollView.anchor(top: headerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 0, leftConstant: 20, bottomConstant: 10, rightConstant: 20, widthConstant: screenWidth, heightConstant: screenHeight * 2 )
         
-        _ = telefone.anchor(top: nome.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 40, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
         
-        _ = email.anchor(top: telefone.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 40, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
-        
-        _ = cpf.anchor(top: email.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 40, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
-        
-        _ = codigoConvite.anchor(top: cpf.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 40, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
-        
-        _ = buttonPedirConvite.anchor(top: codigoConvite.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 60, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
         
         
     }

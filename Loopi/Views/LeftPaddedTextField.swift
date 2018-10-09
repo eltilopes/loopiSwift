@@ -31,6 +31,23 @@ class LeftPaddedTextField: TextFieldEffects, UITextFieldDelegate {
         createBorder()
     }
     
+    /**
+     * Called when 'return' key pressed. return NO to ignore.
+     */
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    
+    /**
+     * Called when the user click on the view (outside the UITextField).
+     */
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.endEditing(true)
+    }
+    
+    
     @IBInspectable dynamic open var borderInactiveColor: UIColor? {
         didSet {
             updateBorder()
@@ -68,7 +85,7 @@ class LeftPaddedTextField: TextFieldEffects, UITextFieldDelegate {
         self.layer.borderWidth = 2
         self.textColor = GMColor.whiteColor()
     }
-    
+   
     override open func animateViewsForTextEntry() {
         if text!.isEmpty {
             UIView.animate(withDuration: 0.3, delay: 0.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 1.0, options: .beginFromCurrentState, animations: ({
