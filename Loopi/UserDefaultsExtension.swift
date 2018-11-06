@@ -12,10 +12,16 @@ extension UserDefaults {
     
     enum UserDefaultsKeys: String {
         case isLoggedIn
+        case temConvite
     }
     
     func setIsLoggedIn(value: Bool) {
         set(value, forKey: UserDefaultsKeys.isLoggedIn.rawValue)
+        synchronize()
+    }
+    
+    func setTemConvite(value: Bool) {
+        set(value, forKey: UserDefaultsKeys.temConvite.rawValue)
         synchronize()
     }
     
@@ -81,5 +87,11 @@ extension UserDefaults {
     func isLoggedIn() -> Bool {
         return bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
     }
+    
+    func temConvite() -> Bool {
+        return bool(forKey: UserDefaultsKeys.temConvite.rawValue )
+    }
+    
+    
 }
 

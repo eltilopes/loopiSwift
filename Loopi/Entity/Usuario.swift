@@ -18,6 +18,7 @@ class Usuario : NSObject, HandyJSON {
     var login : String?
     var cpf : String?
     
+    
    
     init(dictionary: NSDictionary) {
       

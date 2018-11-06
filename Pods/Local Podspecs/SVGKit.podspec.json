@@ -9,11 +9,11 @@
   "summary": "Display and interact with SVG Images on iOS, using native rendering (CoreAnimation).",
   "homepage": "https://github.com/SVGKit/SVGKit",
   "authors": {
-    "Steven Fusco": "sfusco@spiral.local",
+    "Steven Fusco": "github@stevenfusco.com",
     "adamgit": "adam.m.s.martin@gmail.com",
     "Kevin Stich": "stich@50cubes.com",
     "Joshua May": "notjosh@gmail.com",
-    "Eric Man": "Eric@eric-mans-macbook-2.local",
+    "Eric Man": "meric.au@gmail.com",
     "Matt Rajca": "matt.rajca@me.com",
     "Moritz Pfeiffer": "moritz.pfeiffer@alp-phone.ch"
   },

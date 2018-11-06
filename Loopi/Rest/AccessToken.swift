@@ -11,11 +11,14 @@ import UIKit
 class AccessToken : RestAdapeter {
     
     var token = ""
+    var controller: UIViewController = PedirConviteViewController()
     
     @discardableResult
-    func getAccessToken(completionHandler: @escaping (String?, NSError?) -> Void ) -> URLSessionTask {
-        
-        let bodyStr = "username=eltilopes@gmail.com&password=12345678&scope=read&client_id=smemobile&client_secret=lamperouge&grant_type=password"
+    func getAccessToken(usuario : Usuario,controller: UIViewController, completionHandler: @escaping (String?, NSError?) -> Void ) -> URLSessionTask {
+        self.controller = controller
+        let login: String = usuario.login ?? ""
+        let senha: String = usuario.senha ?? ""
+        let bodyStr = "username=\(String(describing: login))&password=\(String(describing: senha))&scope=read&client_id=smemobile&client_secret=lamperouge&grant_type=password"
 
         let url = NSURL(string: API_URL + URL_OAUTH_TOKEN )!
         let request = NSMutableURLRequest(url: url as URL)
@@ -45,9 +48,42 @@ class AccessToken : RestAdapeter {
                     let login = (user![self.LOGIN] as? String)!
                     self.token = (tokenDictionary[self.ACCESS_TOKEN] as? String)!
                     UserDefaults.standard.setLogin(login: login)
-                    UserDefaults.standard.setIsLoggedIn(value: true)
+                    //UserDefaults.standard.setIsLoggedIn(value: true)
                     UserDefaults.standard.setToken(token: self.token)
+                    DispatchQueue.main.async(execute: {
+                        //UserDefaults.standard.setTemConvite(value: false)
+                        //controller.present(CardsServiceController.fromStoryboard(), animated: true, completion: nil)
+                        
+                        /*
+                         
+                        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle:  Bundle.main)
+                        // "MiniGameView" is the ID given to the ViewController in the interfacebuilder
+                        // MiniGameViewController is the CLASS name of the ViewController.swift file acosiated to the ViewController
+                        let setViewController = mainStoryboard.instantiateViewController(withIdentifier: "CardsServiceController") as! CardsServiceController
+                        controller.navigationController?.setViewControllers([setViewController], animated: true)
+                        
+                         
+                         //UserDefaults.standard.setTemConvite(value: true)
+                         //let viewController = controller.storyboard?.instantiateViewController(withIdentifier: "CardsServiceController") as! CardsServiceController
+                         let viewController = controller.storyboard?.instantiateViewController(withIdentifier: "mainNavigationController") as! MainNavigationController
+                         controller.navigationController?.pushViewController(viewController, animated: true)
+                         
+                         
+                         
+                         
+                         
+                         let cardsServiceController = CardsServiceController()
+                         controller.present(cardsServiceController, animated: true, completion: nil)
+                         
+                        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+                        let vc = storyboard.instantiateViewController(withIdentifier: "mainNavigationController")
+                        controller.present(vc, animated: true, completion: nil)
+                        */
+                        
+                    })
+                    //controller.performSegue(withIdentifier: "mainSegue", sender: usuario)
                     completionHandler(self.token,nil)
+                   
                 }
                 catch {
                     self.token =  ""

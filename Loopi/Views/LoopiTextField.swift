@@ -15,6 +15,7 @@ public enum ValidationLoopiTextFieldType {
     case NUMERO
     case EMAIL
     case NOME_COMPLETO
+    case CODIGO_CONVITE
 }
 
 @IBDesignable
@@ -29,11 +30,11 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
     var backgroundColorLoopiTextField = GMColor.backgroundAppColor()
     var borderColorLoopiTextField = GMColor.whiteColor().cgColor
     var fontLoopiTextField = UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
-    
+    var textColorLoopiTextField: UIColor = GMColor.textColorPrimary()
+    var textFieldDidEndEditing = false
     var label = UILabel()
     var error = UILabel()
     var validations : [ValidationLoopiTextFieldType] = []
-    
     func createBorder(){
         self.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
         self.layer.borderColor = borderColorLoopiTextField
@@ -48,7 +49,8 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         label.textAlignment = alignment
         label.text = labelString
         label.font = fontLoopiTextField
-        label.tintColor = GMColor.textColorPrimary()
+        label.tintColor = textColorLoopiTextField
+        label.textColor = textColorLoopiTextField
         self.leftViewMode = UITextFieldViewMode.always
         self.leftView = label
     }
@@ -58,7 +60,8 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         label.textAlignment = alignment
         label.text = labelString
         label.font = fontLoopiTextField
-        label.tintColor = GMColor.textColorPrimary()
+        label.tintColor = textColorLoopiTextField
+        label.textColor = textColorLoopiTextField
         self.leftViewMode = UITextFieldViewMode.always
         self.leftView = label
         textRect(forBounds: frameLoopiTextField)
@@ -80,6 +83,10 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         self.borderColorLoopiTextField = borderColorLoopiTextField
     }
     
+    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        return bounds.insetBy(dx: horizontalInset , dy: verticalInset)
+    }
+    
     func setError(erro : String) {
         setError(erro : erro, widthTextField: frame.size.width , heightTextField:frame.size.height , y:frame.size.height)
     }
@@ -92,23 +99,25 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         error.textColor = GMColor.textColorError()
         self.rightViewMode = UITextFieldViewMode.always
         self.rightView = error
+        
+        
     }
     
+  
     override func textRect(forBounds bounds: CGRect) -> CGRect {
         self.delegate = self
         createBorder()
-        self.font = UIFont.systemFont(ofSize: ConstraintsView.fontSmall())
+        self.font = UIFont.systemFont(ofSize: ConstraintsView.fontMedium())
         setTitle()
         return bounds.insetBy(dx: horizontalInset , dy: verticalInset)
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        setError(erro: "")
+        textFieldDidEndEditing = true
+        //setError(erro: "")
     }
     
-    override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
-        return bounds.insetBy(dx: horizontalInset , dy: verticalInset)
-    }
+   
     
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         let value : String = self.text!
@@ -122,6 +131,7 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
             }
         }
         if validations.contains(.NUMERO){
+            print(value.matches("^[0-9]{8}$"))
             if  value.isNotEmptyAndContainsNoWhitespace() && ((value as NSString).rangeOfCharacter(from: NSCharacterSet.decimalDigits).location == NSNotFound){
                 erro = "Campo Numerico"
                 self.text?.removeLast()
@@ -135,7 +145,13 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
                 }
             }
         }
-    
+        
+        if validations.contains(.CODIGO_CONVITE){
+            if  value.isNotEmptyAndContainsNoWhitespace() && !(value.count == 8) {
+                    erro = "Codigo do Convite Invalido"
+            }
+        }
+        
         if validations.contains(.OBRIGATORIO){
             if value.isEmptyAndContainsNoWhitespace() {
                 erro = "Campo Obrigatorio"
@@ -144,6 +160,14 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         if value.isNotEmptyAndContainsNoWhitespace() && value.count > tamanhoCampo{
             self.text?.removeLast()
         }
+        if textFieldDidEndEditing {
+            textColorLoopiTextField = erro.isEmptyAndContainsNoWhitespace() ? GMColor.textColorPrimary() :  GMColor.textColorError()
+            erro = ""
+            textFieldDidEndEditing = false
+            setTitle()
+        }
+        
+       // self.text = value.applyPatternOnNumbers(pattern: maskString, replacmentCharacter: "#")
         setError(erro: erro)
         return bounds.insetBy(dx: horizontalInset , dy: verticalInset)
     }
@@ -180,5 +204,21 @@ extension String {
     
     func isBlank() -> Bool {
         return self.trimmingCharacters(in: .whitespaces) == ""
+    }
+    
+    func matches(_ regex: String) -> Bool {
+        return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
+    }
+    
+    func applyPatternOnNumbers(pattern: String, replacmentCharacter: Character) -> String {
+        var pureNumber = self.replacingOccurrences( of: "[^0-9]", with: "", options: .regularExpression)
+        for index in 0 ..< pattern.count {
+            guard index < pureNumber.count else { return pureNumber }
+            let stringIndex = String.Index(encodedOffset: index)
+            let patternCharacter = pattern[stringIndex]
+            guard patternCharacter != replacmentCharacter else { continue }
+            pureNumber.insert(patternCharacter, at: stringIndex)
+        }
+        return pureNumber
     }
 }

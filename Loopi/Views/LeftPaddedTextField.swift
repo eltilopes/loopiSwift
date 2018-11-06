@@ -83,7 +83,7 @@ class LeftPaddedTextField: TextFieldEffects, UITextFieldDelegate {
         self.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
         self.layer.borderColor = GMColor.whiteColor().cgColor
         self.layer.borderWidth = 2
-        self.textColor = GMColor.whiteColor()
+        self.textColor = GMColor.textColorPrimary()
     }
    
     override open func animateViewsForTextEntry() {

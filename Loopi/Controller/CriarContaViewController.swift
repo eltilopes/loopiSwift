@@ -119,6 +119,8 @@ class CriarContaViewController: UIViewController , UITextFieldDelegate, UIScroll
         scrollView.alwaysBounceVertical = true
         scrollView.alwaysBounceHorizontal = false
         scrollView.delegate = self
+        scrollView.scrollsToTop = false
+        scrollView.bounces = true
         scrollView.backgroundColor = GMColor.backgroundAppColor()
         scrollView.canCancelContentTouches = true
         scrollView.addSubview(nome)

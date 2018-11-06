@@ -156,7 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // With swizzling disabled you must set the APNs token here.
         Messaging.messaging().apnsToken = deviceToken
-        InstanceID.instanceID().setAPNSToken(deviceToken, type: InstanceIDAPNSTokenType.unknown)
+        // InstanceID.instanceID().setAPNSToken(deviceToken, type: InstanceIDAPNSTokenType.unknown)
         NotificationCenter.default.post(name: APNSTokenReceivedNotification, object: nil)
         if #available(iOS 8.0, *) {
         } else {

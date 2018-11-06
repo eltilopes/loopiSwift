@@ -8,6 +8,8 @@
 import UIKit
 
 class ConstraintsView {
+    class func heightLeftPaddedTextField() -> Int { return 50 }
+    class func heightCheckBoxButton() -> Int { return 40 }
     class func heightHeaderTitleLabel() -> Int { return 30 }
     class func heightSeparatorLineView() -> Int { return 10 }
     class func widhtSeparatorLineView() -> Int { return 2 }

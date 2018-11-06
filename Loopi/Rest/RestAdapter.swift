@@ -22,10 +22,10 @@ class RestAdapeter : RestConfig{
         return nil
     }
     
-    func getError(jsonString: String)->RestError?{
+    func getError(jsonString: String,controller: UIViewController)->RestError?{
         
         if jsonString.contains(ERROR) &&  jsonString.contains(ERROR_DESCRIPTION)  &&  jsonString.contains(INVALID_ACCESS_TOKEN) {
-            reLogIn()
+            reLogIn(controller: controller)
             return RestError.deserialize(from: jsonString)
         }
         if jsonString.contains(ERROR) &&  jsonString.contains(ERROR_DESCRIPTION) {
@@ -36,14 +36,15 @@ class RestAdapeter : RestConfig{
     }
     
     
-    func reLogIn() {
+    func reLogIn(controller: UIViewController) {
         let accessToken = AccessToken()
         var retorno = ""
-        accessToken.getAccessToken(){ tok, error in
+        let u = Usuario()
+        accessToken.getAccessToken(usuario : u, controller: controller){ tok, error in
             if error == nil {
                 retorno = tok!
                 if !retorno.isEmpty {
-                    UserDefaults.standard.setIsLoggedIn(value: true)
+                    //UserDefaults.standard.setIsLoggedIn(value: true)
                     UserDefaults.standard.setToken(token: retorno)
                 }
             }

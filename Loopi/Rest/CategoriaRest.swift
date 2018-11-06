@@ -38,10 +38,13 @@ class CategoriaRest : RestAdapeter {
     @discardableResult
     func carregarCategoriasAcesso( completionHandler: @escaping ([Categoria]?,NSError?) -> Void ) -> URLSessionTask {
         let bodyStr = "?login=eltilopes"
-        let url = NSURL(string: "http://loopi.online" + URL_LISTAR_CATEGORIA + bodyStr )!
+        let url = NSURL(string: "http://loopi.online/loopi" + URL_LISTAR_CATEGORIA + bodyStr )!
+        //let url = NSURL(string: API_URL + URL_LISTAR_CATEGORIA + bodyStr )!
+        
         let request = NSMutableURLRequest(url: url as URL)
         let login = Login()
         let token = UserDefaults.standard.getToken()
+        let controller = PedirConviteViewController() as UIViewController
         login.login = "eltilopes"
         request.httpMethod = GET_METHOD
         request.timeoutInterval = 10.0
@@ -57,7 +60,7 @@ class CategoriaRest : RestAdapeter {
             }
             
             let jsonString = String(data: data!, encoding: .utf8)
-            let erro = self.getError(jsonString: jsonString!)
+            let erro = self.getError(jsonString: jsonString!, controller: controller)
             if (erro?.erro.isBlank())! {
                 self.categorias = [Categoria].deserialize(from: jsonString!)! as! [Categoria]
                 completionHandler(self.categorias,nil)

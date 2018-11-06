@@ -61,7 +61,7 @@ class ServicoCardRest : RestAdapeter {
                         googleDirectionsResponse = gdr!
                         sc.duracao = googleDirectionsResponse.getDuration()
                         sc.distancia = googleDirectionsResponse.getDistance()
-                        print(googleDirectionsResponse.getBairro())
+                        //print(googleDirectionsResponse.getBairro())
                     }else{
                         print(error?.localizedDescription)
                     }

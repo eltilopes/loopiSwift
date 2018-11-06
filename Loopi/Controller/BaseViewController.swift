@@ -94,18 +94,6 @@ class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerD
         }
     }
     
-    func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
-        let destViewController : UIViewController = self.storyboard!.instantiateViewController(withIdentifier: strIdentifier)
-        
-        let topViewController : UIViewController = self.navigationController!.topViewController!
-        
-        if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
-            print("CardsServiceController")
-        } else {
-            self.navigationController!.pushViewController(destViewController, animated: true)
-        }
-    }
-    
     func addHeaderButtons(){
         addFiltroButton()
         addSlideMenuButton()
@@ -253,6 +241,20 @@ class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerD
             locationManager.stopUpdatingLocation()
         }	
         
+    }
+}
+
+extension UIViewController {
+    public func openViewControllerBasedOnIdentifier(_ strIdentifier:String){
+        let destViewController : UIViewController = self.storyboard!.instantiateViewController(withIdentifier: strIdentifier)
+        
+        let topViewController : UIViewController = self.navigationController!.topViewController!
+        
+        if (topViewController.restorationIdentifier! == destViewController.restorationIdentifier!){
+            print("CardsServiceController")
+        } else {
+            self.navigationController!.pushViewController(destViewController, animated: true)
+        }
     }
 }
 

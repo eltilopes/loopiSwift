@@ -31,6 +31,7 @@
 		6E24AFA720F415D1004606A9 /* NotificationsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E24AFA620F415D1004606A9 /* NotificationsController.swift */; };
 		6E2733D720649B9E00A01D51 /* CriarContaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2733D620649B9E00A01D51 /* CriarContaViewController.swift */; };
 		6E2733D92064B2AF00A01D51 /* LeftPaddedTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2733D82064B2AF00A01D51 /* LeftPaddedTextField.swift */; };
+		6E2D0185218C030700C00E9A /* CheckBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2D0184218C030700C00E9A /* CheckBox.swift */; };
 		6E2E925220893393009BDCCF /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2E925120893393009BDCCF /* PickerButton.swift */; };
 		6E2F296120EEE815003F5A81 /* CronometroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F296020EEE815003F5A81 /* CronometroView.swift */; };
 		6E2F296320EEE8A0003F5A81 /* AceitarServicoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F296220EEE8A0003F5A81 /* AceitarServicoViewController.swift */; };
@@ -46,6 +47,8 @@
 		6E506C1720E1AADB009A7944 /* BuscarEnderecoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E506C1620E1AADB009A7944 /* BuscarEnderecoViewController.swift */; };
 		6E506C1920E1C205009A7944 /* EnderecoCEP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E506C1820E1C205009A7944 /* EnderecoCEP.swift */; };
 		6E506C1B20E1C3BE009A7944 /* EnderecoRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E506C1A20E1C3BE009A7944 /* EnderecoRest.swift */; };
+		6E59D1FF217ADB7E008E73F5 /* SolicitarConvite.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D1FE217ADB7E008E73F5 /* SolicitarConvite.swift */; };
+		6E59D201217ADE8A008E73F5 /* SolicitarConviteRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E59D200217ADE8A008E73F5 /* SolicitarConviteRest.swift */; };
 		6E6D3FA220E3B819008B498A /* ConvitesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6D3FA120E3B819008B498A /* ConvitesViewController.swift */; };
 		6E6EB21D2076C2DB00714B38 /* CategoriaRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6EB21C2076C2DB00714B38 /* CategoriaRest.swift */; };
 		6E6EB21F2076C8CE00714B38 /* CategoriaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E6EB21E2076C8CE00714B38 /* CategoriaViewCell.swift */; };
@@ -95,6 +98,7 @@
 		6E936DED1FDF095A00AC1E54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E936DEB1FDF095A00AC1E54 /* LaunchScreen.storyboard */; };
 		6E936DF81FDF095A00AC1E54 /* LoopiTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E936DF71FDF095A00AC1E54 /* LoopiTests.swift */; };
 		6E936E031FDF095A00AC1E54 /* LoopiUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E936E021FDF095A00AC1E54 /* LoopiUITests.swift */; };
+		6E954E2F2176826800A36217 /* PedirConviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E954E2E2176826800A36217 /* PedirConviteViewController.swift */; };
 		6E95C3D3205761690051925E /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95C3CD205761680051925E /* Distance.swift */; };
 		6E95C3D4205761690051925E /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95C3CE205761680051925E /* Route.swift */; };
 		6E95C3D5205761690051925E /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E95C3CF205761680051925E /* Step.swift */; };
@@ -130,6 +134,10 @@
 		6EE3DFC620522D4A007EF326 /* FloatyDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3DFC520522D4A007EF326 /* FloatyDelegate.swift */; };
 		6EE3DFC820522D6C007EF326 /* FloatyWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3DFC720522D6C007EF326 /* FloatyWindow.swift */; };
 		6EE3DFCA20522D89007EF326 /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3DFC920522D89007EF326 /* FloatyViewController.swift */; };
+		6EE75FBF216DA63C00B763AA /* NovaContaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE75FBE216DA63C00B763AA /* NovaContaViewController.swift */; };
+		6EE7F978217EBDF900881DBA /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7F977217EBDF900881DBA /* CheckBoxButton.swift */; };
+		6EF88299218937A2009D055D /* Navigatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF88298218937A2009D055D /* Navigatable.swift */; };
+		6EF8829B21895AE3009D055D /* ImagesUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF8829A21895AE3009D055D /* ImagesUtil.swift */; };
 		6EF8D340203F67B100B93B11 /* CardServicoSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF8D33F203F67B100B93B11 /* CardServicoSearchResults.swift */; };
 		6EF8D344203F67F300B93B11 /* CardServicoViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF8D343203F67F300B93B11 /* CardServicoViewCell.swift */; };
 		6EFE17FF208990A200928D05 /* LoopiDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EFE17FE208990A200928D05 /* LoopiDropDown.swift */; };
@@ -184,6 +192,7 @@
 		6E24AFA620F415D1004606A9 /* NotificationsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsController.swift; sourceTree = "<group>"; };
 		6E2733D620649B9E00A01D51 /* CriarContaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CriarContaViewController.swift; sourceTree = "<group>"; };
 		6E2733D82064B2AF00A01D51 /* LeftPaddedTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftPaddedTextField.swift; sourceTree = "<group>"; };
+		6E2D0184218C030700C00E9A /* CheckBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBox.swift; sourceTree = "<group>"; };
 		6E2E925120893393009BDCCF /* PickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
 		6E2F296020EEE815003F5A81 /* CronometroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronometroView.swift; sourceTree = "<group>"; };
 		6E2F296220EEE8A0003F5A81 /* AceitarServicoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AceitarServicoViewController.swift; sourceTree = "<group>"; };
@@ -202,6 +211,8 @@
 		6E506C1620E1AADB009A7944 /* BuscarEnderecoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuscarEnderecoViewController.swift; sourceTree = "<group>"; };
 		6E506C1820E1C205009A7944 /* EnderecoCEP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnderecoCEP.swift; sourceTree = "<group>"; };
 		6E506C1A20E1C3BE009A7944 /* EnderecoRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnderecoRest.swift; sourceTree = "<group>"; };
+		6E59D1FE217ADB7E008E73F5 /* SolicitarConvite.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitarConvite.swift; sourceTree = "<group>"; };
+		6E59D200217ADE8A008E73F5 /* SolicitarConviteRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolicitarConviteRest.swift; sourceTree = "<group>"; };
 		6E6D3FA120E3B819008B498A /* ConvitesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConvitesViewController.swift; sourceTree = "<group>"; };
 		6E6EB21C2076C2DB00714B38 /* CategoriaRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriaRest.swift; sourceTree = "<group>"; };
 		6E6EB21E2076C8CE00714B38 /* CategoriaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriaViewCell.swift; sourceTree = "<group>"; };
@@ -257,6 +268,7 @@
 		6E936DFE1FDF095A00AC1E54 /* LoopiUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LoopiUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E936E021FDF095A00AC1E54 /* LoopiUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopiUITests.swift; sourceTree = "<group>"; };
 		6E936E041FDF095A00AC1E54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6E954E2E2176826800A36217 /* PedirConviteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PedirConviteViewController.swift; sourceTree = "<group>"; };
 		6E95C3CD205761680051925E /* Distance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Distance.swift; path = ../../../../../../Desktop/directions/Distance.swift; sourceTree = "<group>"; };
 		6E95C3CE205761680051925E /* Route.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Route.swift; path = ../../../../../../Desktop/directions/Route.swift; sourceTree = "<group>"; };
 		6E95C3CF205761680051925E /* Step.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Step.swift; path = ../../../../../../Desktop/directions/Step.swift; sourceTree = "<group>"; };
@@ -293,6 +305,10 @@
 		6EE3DFC720522D6C007EF326 /* FloatyWindow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatyWindow.swift; sourceTree = "<group>"; };
 		6EE3DFC920522D89007EF326 /* FloatyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FloatyViewController.swift; sourceTree = "<group>"; };
 		6EE3DFCD20523C10007EF326 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		6EE75FBE216DA63C00B763AA /* NovaContaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaContaViewController.swift; sourceTree = "<group>"; };
+		6EE7F977217EBDF900881DBA /* CheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
+		6EF88298218937A2009D055D /* Navigatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigatable.swift; sourceTree = "<group>"; };
+		6EF8829A21895AE3009D055D /* ImagesUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesUtil.swift; sourceTree = "<group>"; };
 		6EF8D33F203F67B100B93B11 /* CardServicoSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardServicoSearchResults.swift; path = "../../../../../examples/AKSwiftSlideMenu-master/AKSwiftSlideMenu/Entity/CardServicoSearchResults.swift"; sourceTree = "<group>"; };
 		6EF8D343203F67F300B93B11 /* CardServicoViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardServicoViewCell.swift; path = "../../../../../examples/AKSwiftSlideMenu-master/AKSwiftSlideMenu/CardServicoViewCell.swift"; sourceTree = "<group>"; };
 		6EFE17FE208990A200928D05 /* LoopiDropDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoopiDropDown.swift; sourceTree = "<group>"; };
@@ -364,6 +380,8 @@
 				6E77321B2125985600A35BA0 /* ServicoProfissionalViewController.swift */,
 				6E833DD2205CF3D1007AE41E /* SolicitarSaqueViewController.swift */,
 				6E90488820E5A38E00DFD21B /* TermosViewController.swift */,
+				6EE75FBE216DA63C00B763AA /* NovaContaViewController.swift */,
+				6E954E2E2176826800A36217 /* PedirConviteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -371,41 +389,44 @@
 		6E07ACBC202BAEAB00041DCC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6EE3DFBE20522CC7007EF326 /* FloatyButton */,
-				6EF8D343203F67F300B93B11 /* CardServicoViewCell.swift */,
-				6E07ACBF202BC30000041DCC /* Object */,
-				6E07ACBD202BC29B00041DCC /* PageCell.swift */,
-				6E07ACC3202BC34200041DCC /* LoginCell.swift */,
-				6E72A335202C01910099E65C /* LoopiAlertController.swift */,
 				6E1DDEBC20410A7A00797B4F /* ActivityProgressLoopi.swift */,
-				6E146FB9204EE9600012D15A /* FiltroAlertController.swift */,
-				6E146FBB204EE9EF0012D15A /* Modal.swift */,
-				6E1240F5205C2B69000FA8C5 /* ExtratoTableViewCell.swift */,
-				6E2733D82064B2AF00A01D51 /* LeftPaddedTextField.swift */,
-				6E32F080206B395B00AD83EB /* TextFieldEffects.swift */,
-				6E6EB21E2076C8CE00714B38 /* CategoriaViewCell.swift */,
-				6EB55C7E2077B6A60057579A /* LocationViewCell.swift */,
-				6E877DE2207EE6C2008DED3B /* LoopiTextField.swift */,
-				6E2E925120893393009BDCCF /* PickerButton.swift */,
-				6EFE17FE208990A200928D05 /* LoopiDropDown.swift */,
-				6E74C54F209C0260006C4AC4 /* ServicoViewCell.swift */,
-				6E850B0320A10CCD00A234EE /* FooterCollectionViewServicos.swift */,
-				6E850B0520A10DAD00A234EE /* HeaderCollectionViewServicos.swift */,
-				6E13225F20C3783700B7317E /* CardServicoSelecionadoViewCell.swift */,
-				6EB4E57A20D04C4A00A2687A /* SolicitacaoTableViewCell.swift */,
-				6E85F4F220D0DAB7005845D6 /* CardServicoAnuncioViewCell.swift */,
-				6E3410BE20D9CC030014634D /* HorizontalLayout.swift */,
-				6E3410C020D9CF370014634D /* FiltroController.swift */,
-				6E2F296020EEE815003F5A81 /* CronometroView.swift */,
-				6E75D89A20F6D449008F0F9F /* DocumentosViewCell.swift */,
-				6E75D89E20F6F894008F0F9F /* ImagemAlertController.swift */,
 				6E75D8A020F7059B008F0F9F /* AlertController.swift */,
 				6EA434B52101591A00C347FC /* BairroViewCell.swift */,
+				6E85F4F220D0DAB7005845D6 /* CardServicoAnuncioViewCell.swift */,
+				6E13225F20C3783700B7317E /* CardServicoSelecionadoViewCell.swift */,
+				6EF8D343203F67F300B93B11 /* CardServicoViewCell.swift */,
+				6E6EB21E2076C8CE00714B38 /* CategoriaViewCell.swift */,
+				6E2F296020EEE815003F5A81 /* CronometroView.swift */,
+				6E75D89A20F6D449008F0F9F /* DocumentosViewCell.swift */,
+				6E1240F5205C2B69000FA8C5 /* ExtratoTableViewCell.swift */,
+				6E146FB9204EE9600012D15A /* FiltroAlertController.swift */,
+				6E3410C020D9CF370014634D /* FiltroController.swift */,
+				6EE3DFBE20522CC7007EF326 /* FloatyButton */,
+				6E850B0320A10CCD00A234EE /* FooterCollectionViewServicos.swift */,
+				6E850B0520A10DAD00A234EE /* HeaderCollectionViewServicos.swift */,
+				6E3410BE20D9CC030014634D /* HorizontalLayout.swift */,
+				6E75D89E20F6F894008F0F9F /* ImagemAlertController.swift */,
+				6E1BFB0A21111A11000F8383 /* ItemServicoAlertController.swift */,
+				6E77321D2125A28400A35BA0 /* ItemServicoViewCell.swift */,
+				6E2733D82064B2AF00A01D51 /* LeftPaddedTextField.swift */,
+				6EB55C7E2077B6A60057579A /* LocationViewCell.swift */,
+				6E07ACC3202BC34200041DCC /* LoginCell.swift */,
+				6E72A335202C01910099E65C /* LoopiAlertController.swift */,
+				6EFE17FE208990A200928D05 /* LoopiDropDown.swift */,
+				6E877DE2207EE6C2008DED3B /* LoopiTextField.swift */,
+				6E146FBB204EE9EF0012D15A /* Modal.swift */,
+				6E07ACBF202BC30000041DCC /* Object */,
+				6E07ACBD202BC29B00041DCC /* PageCell.swift */,
+				6E2E925120893393009BDCCF /* PickerButton.swift */,
 				6EA434B921017C0900C347FC /* ProfissionalCardServicoViewCell.swift */,
 				6EA434BB21017CCD00C347FC /* ProfissionalCardViewCell.swift */,
-				6E1BFB0A21111A11000F8383 /* ItemServicoAlertController.swift */,
 				6E3CA008211A8A8F005E2752 /* ServicoProfissionalAlertController.swift */,
-				6E77321D2125A28400A35BA0 /* ItemServicoViewCell.swift */,
+				6E74C54F209C0260006C4AC4 /* ServicoViewCell.swift */,
+				6EB4E57A20D04C4A00A2687A /* SolicitacaoTableViewCell.swift */,
+				6E32F080206B395B00AD83EB /* TextFieldEffects.swift */,
+				6EE7F977217EBDF900881DBA /* CheckBoxButton.swift */,
+				6EF8829A21895AE3009D055D /* ImagesUtil.swift */,
+				6E2D0184218C030700C00E9A /* CheckBox.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -422,17 +443,18 @@
 		6E4644DE2027E9E8003A65A6 /* Rest */ = {
 			isa = PBXGroup;
 			children = (
-				6EA6503C20B3877900A85FEF /* RestError.swift */,
 				6EB9F6AC202BE7BA0040A199 /* AccessToken.swift */,
-				6E38685E205854F700ADBCBF /* RestAdapter.swift */,
-				6E14823B20496DDD0092F98A /* ServicoCardRest.swift */,
-				6E95C3DD205766BF0051925E /* GoogleDirectionsRest.swift */,
-				6E3868602058580C00ADBCBF /* RestConfig.swift */,
-				6E6EB21C2076C2DB00714B38 /* CategoriaRest.swift */,
-				6E7F3BA52078630200C19474 /* FirebaseStorageRest.swift */,
 				6EFE18002089A3BD00928D05 /* BancoRest.swift */,
-				6E8B001920D737B4005F7C5A /* RestExecutorMetodoService.swift */,
+				6E6EB21C2076C2DB00714B38 /* CategoriaRest.swift */,
 				6E506C1A20E1C3BE009A7944 /* EnderecoRest.swift */,
+				6E7F3BA52078630200C19474 /* FirebaseStorageRest.swift */,
+				6E95C3DD205766BF0051925E /* GoogleDirectionsRest.swift */,
+				6E38685E205854F700ADBCBF /* RestAdapter.swift */,
+				6E3868602058580C00ADBCBF /* RestConfig.swift */,
+				6EA6503C20B3877900A85FEF /* RestError.swift */,
+				6E8B001920D737B4005F7C5A /* RestExecutorMetodoService.swift */,
+				6E14823B20496DDD0092F98A /* ServicoCardRest.swift */,
+				6E59D200217ADE8A008E73F5 /* SolicitarConviteRest.swift */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -489,6 +511,7 @@
 		6E936DE11FDF095A00AC1E54 /* Loopi */ = {
 			isa = PBXGroup;
 			children = (
+				6EF882972189377F009D055D /* Protocol */,
 				6E82DDFC2086D1B40069EC64 /* Manager */,
 				6E7F3BA320785E6500C19474 /* GoogleService-Info.plist */,
 				6E77713520523F1100EC2D37 /* Loopi.entitlements */,
@@ -540,6 +563,14 @@
 			path = FloatyButton;
 			sourceTree = "<group>";
 		};
+		6EF882972189377F009D055D /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				6EF88298218937A2009D055D /* Navigatable.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
 		6EF8D33C203F672100B93B11 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
@@ -574,6 +605,7 @@
 				6E7073F4204530C800EA50E0 /* UsuarioSession.swift */,
 				6EA434BD21018FAB00C347FC /* Usuario.swift */,
 				6E1BFB0C21111B82000F8383 /* ItemServico.swift */,
+				6E59D1FE217ADB7E008E73F5 /* SolicitarConvite.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -690,6 +722,9 @@
 								enabled = 0;
 							};
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 							com.apple.WAC = {
@@ -897,6 +932,7 @@
 				6E77321C2125985600A35BA0 /* ServicoProfissionalViewController.swift in Sources */,
 				6E14823C20496DDD0092F98A /* ServicoCardRest.swift in Sources */,
 				6EB4E57B20D04C4A00A2687A /* SolicitacaoTableViewCell.swift in Sources */,
+				6E2D0185218C030700C00E9A /* CheckBox.swift in Sources */,
 				6E726BEF20505DBD000895E6 /* ConstraintsView.swift in Sources */,
 				6E07ACBE202BC29B00041DCC /* PageCell.swift in Sources */,
 				6E75D89D20F6D673008F0F9F /* Documento.swift in Sources */,
@@ -913,10 +949,12 @@
 				6E833DD1205CEFFF007AE41E /* Banco.swift in Sources */,
 				6E77713420523D9300EC2D37 /* Loopi.xcdatamodeld in Sources */,
 				6EB55C812077B8B10057579A /* LocationFooter.swift in Sources */,
+				6EF88299218937A2009D055D /* Navigatable.swift in Sources */,
 				6E95C3DA2057631F0051925E /* Polyline.swift in Sources */,
 				6EFE17FF208990A200928D05 /* LoopiDropDown.swift in Sources */,
 				6E12410D205C2E0D000FA8C5 /* ExtratoViewController.swift in Sources */,
 				6EB4E57D20D04E8000A2687A /* Solicitacao.swift in Sources */,
+				6EE75FBF216DA63C00B763AA /* NovaContaViewController.swift in Sources */,
 				6E6D3FA220E3B819008B498A /* ConvitesViewController.swift in Sources */,
 				6E07ACC4202BC34200041DCC /* LoginCell.swift in Sources */,
 				6EA9EF1720ABAF76007A1EFC /* Login.swift in Sources */,
@@ -934,6 +972,7 @@
 				6E506C1B20E1C3BE009A7944 /* EnderecoRest.swift in Sources */,
 				6E987A2E20ED7B8400C112B4 /* FirebaseMessage.swift in Sources */,
 				6EA307032091707B00ED1A81 /* ConfirmarSaqueViewController.swift in Sources */,
+				6E59D1FF217ADB7E008E73F5 /* SolicitarConvite.swift in Sources */,
 				6E7073E620450EDE00EA50E0 /* Categoria.swift in Sources */,
 				6E95C3DC2057638C0051925E /* RoutePoint.swift in Sources */,
 				6EE3DFC820522D6C007EF326 /* FloatyWindow.swift in Sources */,
@@ -956,6 +995,8 @@
 				6E6EB21D2076C2DB00714B38 /* CategoriaRest.swift in Sources */,
 				6E3CA009211A8A8F005E2752 /* ServicoProfissionalAlertController.swift in Sources */,
 				6E75D89920F6D15A008F0F9F /* ProfissionalDocumentosViewController.swift in Sources */,
+				6E954E2F2176826800A36217 /* PedirConviteViewController.swift in Sources */,
+				6EF8829B21895AE3009D055D /* ImagesUtil.swift in Sources */,
 				6EA6503D20B3877900A85FEF /* RestError.swift in Sources */,
 				6E82DDFE2086D1CA0069EC64 /* BackgroundLocationManager.swift in Sources */,
 				6EA434B8210179DB00C347FC /* ProfissionalCardViewController.swift in Sources */,
@@ -979,6 +1020,7 @@
 				6E12410F205C3392000FA8C5 /* Movimentacao.swift in Sources */,
 				6E13226020C3783700B7317E /* CardServicoSelecionadoViewCell.swift in Sources */,
 				6EE330F720C6258D00D21B91 /* SolicitarPedido.swift in Sources */,
+				6E59D201217ADE8A008E73F5 /* SolicitarConviteRest.swift in Sources */,
 				6E95C3D8205761690051925E /* GoogleDirectionsResponse.swift in Sources */,
 				6E74C550209C0260006C4AC4 /* ServicoViewCell.swift in Sources */,
 				6E506C1920E1C205009A7944 /* EnderecoCEP.swift in Sources */,
@@ -986,6 +1028,7 @@
 				6E1DDEBD20410A7A00797B4F /* ActivityProgressLoopi.swift in Sources */,
 				6E987A3020ED7BF600C112B4 /* FirebaseMessageNotification.swift in Sources */,
 				6E07ACBB202BAD7100041DCC /* LoginController.swift in Sources */,
+				6EE7F978217EBDF900881DBA /* CheckBoxButton.swift in Sources */,
 				6E7073F5204530C800EA50E0 /* UsuarioSession.swift in Sources */,
 				6E32D7B020522B2E00A5ABF9 /* MapViewController.swift in Sources */,
 				6EE3DFCA20522D89007EF326 /* FloatyViewController.swift in Sources */,
@@ -1168,7 +1211,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QBXR68WG7;
 				INFOPLIST_FILE = Loopi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.loopi.Loopi;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1188,7 +1231,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 6QBXR68WG7;
 				INFOPLIST_FILE = Loopi/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = br.com.loopi.Loopi;
 				PRODUCT_NAME = "$(TARGET_NAME)";

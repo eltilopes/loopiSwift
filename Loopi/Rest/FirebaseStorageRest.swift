@@ -31,12 +31,15 @@ class FirebaseStorageRest : RestConfig{
         
         let storageRef = storage.reference(forURL: urlImage)
         if Auth.auth().currentUser == nil {
+            print("Verificar essa parte do codigo")
+            /*
             Auth.auth().signInAnonymously(completion: { (user: User?, error: Error?) in
                 if let error = error {
                     self.existeImagem = false
                     completionHandler(nil, error as NSError?)
                 }
             })
+             */
         }
         storageRef.getData(maxSize: 1 * 1024 * 1024) { (data, error) -> Void in
             if error == nil {

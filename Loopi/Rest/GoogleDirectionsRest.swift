@@ -34,9 +34,11 @@ class GoogleDirectionsRest{
             
             let jsonString = String(data: data!, encoding: .utf8)
             self.googleDirectionsResponse = GoogleDirectionsResponse.deserialize(from: jsonString!)!
+            /*
             print(self.googleDirectionsResponse?.getDistance() as Any)
             print(self.googleDirectionsResponse?.getDuration() as Any)
             print(self.googleDirectionsResponse?.getDistanceMeters() ?? 0)
+            */
             completionHandler(self.googleDirectionsResponse, nil)
         }
         task.resume()
