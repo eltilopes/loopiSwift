@@ -17,6 +17,7 @@ class ConstraintsView {
     class func widthBorderLoopiTextField() -> Int { return 2 }
     class func heightHeaderApp() -> CGFloat { return 120.0 }
     class func cornerRadiusApp() -> CGFloat { return 2.0 }
+    class func borderCornerIndicatorView() -> CGFloat { return 5.0 }
     class func fontSmall() -> CGFloat { return 16.0 }
     class func fontMedium() -> CGFloat { return 20.0 }
     class func fontBig() -> CGFloat { return 24.0 }

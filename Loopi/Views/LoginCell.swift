@@ -16,25 +16,27 @@ class LoginCell: UICollectionViewCell {
         return imageView
     }()
     
-    let emailTextField: LeftPaddedTextField = {
+    let loginTextField: LeftPaddedTextField = {
         let textField = LeftPaddedTextField()
         textField.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
         textField.layer.borderColor = GMColor.whiteColor().cgColor
         textField.layer.borderWidth = 2
-        textField.textColor = GMColor.whiteColor()
+        textField.textColor = GMColor.textColorPrimary()
         textField.attributedPlaceholder = NSAttributedString(string: "CPF / CNPJ", attributes: [NSAttributedStringKey.foregroundColor : GMColor.textColorPrimary()])
-        textField.keyboardType = .emailAddress
+        textField.keyboardType = .numberPad
+        textField.text = "012.345.678-90"
         return textField
     }()
     
-    let passwordTextField: LeftPaddedTextField = {
+    let senhaTextField: LeftPaddedTextField = {
         let textField = LeftPaddedTextField()
         textField.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
         textField.layer.borderColor = GMColor.whiteColor().cgColor
         textField.layer.borderWidth = 2
-        textField.textColor = GMColor.whiteColor()
+        textField.textColor = GMColor.textColorPrimary()
         textField.attributedPlaceholder = NSAttributedString(string: "SENHA", attributes: [NSAttributedStringKey.foregroundColor : GMColor.textColorPrimary()])
         textField.isSecureTextEntry = true
+        textField.text = "0123456"
         return textField
     }()
     
@@ -102,8 +104,8 @@ class LoginCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(logoImageView)
-        addSubview(emailTextField)
-        addSubview(passwordTextField)
+        addSubview(loginTextField)
+        addSubview(senhaTextField)
         addSubview(loginButton)
         //addSubview(criarContaView)
         addSubview(pedirConviteView)
@@ -111,11 +113,11 @@ class LoginCell: UICollectionViewCell {
         _ = logoImageView.anchor(top: centerYAnchor, left: nil, bottom: nil, right: nil, topConstant: -200, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 120, heightConstant: 120)
         logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
-        _ = emailTextField.anchor(top: logoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
+        _ = loginTextField.anchor(top: logoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
         
-        _ = passwordTextField.anchor(top: emailTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 30, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
+        _ = senhaTextField.anchor(top: loginTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 30, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
         
-        _ = loginButton.anchor(top: passwordTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 15, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
+        _ = loginButton.anchor(top: senhaTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 15, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
         
         _ = pedirConviteView.anchor(top: loginButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 15, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
     }
@@ -127,8 +129,10 @@ class LoginCell: UICollectionViewCell {
     
     
     @objc func handleLogin() {
-        let u = Usuario()
-        delegate?.finishedLogIn(usuario: u)
+        let usuario = Usuario()
+        usuario.cpf = loginTextField.text
+        usuario.senha = senhaTextField.text
+        delegate?.finishedLogIn(usuario: usuario)
     }
     
     @objc func criarConta() {

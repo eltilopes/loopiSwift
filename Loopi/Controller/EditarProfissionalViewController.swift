@@ -72,7 +72,7 @@ class EditarProfissionalViewController: UIViewController, UICollectionViewDataSo
         
         servicoCardRest.carregarCardsServicos(filtro: filtro){ servicos, error in
             let activityProgressLoopi = ActivityProgressLoopi()
-            let indicator = activityProgressLoopi.startActivity(obj: self)
+            let indicator = activityProgressLoopi.startActivity(controller: self)
             if error == nil {
                 self.servicoCards = servicos!
                 self.collectionViewServicoCard.backgroundColor = GMColor.backgroundAppColor()
@@ -83,7 +83,7 @@ class EditarProfissionalViewController: UIViewController, UICollectionViewDataSo
             }else{
                 self.showToast(message: (error?.localizedDescription)!)
             }
-            ActivityProgressLoopi().stopActivity(obj: self,indicator: indicator)
+            ActivityProgressLoopi().stopActivity(controller: self,indicator: indicator)
         }
     }
     

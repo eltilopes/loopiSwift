@@ -35,6 +35,9 @@
 		6E2E925220893393009BDCCF /* PickerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2E925120893393009BDCCF /* PickerButton.swift */; };
 		6E2F296120EEE815003F5A81 /* CronometroView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F296020EEE815003F5A81 /* CronometroView.swift */; };
 		6E2F296320EEE8A0003F5A81 /* AceitarServicoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F296220EEE8A0003F5A81 /* AceitarServicoViewController.swift */; };
+		6E2F7C37219A0AB300EB88DF /* FavoritoAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F7C36219A0AB300EB88DF /* FavoritoAlertController.swift */; };
+		6E2F7C39219A6C8800EB88DF /* ProfissionalRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F7C38219A6C8800EB88DF /* ProfissionalRest.swift */; };
+		6E2F7C3B219A721100EB88DF /* FavoritoProfissionalUsuario.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2F7C3A219A721100EB88DF /* FavoritoProfissionalUsuario.swift */; };
 		6E32D7B020522B2E00A5ABF9 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E32D7AF20522B2E00A5ABF9 /* MapViewController.swift */; };
 		6E32F081206B395B00AD83EB /* TextFieldEffects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E32F080206B395B00AD83EB /* TextFieldEffects.swift */; };
 		6E3410BF20D9CC030014634D /* HorizontalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3410BE20D9CC030014634D /* HorizontalLayout.swift */; };
@@ -196,6 +199,9 @@
 		6E2E925120893393009BDCCF /* PickerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerButton.swift; sourceTree = "<group>"; };
 		6E2F296020EEE815003F5A81 /* CronometroView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CronometroView.swift; sourceTree = "<group>"; };
 		6E2F296220EEE8A0003F5A81 /* AceitarServicoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AceitarServicoViewController.swift; sourceTree = "<group>"; };
+		6E2F7C36219A0AB300EB88DF /* FavoritoAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritoAlertController.swift; sourceTree = "<group>"; };
+		6E2F7C38219A6C8800EB88DF /* ProfissionalRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfissionalRest.swift; sourceTree = "<group>"; };
+		6E2F7C3A219A721100EB88DF /* FavoritoProfissionalUsuario.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritoProfissionalUsuario.swift; sourceTree = "<group>"; };
 		6E32D7AF20522B2E00A5ABF9 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		6E32F080206B395B00AD83EB /* TextFieldEffects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldEffects.swift; sourceTree = "<group>"; };
 		6E3410BE20D9CC030014634D /* HorizontalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalLayout.swift; sourceTree = "<group>"; };
@@ -370,7 +376,9 @@
 				6E32D7AF20522B2E00A5ABF9 /* MapViewController.swift */,
 				6E72A337202C09870099E65C /* MenuViewController.swift */,
 				6E24AFA620F415D1004606A9 /* NotificationsController.swift */,
+				6EE75FBE216DA63C00B763AA /* NovaContaViewController.swift */,
 				6E386B3A2080775D00B31028 /* NovoProfissionalViewController.swift */,
+				6E954E2E2176826800A36217 /* PedirConviteViewController.swift */,
 				6EA434B12101560800C347FC /* ProfissionalAbrangenciaViewController.swift */,
 				6EA434B7210179DB00C347FC /* ProfissionalCardViewController.swift */,
 				6E75D89820F6D15A008F0F9F /* ProfissionalDocumentosViewController.swift */,
@@ -380,8 +388,6 @@
 				6E77321B2125985600A35BA0 /* ServicoProfissionalViewController.swift */,
 				6E833DD2205CF3D1007AE41E /* SolicitarSaqueViewController.swift */,
 				6E90488820E5A38E00DFD21B /* TermosViewController.swift */,
-				6EE75FBE216DA63C00B763AA /* NovaContaViewController.swift */,
-				6E954E2E2176826800A36217 /* PedirConviteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -396,9 +402,12 @@
 				6E13225F20C3783700B7317E /* CardServicoSelecionadoViewCell.swift */,
 				6EF8D343203F67F300B93B11 /* CardServicoViewCell.swift */,
 				6E6EB21E2076C8CE00714B38 /* CategoriaViewCell.swift */,
+				6E2D0184218C030700C00E9A /* CheckBox.swift */,
+				6EE7F977217EBDF900881DBA /* CheckBoxButton.swift */,
 				6E2F296020EEE815003F5A81 /* CronometroView.swift */,
 				6E75D89A20F6D449008F0F9F /* DocumentosViewCell.swift */,
 				6E1240F5205C2B69000FA8C5 /* ExtratoTableViewCell.swift */,
+				6E2F7C36219A0AB300EB88DF /* FavoritoAlertController.swift */,
 				6E146FB9204EE9600012D15A /* FiltroAlertController.swift */,
 				6E3410C020D9CF370014634D /* FiltroController.swift */,
 				6EE3DFBE20522CC7007EF326 /* FloatyButton */,
@@ -406,6 +415,7 @@
 				6E850B0520A10DAD00A234EE /* HeaderCollectionViewServicos.swift */,
 				6E3410BE20D9CC030014634D /* HorizontalLayout.swift */,
 				6E75D89E20F6F894008F0F9F /* ImagemAlertController.swift */,
+				6EF8829A21895AE3009D055D /* ImagesUtil.swift */,
 				6E1BFB0A21111A11000F8383 /* ItemServicoAlertController.swift */,
 				6E77321D2125A28400A35BA0 /* ItemServicoViewCell.swift */,
 				6E2733D82064B2AF00A01D51 /* LeftPaddedTextField.swift */,
@@ -424,9 +434,6 @@
 				6E74C54F209C0260006C4AC4 /* ServicoViewCell.swift */,
 				6EB4E57A20D04C4A00A2687A /* SolicitacaoTableViewCell.swift */,
 				6E32F080206B395B00AD83EB /* TextFieldEffects.swift */,
-				6EE7F977217EBDF900881DBA /* CheckBoxButton.swift */,
-				6EF8829A21895AE3009D055D /* ImagesUtil.swift */,
-				6E2D0184218C030700C00E9A /* CheckBox.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -455,6 +462,7 @@
 				6E8B001920D737B4005F7C5A /* RestExecutorMetodoService.swift */,
 				6E14823B20496DDD0092F98A /* ServicoCardRest.swift */,
 				6E59D200217ADE8A008E73F5 /* SolicitarConviteRest.swift */,
+				6E2F7C38219A6C8800EB88DF /* ProfissionalRest.swift */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -587,6 +595,7 @@
 				6E987A2D20ED7B8400C112B4 /* FirebaseMessage.swift */,
 				6E987A2F20ED7BF600C112B4 /* FirebaseMessageNotification.swift */,
 				6E95C3D2205761690051925E /* GoogleDirectionsResponse.swift */,
+				6E1BFB0C21111B82000F8383 /* ItemServico.swift */,
 				6E14823F20497A630092F98A /* LatLng.swift */,
 				6E95C3D1205761690051925E /* Leg.swift */,
 				6E7073EF20452DA000EA50E0 /* Localizacao.swift */,
@@ -599,13 +608,13 @@
 				6E7073E320450CD900EA50E0 /* ServicoCard.swift */,
 				6E7073ED20452CCE00EA50E0 /* ServicoProfissional.swift */,
 				6EB4E57C20D04E8000A2687A /* Solicitacao.swift */,
+				6E59D1FE217ADB7E008E73F5 /* SolicitarConvite.swift */,
 				6EE330F620C6258D00D21B91 /* SolicitarPedido.swift */,
 				6E95C3CF205761680051925E /* Step.swift */,
 				6E7073E720450F7F00EA50E0 /* SubCategoria.swift */,
-				6E7073F4204530C800EA50E0 /* UsuarioSession.swift */,
 				6EA434BD21018FAB00C347FC /* Usuario.swift */,
-				6E1BFB0C21111B82000F8383 /* ItemServico.swift */,
-				6E59D1FE217ADB7E008E73F5 /* SolicitarConvite.swift */,
+				6E7073F4204530C800EA50E0 /* UsuarioSession.swift */,
+				6E2F7C3A219A721100EB88DF /* FavoritoProfissionalUsuario.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -964,11 +973,13 @@
 				6E72A33A202C09B20099E65C /* BaseViewController.swift in Sources */,
 				6EE3DFC620522D4A007EF326 /* FloatyDelegate.swift in Sources */,
 				6E75D89F20F6F894008F0F9F /* ImagemAlertController.swift in Sources */,
+				6E2F7C37219A0AB300EB88DF /* FavoritoAlertController.swift in Sources */,
 				6EA434BE21018FAB00C347FC /* Usuario.swift in Sources */,
 				6E7F3BA62078630200C19474 /* FirebaseStorageRest.swift in Sources */,
 				6EFE18012089A3BD00928D05 /* BancoRest.swift in Sources */,
 				6E07ACB9202BACC000041DCC /* MainNavigationController.swift in Sources */,
 				6E75D8A120F7059B008F0F9F /* AlertController.swift in Sources */,
+				6E2F7C39219A6C8800EB88DF /* ProfissionalRest.swift in Sources */,
 				6E506C1B20E1C3BE009A7944 /* EnderecoRest.swift in Sources */,
 				6E987A2E20ED7B8400C112B4 /* FirebaseMessage.swift in Sources */,
 				6EA307032091707B00ED1A81 /* ConfirmarSaqueViewController.swift in Sources */,
@@ -993,6 +1004,7 @@
 				6E936DE31FDF095A00AC1E54 /* AppDelegate.swift in Sources */,
 				6E95C3D6205761690051925E /* Duration.swift in Sources */,
 				6E6EB21D2076C2DB00714B38 /* CategoriaRest.swift in Sources */,
+				6E2F7C3B219A721100EB88DF /* FavoritoProfissionalUsuario.swift in Sources */,
 				6E3CA009211A8A8F005E2752 /* ServicoProfissionalAlertController.swift in Sources */,
 				6E75D89920F6D15A008F0F9F /* ProfissionalDocumentosViewController.swift in Sources */,
 				6E954E2F2176826800A36217 /* PedirConviteViewController.swift in Sources */,

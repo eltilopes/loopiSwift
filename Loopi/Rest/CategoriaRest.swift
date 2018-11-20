@@ -38,8 +38,8 @@ class CategoriaRest : RestAdapeter {
     @discardableResult
     func carregarCategoriasAcesso( completionHandler: @escaping ([Categoria]?,NSError?) -> Void ) -> URLSessionTask {
         let bodyStr = "?login=eltilopes"
-        let url = NSURL(string: "http://loopi.online/loopi" + URL_LISTAR_CATEGORIA + bodyStr )!
-        //let url = NSURL(string: API_URL + URL_LISTAR_CATEGORIA + bodyStr )!
+        //let url = NSURL(string: "http://loopi.online/loopi" + URL_LISTAR_CATEGORIA + bodyStr )!
+        let url = NSURL(string: API_URL + URL_LISTAR_CATEGORIA + bodyStr )!
         
         let request = NSMutableURLRequest(url: url as URL)
         let login = Login()

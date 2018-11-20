@@ -12,25 +12,35 @@ class ActivityProgressLoopi: NSObject {
     
     var progressLoopiIndicator:UIActivityIndicatorView!
     
-    func startActivity(obj:UIViewController) -> UIActivityIndicatorView
+    func startActivity(controller:UIViewController) -> UIActivityIndicatorView
     {
-        
-        self.progressLoopiIndicator = UIActivityIndicatorView(frame:CGRect(x:100,y:100, width:100, height:100)) as UIActivityIndicatorView;
-        
-        //self.progressLoopiIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        let x = controller.view.bounds.midX
+        let y = controller.view.bounds.midY
+        //let width = controller.view.bounds.width * 2/3
+        //let height = controller.view.bounds.height * 1/3
+        let width = controller.view.bounds.width
+        let height = controller.view.bounds.height
+        self.progressLoopiIndicator = UIActivityIndicatorView(frame:CGRect(x:x,y:y, width:width, height:height)) as UIActivityIndicatorView;
+        self.progressLoopiIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.whiteLarge
         self.progressLoopiIndicator.color = GMColor.colorPrimaryDark()
-        self.progressLoopiIndicator.center = obj.view.center;
-        
-        obj.view.addSubview(progressLoopiIndicator);
+        self.progressLoopiIndicator.backgroundColor = GMColor.backgroundAppColor().withAlphaComponent(0.5)
+        self.progressLoopiIndicator.center = controller.view.center;
+        /*
+        self.progressLoopiIndicator.layer.cornerRadius = ConstraintsView.borderCornerIndicatorView()
+        self.progressLoopiIndicator.layer.borderColor = GMColor.colorPrimaryDark().cgColor
+        self.progressLoopiIndicator.layer.borderWidth = ConstraintsView.borderCornerIndicatorView()
+        */
+        controller.view.addSubview(progressLoopiIndicator);
         
         self.progressLoopiIndicator.startAnimating();
         return self.progressLoopiIndicator;
     }
     
-    func stopActivity(obj:UIViewController,indicator:UIActivityIndicatorView)-> Void
+    func stopActivity(controller:UIViewController,indicator:UIActivityIndicatorView)-> Void
     {
         indicator.removeFromSuperview();
     }
     
+  
     
 }

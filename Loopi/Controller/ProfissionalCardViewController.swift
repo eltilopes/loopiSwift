@@ -94,13 +94,13 @@ class ProfissionalCardViewController: UIViewController, UICollectionViewDataSour
     @objc func confirmarCadastro() {
         servicoCardRest.solicitarServico(servico: servicoCard ){ solicitado, error in
             let activityProgressLoopi = ActivityProgressLoopi()
-            let indicator = activityProgressLoopi.startActivity(obj: self)
+            let indicator = activityProgressLoopi.startActivity(controller: self)
             if error == nil {
                 self.showToast(message: "Servico solicitado" )
             }else{
                 self.showToast(message: (error?.localizedDescription)!)
             }
-            ActivityProgressLoopi().stopActivity(obj: self,indicator: indicator)
+            ActivityProgressLoopi().stopActivity(controller: self,indicator: indicator)
         }
     }
     

@@ -24,8 +24,8 @@ class ServicoCard : Equatable,HandyJSON {
     // var pesquisaOtimizada : String?
     var tempo : Int?
     var estrelas : Int?
-    var favorito : Bool?
-    // var favorito : Int?
+    var favorito : Bool  = false
+    var favoritos : Int?
     var categoria : Categoria = Categoria()
     var subCategoria : SubCategoria = SubCategoria()
     var especialidade : Especialidade = Especialidade()

@@ -40,7 +40,7 @@
                                         <rect key="frame" x="19" y="104" width="337" height="555"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Gt-Xt-TXn">
-                                                <rect key="frame" x="9" y="428" width="322" height="34"/>
+                                                <rect key="frame" x="9" y="408" width="322" height="34"/>
                                                 <color key="backgroundColor" red="0.40000000000000002" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="Trd-Y0-tIi"/>
@@ -56,7 +56,7 @@
                                                 <state key="normal" title="Button"/>
                                             </button>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="Tkr-jL-n9p" customClass="LoopiTextField" customModule="Loopi" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="50" width="321" height="34"/>
+                                                <rect key="frame" x="8" y="50" width="321" height="30"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -74,7 +74,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="ELK-O6-5v6" customClass="LoopiTextField" customModule="Loopi" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="120" width="321" height="34"/>
+                                                <rect key="frame" x="8" y="116" width="321" height="30"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
@@ -146,7 +146,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2X-Rl-uoD" customClass="CheckBox" customModule="Loopi" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="306" width="150" height="40"/>
+                                                <rect key="frame" x="8" y="290" width="150" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="ANC-6w-S38"/>
                                                     <constraint firstAttribute="width" constant="150" id="qsW-LC-miS"/>
@@ -2927,7 +2927,7 @@ da conta bancária seja o mesmo cadastrado no APP.</string>
                                 <rect key="frame" x="8" y="69" width="359" height="97"/>
                                 <color key="backgroundColor" red="0.90565513959390864" green="0.90565513959390864" blue="0.90565513959390864" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="97" id="UBJ-LF-70v"/>
+                                    <constraint firstAttribute="height" constant="97" id="Wuy-fw-BwX"/>
                                 </constraints>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="-9" maxX="0.0" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="6HQ-PD-fA6">
@@ -2944,7 +2944,7 @@ da conta bancária seja o mesmo cadastrado no APP.</string>
                                             <rect key="frame" x="0.0" y="0.0" width="151" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GXN-Dk-Dcd">
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GXN-Dk-Dcd">
                                                     <rect key="frame" x="0.0" y="0.0" width="151" height="96"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="z8I-ky-gJt">
@@ -2956,14 +2956,14 @@ da conta bancária seja o mesmo cadastrado no APP.</string>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="GXN-Dk-Dcd" secondAttribute="trailing" id="Dk4-CQ-DbP"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="GXN-Dk-Dcd" secondAttribute="bottom" constant="2" id="LMJ-jy-7sE"/>
-                                            <constraint firstItem="GXN-Dk-Dcd" firstAttribute="leading" secondItem="sn5-Rf-fnp" secondAttribute="leading" id="OZe-9C-mad"/>
-                                            <constraint firstItem="GXN-Dk-Dcd" firstAttribute="bottom" secondItem="z8I-ky-gJt" secondAttribute="bottom" id="YTp-UX-thh"/>
-                                            <constraint firstItem="GXN-Dk-Dcd" firstAttribute="top" secondItem="sn5-Rf-fnp" secondAttribute="top" id="eU5-nh-M44"/>
-                                            <constraint firstItem="GXN-Dk-Dcd" firstAttribute="top" secondItem="z8I-ky-gJt" secondAttribute="top" id="iFb-Ph-MD7"/>
-                                            <constraint firstItem="z8I-ky-gJt" firstAttribute="trailing" secondItem="GXN-Dk-Dcd" secondAttribute="trailing" id="q0C-WB-dt1"/>
-                                            <constraint firstItem="z8I-ky-gJt" firstAttribute="centerX" secondItem="GXN-Dk-Dcd" secondAttribute="centerX" id="v75-gf-trU"/>
+                                            <constraint firstItem="GXN-Dk-Dcd" firstAttribute="bottom" secondItem="z8I-ky-gJt" secondAttribute="bottom" id="7iU-Zr-bki"/>
+                                            <constraint firstItem="GXN-Dk-Dcd" firstAttribute="top" secondItem="z8I-ky-gJt" secondAttribute="top" id="8SV-Kd-GHb"/>
+                                            <constraint firstAttribute="trailing" secondItem="z8I-ky-gJt" secondAttribute="trailing" id="Chy-EC-tkf"/>
+                                            <constraint firstItem="GXN-Dk-Dcd" firstAttribute="top" secondItem="sn5-Rf-fnp" secondAttribute="top" id="WXj-4x-pMA"/>
+                                            <constraint firstItem="GXN-Dk-Dcd" firstAttribute="leading" secondItem="sn5-Rf-fnp" secondAttribute="leading" id="c6O-hJ-f7p"/>
+                                            <constraint firstItem="z8I-ky-gJt" firstAttribute="trailing" secondItem="GXN-Dk-Dcd" secondAttribute="trailing" id="dUa-9u-xGp"/>
+                                            <constraint firstItem="GXN-Dk-Dcd" firstAttribute="centerX" secondItem="z8I-ky-gJt" secondAttribute="centerX" id="p1H-FO-bfD"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="GXN-Dk-Dcd" secondAttribute="bottom" constant="-6" id="uSg-eh-c2n"/>
                                         </constraints>
                                         <size key="customSize" width="151" height="98"/>
                                         <connections>
@@ -2977,21 +2977,21 @@ da conta bancária seja o mesmo cadastrado no APP.</string>
                                 <rect key="frame" x="8" y="173" width="359" height="494"/>
                                 <color key="backgroundColor" red="0.91054080310880825" green="0.91054080310880825" blue="0.91054080310880825" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="xvX-ly-hck">
-                                    <size key="itemSize" width="365.5" height="192"/>
+                                    <size key="itemSize" width="362.5" height="196"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CardCell" id="xQQ-tI-2x7" customClass="CardServicoViewCell" customModule="Loopi" customModuleProvider="target">
-                                        <rect key="frame" x="-3.5" y="0.0" width="365.5" height="192"/>
+                                        <rect key="frame" x="-2" y="0.0" width="362.5" height="196"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="365.5" height="192"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="362.5" height="196"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeY-eB-iXs">
-                                                    <rect key="frame" x="142.5" y="16" width="199.5" height="42.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="TopLeft" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MeY-eB-iXs">
+                                                    <rect key="frame" x="159" y="10" width="185" height="50"/>
                                                     <accessibility key="accessibilityConfiguration">
                                                         <accessibilityTraits key="traits" staticText="YES" adjustable="YES"/>
                                                     </accessibility>
@@ -3000,125 +3000,130 @@ da conta bancária seja o mesmo cadastrado no APP.</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="card_categoria" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2En-39-Wpl">
-                                                    <rect key="frame" x="142.5" y="62.5" width="199.5" height="21"/>
+                                                    <rect key="frame" x="159" y="64" width="147" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="21" id="sgf-EQ-R90"/>
+                                                        <constraint firstAttribute="height" constant="21" id="3nh-c4-LZZ"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                                     <color key="textColor" red="0.35466815839999999" green="0.6853832097" blue="0.72340381149999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="card_especialidade" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTK-FU-5DJ">
-                                                    <rect key="frame" x="142.5" y="85.5" width="199.5" height="21"/>
+                                                    <rect key="frame" x="159" y="87" width="147" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="saX-wl-cF7">
-                                                    <rect key="frame" x="0.0" y="0.0" width="130.5" height="192"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="saX-wl-cF7">
+                                                    <rect key="frame" x="0.0" y="0.0" width="151" height="196"/>
                                                     <rect key="contentStretch" x="1" y="0.0" width="1" height="1"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D9J-VE-k3K" userLabel="Card Like">
-                                                    <rect key="frame" x="142.5" y="147.5" width="21" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="21" id="q14-Sw-YAJ"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="card_distancia" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zjs-Ct-VyX">
-                                                    <rect key="frame" x="231.5" y="147.5" width="129.5" height="21"/>
+                                                    <rect key="frame" x="230" y="159" width="113" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="21" id="HRK-va-Q6F"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.72865513390000003" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Like Quantidade" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfr-lR-S9l">
-                                                    <rect key="frame" x="170.5" y="147.5" width="24" height="21"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="24" id="fOq-3x-7sn"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="card_tempo" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SRa-q2-ejv">
-                                                    <rect key="frame" x="236.5" y="119.5" width="124.5" height="21"/>
+                                                    <rect key="frame" x="253" y="122" width="91" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="por-JB-cs8" userLabel="Card Star 1">
-                                                    <rect key="frame" x="142.5" y="121.5" width="17" height="17"/>
+                                                    <rect key="frame" x="159" y="123" width="17" height="19"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="17" id="4F1-Gb-0FW"/>
+                                                        <constraint firstAttribute="height" constant="19" id="54Y-8I-N4t"/>
+                                                        <constraint firstAttribute="width" constant="17" id="FIG-rg-oK3"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zlf-17-2Re" userLabel="Card Star 2">
-                                                    <rect key="frame" x="159.5" y="121.5" width="17" height="17"/>
+                                                    <rect key="frame" x="176" y="123" width="17" height="19"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="17" id="QUI-7h-i6A"/>
+                                                        <constraint firstAttribute="width" constant="17" id="bby-Os-jpo"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DSW-tx-K8p" userLabel="Card Star 3">
-                                                    <rect key="frame" x="176.5" y="121.5" width="17" height="17"/>
+                                                    <rect key="frame" x="193" y="123" width="17" height="19"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="17" id="5Xr-IU-Fnw"/>
+                                                        <constraint firstAttribute="width" constant="17" id="FJb-qg-sPy"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Ef-jJ-p9T" userLabel="Card Star 4">
-                                                    <rect key="frame" x="193.5" y="121.5" width="17" height="17"/>
+                                                    <rect key="frame" x="210" y="123" width="17" height="19"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="17" id="zAh-5K-b6r"/>
+                                                        <constraint firstAttribute="width" constant="17" id="zl3-tI-Elx"/>
                                                     </constraints>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="atq-Ks-E8K" userLabel="Card Star 5">
-                                                    <rect key="frame" x="210.5" y="121.5" width="17" height="17"/>
+                                                    <rect key="frame" x="227" y="123" width="17" height="19"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="17" id="spa-Lp-KIn"/>
+                                                        <constraint firstAttribute="width" constant="17" id="Hiv-pZ-y5X"/>
                                                     </constraints>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D9J-VE-k3K" userLabel="Card Like">
+                                                    <rect key="frame" x="159" y="146" width="38" height="38"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="38" id="in9-c7-xzD"/>
+                                                    </constraints>
+                                                    <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Card Like Quantidade" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dfr-lR-S9l">
+                                                    <rect key="frame" x="197" y="155" width="29" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="29" id="LCC-eL-eAA"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="uTK-FU-5DJ" firstAttribute="top" secondItem="2En-39-Wpl" secondAttribute="bottom" constant="2" id="1p0-pI-DM4"/>
-                                            <constraint firstItem="zjs-Ct-VyX" firstAttribute="leading" secondItem="dfr-lR-S9l" secondAttribute="trailing" constant="37" id="2Ub-uR-ynm"/>
-                                            <constraint firstItem="saX-wl-cF7" firstAttribute="top" secondItem="xQQ-tI-2x7" secondAttribute="top" id="2wj-Nh-KT5"/>
-                                            <constraint firstItem="saX-wl-cF7" firstAttribute="centerY" secondItem="uTK-FU-5DJ" secondAttribute="centerY" id="56M-mw-aMe"/>
-                                            <constraint firstItem="DSW-tx-K8p" firstAttribute="leading" secondItem="zlf-17-2Re" secondAttribute="trailing" id="5yb-p2-HyN"/>
-                                            <constraint firstItem="MeY-eB-iXs" firstAttribute="top" secondItem="xQQ-tI-2x7" secondAttribute="topMargin" constant="-12" id="6eb-M9-6Je"/>
-                                            <constraint firstAttribute="bottom" secondItem="saX-wl-cF7" secondAttribute="bottom" id="8RB-Zm-ZcT"/>
-                                            <constraint firstItem="D9J-VE-k3K" firstAttribute="top" secondItem="por-JB-cs8" secondAttribute="bottom" constant="9" id="9es-rr-VE5"/>
-                                            <constraint firstItem="zlf-17-2Re" firstAttribute="top" secondItem="DSW-tx-K8p" secondAttribute="top" id="A8s-6n-UrT"/>
-                                            <constraint firstItem="2En-39-Wpl" firstAttribute="top" secondItem="MeY-eB-iXs" secondAttribute="bottom" constant="4" id="FS1-k1-EkZ"/>
-                                            <constraint firstItem="9Ef-jJ-p9T" firstAttribute="top" secondItem="atq-Ks-E8K" secondAttribute="top" id="G2G-Ty-y4p"/>
-                                            <constraint firstItem="SRa-q2-ejv" firstAttribute="trailing" secondItem="zjs-Ct-VyX" secondAttribute="trailing" id="K9D-dT-TdZ"/>
-                                            <constraint firstItem="dfr-lR-S9l" firstAttribute="baseline" secondItem="zjs-Ct-VyX" secondAttribute="baseline" id="MPz-9g-iIY"/>
-                                            <constraint firstItem="zlf-17-2Re" firstAttribute="leading" secondItem="por-JB-cs8" secondAttribute="trailing" id="RCU-oI-puw"/>
-                                            <constraint firstItem="por-JB-cs8" firstAttribute="top" secondItem="zlf-17-2Re" secondAttribute="top" id="S4c-hw-cQq"/>
-                                            <constraint firstItem="9Ef-jJ-p9T" firstAttribute="leading" secondItem="DSW-tx-K8p" secondAttribute="trailing" id="SEW-Bb-xOv"/>
-                                            <constraint firstItem="D9J-VE-k3K" firstAttribute="top" secondItem="dfr-lR-S9l" secondAttribute="top" id="VBg-Yi-IhF"/>
-                                            <constraint firstItem="dfr-lR-S9l" firstAttribute="leading" secondItem="D9J-VE-k3K" secondAttribute="trailing" constant="7" id="Vcf-ef-0jt"/>
-                                            <constraint firstItem="por-JB-cs8" firstAttribute="bottom" secondItem="zlf-17-2Re" secondAttribute="bottom" id="ZbY-Y4-Y2z"/>
-                                            <constraint firstItem="atq-Ks-E8K" firstAttribute="centerY" secondItem="SRa-q2-ejv" secondAttribute="centerY" id="f0B-V8-UZ6"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="SRa-q2-ejv" secondAttribute="trailing" constant="-3.5" id="fCN-de-4Nj"/>
-                                            <constraint firstItem="DSW-tx-K8p" firstAttribute="top" secondItem="9Ef-jJ-p9T" secondAttribute="top" id="gIc-sj-V59"/>
-                                            <constraint firstItem="zlf-17-2Re" firstAttribute="bottom" secondItem="DSW-tx-K8p" secondAttribute="bottom" id="gfB-50-PSs"/>
-                                            <constraint firstItem="D9J-VE-k3K" firstAttribute="bottom" secondItem="dfr-lR-S9l" secondAttribute="bottom" id="ikC-dQ-3sE"/>
-                                            <constraint firstItem="MeY-eB-iXs" firstAttribute="trailing" secondItem="2En-39-Wpl" secondAttribute="trailing" id="kui-aw-jep"/>
-                                            <constraint firstItem="2En-39-Wpl" firstAttribute="trailing" secondItem="uTK-FU-5DJ" secondAttribute="trailing" id="lYb-RJ-TB9"/>
-                                            <constraint firstItem="2En-39-Wpl" firstAttribute="leading" secondItem="por-JB-cs8" secondAttribute="leading" id="lbC-IB-pq0"/>
-                                            <constraint firstItem="9Ef-jJ-p9T" firstAttribute="bottom" secondItem="atq-Ks-E8K" secondAttribute="bottom" id="lpJ-m3-tTe"/>
-                                            <constraint firstItem="uTK-FU-5DJ" firstAttribute="leading" secondItem="saX-wl-cF7" secondAttribute="trailing" constant="12" id="m1m-ar-ik2"/>
-                                            <constraint firstItem="MeY-eB-iXs" firstAttribute="centerX" secondItem="2En-39-Wpl" secondAttribute="centerX" id="m41-e3-97P"/>
-                                            <constraint firstItem="por-JB-cs8" firstAttribute="leading" secondItem="D9J-VE-k3K" secondAttribute="leading" id="mzG-pr-UQK"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="MeY-eB-iXs" secondAttribute="trailing" constant="15.5" id="ont-WM-WtX"/>
-                                            <constraint firstItem="saX-wl-cF7" firstAttribute="leading" secondItem="xQQ-tI-2x7" secondAttribute="leading" id="pJs-8v-8z8"/>
-                                            <constraint firstItem="dfr-lR-S9l" firstAttribute="centerX" secondItem="xQQ-tI-2x7" secondAttribute="centerX" constant="-0.50000000000011369" id="qsg-zJ-Yzx"/>
-                                            <constraint firstItem="SRa-q2-ejv" firstAttribute="top" secondItem="uTK-FU-5DJ" secondAttribute="bottom" constant="13" id="sft-Af-dIa"/>
-                                            <constraint firstItem="2En-39-Wpl" firstAttribute="centerX" secondItem="uTK-FU-5DJ" secondAttribute="centerX" id="tdC-Jg-ALc"/>
-                                            <constraint firstItem="atq-Ks-E8K" firstAttribute="leading" secondItem="9Ef-jJ-p9T" secondAttribute="trailing" id="v4S-BG-gZS"/>
-                                            <constraint firstItem="zjs-Ct-VyX" firstAttribute="top" secondItem="SRa-q2-ejv" secondAttribute="bottom" constant="7" id="wSb-op-zjS"/>
-                                            <constraint firstItem="SRa-q2-ejv" firstAttribute="leading" secondItem="atq-Ks-E8K" secondAttribute="trailing" constant="9" id="xQI-XF-Dkr"/>
-                                            <constraint firstItem="DSW-tx-K8p" firstAttribute="bottom" secondItem="9Ef-jJ-p9T" secondAttribute="bottom" id="yNF-Kf-9O0"/>
+                                            <constraint firstItem="dfr-lR-S9l" firstAttribute="leading" secondItem="D9J-VE-k3K" secondAttribute="trailing" id="1Gf-kF-35P"/>
+                                            <constraint firstItem="9Ef-jJ-p9T" firstAttribute="leading" secondItem="DSW-tx-K8p" secondAttribute="trailing" id="2WC-Ts-Lco"/>
+                                            <constraint firstItem="DSW-tx-K8p" firstAttribute="leading" secondItem="zlf-17-2Re" secondAttribute="trailing" id="4FI-Vs-Kak"/>
+                                            <constraint firstItem="SRa-q2-ejv" firstAttribute="leading" secondItem="atq-Ks-E8K" secondAttribute="trailing" constant="9" id="59J-uP-fut"/>
+                                            <constraint firstItem="saX-wl-cF7" firstAttribute="leading" secondItem="xQQ-tI-2x7" secondAttribute="leading" id="6cp-x5-v5g"/>
+                                            <constraint firstItem="SRa-q2-ejv" firstAttribute="top" secondItem="uTK-FU-5DJ" secondAttribute="bottom" constant="13" id="9ad-yL-k4l"/>
+                                            <constraint firstItem="MeY-eB-iXs" firstAttribute="top" secondItem="xQQ-tI-2x7" secondAttribute="topMargin" constant="-10" id="ADR-tX-gxx"/>
+                                            <constraint firstItem="atq-Ks-E8K" firstAttribute="leading" secondItem="9Ef-jJ-p9T" secondAttribute="trailing" id="CdC-Ya-NRr"/>
+                                            <constraint firstItem="zlf-17-2Re" firstAttribute="top" secondItem="DSW-tx-K8p" secondAttribute="top" id="Doz-mp-SsB"/>
+                                            <constraint firstItem="DSW-tx-K8p" firstAttribute="bottom" secondItem="9Ef-jJ-p9T" secondAttribute="bottom" id="F4y-4o-JDB"/>
+                                            <constraint firstItem="MeY-eB-iXs" firstAttribute="leading" secondItem="saX-wl-cF7" secondAttribute="trailing" constant="8" id="JmE-zq-b7t"/>
+                                            <constraint firstItem="zjs-Ct-VyX" firstAttribute="leading" secondItem="dfr-lR-S9l" secondAttribute="trailing" constant="4" id="KGh-aB-eoX"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="SRa-q2-ejv" secondAttribute="trailing" constant="10.5" id="M9R-Dc-bam"/>
+                                            <constraint firstItem="atq-Ks-E8K" firstAttribute="centerY" secondItem="SRa-q2-ejv" secondAttribute="centerY" id="MNa-rX-nIg"/>
+                                            <constraint firstItem="D9J-VE-k3K" firstAttribute="bottom" secondItem="dfr-lR-S9l" secondAttribute="bottom" id="Mcr-nw-Kkr"/>
+                                            <constraint firstItem="9Ef-jJ-p9T" firstAttribute="bottom" secondItem="atq-Ks-E8K" secondAttribute="bottom" id="MiU-DP-dMa"/>
+                                            <constraint firstItem="por-JB-cs8" firstAttribute="leading" secondItem="D9J-VE-k3K" secondAttribute="leading" id="NTo-Ww-pPV"/>
+                                            <constraint firstItem="zlf-17-2Re" firstAttribute="bottom" secondItem="DSW-tx-K8p" secondAttribute="bottom" id="NoI-EA-or5"/>
+                                            <constraint firstItem="DSW-tx-K8p" firstAttribute="top" secondItem="9Ef-jJ-p9T" secondAttribute="top" id="SQ7-8z-gc0"/>
+                                            <constraint firstItem="zjs-Ct-VyX" firstAttribute="top" secondItem="SRa-q2-ejv" secondAttribute="bottom" constant="16" id="T24-n3-cYE"/>
+                                            <constraint firstItem="uTK-FU-5DJ" firstAttribute="leading" secondItem="por-JB-cs8" secondAttribute="leading" id="Tlw-QR-0KV"/>
+                                            <constraint firstItem="MeY-eB-iXs" firstAttribute="leading" secondItem="2En-39-Wpl" secondAttribute="leading" id="U3b-UY-pBm"/>
+                                            <constraint firstAttribute="bottom" secondItem="saX-wl-cF7" secondAttribute="bottom" id="UDd-x0-ejR"/>
+                                            <constraint firstItem="saX-wl-cF7" firstAttribute="top" secondItem="xQQ-tI-2x7" secondAttribute="top" id="Wns-60-Xrz"/>
+                                            <constraint firstItem="dfr-lR-S9l" firstAttribute="top" secondItem="DSW-tx-K8p" secondAttribute="bottom" constant="13" id="XXf-yG-lTL"/>
+                                            <constraint firstItem="9Ef-jJ-p9T" firstAttribute="top" secondItem="atq-Ks-E8K" secondAttribute="top" id="Y20-5A-GmB"/>
+                                            <constraint firstItem="2En-39-Wpl" firstAttribute="trailing" secondItem="uTK-FU-5DJ" secondAttribute="trailing" id="ZyQ-AM-oaY"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="zjs-Ct-VyX" secondAttribute="trailing" constant="11.5" id="c1k-rO-dYd"/>
+                                            <constraint firstItem="saX-wl-cF7" firstAttribute="centerY" secondItem="uTK-FU-5DJ" secondAttribute="centerY" id="e0w-Pl-nXE"/>
+                                            <constraint firstItem="uTK-FU-5DJ" firstAttribute="top" secondItem="2En-39-Wpl" secondAttribute="bottom" constant="2" id="eZW-SS-eMq"/>
+                                            <constraint firstItem="zlf-17-2Re" firstAttribute="leading" secondItem="por-JB-cs8" secondAttribute="trailing" id="ekO-Pf-Bjv"/>
+                                            <constraint firstItem="MeY-eB-iXs" firstAttribute="trailing" secondItem="SRa-q2-ejv" secondAttribute="trailing" id="hbU-P5-bG6"/>
+                                            <constraint firstItem="2En-39-Wpl" firstAttribute="top" secondItem="MeY-eB-iXs" secondAttribute="bottom" constant="4" id="mKZ-xI-Z7g"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="D9J-VE-k3K" secondAttribute="bottom" constant="4" id="pQa-Lx-8d5"/>
+                                            <constraint firstItem="dfr-lR-S9l" firstAttribute="centerY" secondItem="zjs-Ct-VyX" secondAttribute="centerY" id="q84-se-CNN"/>
+                                            <constraint firstItem="por-JB-cs8" firstAttribute="top" secondItem="uTK-FU-5DJ" secondAttribute="bottom" constant="14" id="rVa-WR-6gA"/>
+                                            <constraint firstItem="D9J-VE-k3K" firstAttribute="top" secondItem="por-JB-cs8" secondAttribute="bottom" constant="4" id="rwg-iR-zbD"/>
+                                            <constraint firstItem="por-JB-cs8" firstAttribute="bottom" secondItem="zlf-17-2Re" secondAttribute="bottom" id="ty9-ru-Jhp"/>
+                                            <constraint firstItem="por-JB-cs8" firstAttribute="top" secondItem="zlf-17-2Re" secondAttribute="top" id="vYG-1l-JAe"/>
+                                            <constraint firstItem="2En-39-Wpl" firstAttribute="leading" secondItem="uTK-FU-5DJ" secondAttribute="leading" id="x7W-EX-an6"/>
                                         </constraints>
                                         <connections>
                                             <outlet property="cardCategoria" destination="2En-39-Wpl" id="WYK-6h-Zni"/>
@@ -3141,13 +3146,13 @@ da conta bancária seja o mesmo cadastrado no APP.</string>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="QsK-2K-VI0" firstAttribute="centerX" secondItem="9I8-oQ-xUe" secondAttribute="centerX" id="9FN-jd-0k8"/>
-                            <constraint firstItem="QsK-2K-VI0" firstAttribute="leading" secondItem="9I8-oQ-xUe" secondAttribute="leadingMargin" constant="-8" id="OKF-2M-sMF"/>
-                            <constraint firstItem="MJg-gU-Oex" firstAttribute="bottom" secondItem="rkw-OA-ShH" secondAttribute="top" id="kCe-QK-mxx"/>
-                            <constraint firstItem="QsK-2K-VI0" firstAttribute="trailing" secondItem="MJg-gU-Oex" secondAttribute="trailing" id="pm3-RK-3MR"/>
-                            <constraint firstItem="QsK-2K-VI0" firstAttribute="leading" secondItem="MJg-gU-Oex" secondAttribute="leading" id="uWU-Td-5wb"/>
-                            <constraint firstItem="QsK-2K-VI0" firstAttribute="top" secondItem="jdh-xc-Lhz" secondAttribute="bottom" constant="5" id="udh-op-5Ch"/>
-                            <constraint firstItem="MJg-gU-Oex" firstAttribute="top" secondItem="QsK-2K-VI0" secondAttribute="bottom" constant="7" id="yvd-nh-vbK"/>
+                            <constraint firstItem="QsK-2K-VI0" firstAttribute="top" secondItem="jdh-xc-Lhz" secondAttribute="bottom" constant="5" id="DfV-dd-qOU"/>
+                            <constraint firstItem="QsK-2K-VI0" firstAttribute="centerX" secondItem="9I8-oQ-xUe" secondAttribute="centerX" id="Fpb-Gz-5qY"/>
+                            <constraint firstItem="QsK-2K-VI0" firstAttribute="trailing" secondItem="MJg-gU-Oex" secondAttribute="trailing" id="IVD-B8-7gS"/>
+                            <constraint firstItem="QsK-2K-VI0" firstAttribute="leading" secondItem="9I8-oQ-xUe" secondAttribute="leadingMargin" constant="-8" id="QJB-nL-lUG"/>
+                            <constraint firstItem="MJg-gU-Oex" firstAttribute="bottom" secondItem="rkw-OA-ShH" secondAttribute="top" id="W9T-g2-Xec"/>
+                            <constraint firstItem="QsK-2K-VI0" firstAttribute="leading" secondItem="MJg-gU-Oex" secondAttribute="leading" id="vtR-bL-Phx"/>
+                            <constraint firstItem="MJg-gU-Oex" firstAttribute="top" secondItem="QsK-2K-VI0" secondAttribute="bottom" constant="7" id="zGW-it-KxG"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Loopi" id="Pxn-12-8dc"/>
@@ -3159,7 +3164,7 @@ da conta bancária seja o mesmo cadastrado no APP.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efv-Pz-a0a" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110" y="305"/>
+            <point key="canvasLocation" x="1109.5999999999999" y="304.4977511244378"/>
         </scene>
         <!--Card View Controller-->
         <scene sceneID="BoN-Pt-bRq">

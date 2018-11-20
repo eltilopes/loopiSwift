@@ -30,51 +30,42 @@ class GMColor {
     class func colorPrimary() -> UIColor {
         return teal300Color()
     }
-    
     class func colorPrimaryDark() -> UIColor {
         return teal700Color()
     }
-    
     class func colorAccent() -> UIColor {
         return teal100Color()
     }
-    
     class func textColorPrimary() -> UIColor {
         return grey500Color()
     }
-    
     class func colorRadioAndCheckButtonFill() -> UIColor {
         return grey300Color()
     }
-    
     class func textColorBlue() -> UIColor {
         return blue500Color()
     }
-    
     class func textColorGreen() -> UIColor {
         return green400Color()
     }
-    
     class func textColorRed() -> UIColor {
         return red400Color()
     }
-    
     class func textColorYellow() -> UIColor {
         return yellow400Color()
     }
-    
     class func textColorError() -> UIColor {
         return red500Color()
     }
-    
     class func backgroundAppColor() -> UIColor {
         return grey300Color()
     }
-    
+    class func backgroundAlertColor() -> UIColor {
+        return red100Color()
+    }
     class func backgroundHeaderColor() -> UIColor {
         return blue300Color()
     }
-    
     class func buttonBlueColor() -> UIColor {
         return blue300Color()
     }

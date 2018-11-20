@@ -168,7 +168,7 @@ class PedirConviteViewController: UIViewController, UITextFieldDelegate, UIScrol
         
         solicitarConviteRest.solicitarConvite(solicitarConvite: solicitarConvite ){  usuario, error in
             let activityProgressLoopi = ActivityProgressLoopi()
-            let indicator = activityProgressLoopi.startActivity(obj: self)
+            let indicator = activityProgressLoopi.startActivity(controller: self)
             if error == nil {
                 self.usuario = usuario!
                 var usuarioCadastrado = false
@@ -185,7 +185,7 @@ class PedirConviteViewController: UIViewController, UITextFieldDelegate, UIScrol
             }else{
                 self.showToast(message: (error?.localizedDescription)!)
             }
-            ActivityProgressLoopi().stopActivity(obj: self,indicator: indicator)
+            ActivityProgressLoopi().stopActivity(controller: self,indicator: indicator)
         }
         //UserDefaults.standard.setTemConvite(value: true)
         //self.cardsServiceController()

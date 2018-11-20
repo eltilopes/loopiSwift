@@ -15,6 +15,8 @@ class ServicoCardRest : RestAdapeter {
     
     @discardableResult
     func carregarCardsServicos(filtro : Filtro, completionHandler: @escaping ([ServicoCard]?,NSError?) -> Void ) -> URLSessionTask {
+        let usuario = UserDefaults.standard.getUsuario()
+        filtro.idUsuario = usuario.id
         let filtroDict = convertToDictionary(jsonString: filtro.toJSONString(prettyPrint: true)! )!
         let url = NSURL(string: API_URL + URL_LISTAR_SERVICO )!
         let request = NSMutableURLRequest(url: url as URL)
@@ -48,7 +50,6 @@ class ServicoCardRest : RestAdapeter {
     func prepareServicoCards() {
         
         for sc in servicoCards {
-            
             let directionUtilsRest = GoogleDirectionsRest()
             var googleDirectionsResponse :  GoogleDirectionsResponse = GoogleDirectionsResponse()
             if let localizacao = UserDefaults.standard.object(forKey: "localizacao") as? Dictionary<String, Any> {

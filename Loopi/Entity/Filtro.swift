@@ -20,6 +20,7 @@ class Filtro : HandyJSON {
     required init() {}
     
     var pesquisaToolbar : String?
+    var idUsuario : Int64?
     var menorValor : Bool?
     var distanciaMenor : Bool?
     var ordemAlfabeticaCrescente : Bool?

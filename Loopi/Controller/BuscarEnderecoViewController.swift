@@ -82,7 +82,7 @@ class BuscarEnderecoViewController: UIViewController{
         let cep = self.textFieldCEP.text!
         enderecoRest.buscarEnderecoCEP(cep: cep){ endereco, error in
             let activityProgressLoopi = ActivityProgressLoopi()
-            let indicator = activityProgressLoopi.startActivity(obj: self)
+            let indicator = activityProgressLoopi.startActivity(controller: self)
             if error == nil {
                 self.enderecoCEP = endereco!
                 self.textFieldEndereco.text = self.enderecoCEP.logradouro
@@ -92,7 +92,7 @@ class BuscarEnderecoViewController: UIViewController{
             }else{
                 self.showToast(message: (error?.localizedDescription)!)
             }
-            ActivityProgressLoopi().stopActivity(obj: self,indicator: indicator)
+            ActivityProgressLoopi().stopActivity(controller: self,indicator: indicator)
            
         }
     }
