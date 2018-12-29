@@ -25,6 +25,8 @@ class PedirConviteViewController: UIViewController, UITextFieldDelegate, UIScrol
     @IBOutlet weak var buttonTemConvite: CheckBox!
     
     
+    let activityProgressLoopi = ActivityProgressLoopi()
+    var indicator:UIActivityIndicatorView!
     var solicitarConvite : SolicitarConvite = SolicitarConvite()
     let solicitarConviteRest = SolicitarConviteRest()
     var usuario : Usuario = Usuario()
@@ -40,7 +42,7 @@ class PedirConviteViewController: UIViewController, UITextFieldDelegate, UIScrol
         self.scrollView.alwaysBounceHorizontal = false
         self.scrollView.delegate = self
         
-        let image = UIImage(named: "logo")
+        let image = UIImage(named: "logo_loopi")
         imagemLogo.image = image
         imagemLogo.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth * 1/3)).isActive = true
         imagemLogo.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel() * 2)).isActive = true
@@ -63,12 +65,12 @@ class PedirConviteViewController: UIViewController, UITextFieldDelegate, UIScrol
         email.validations = [.OBRIGATORIO,.EMAIL]
         email.setBackgroundColorLoopiTextField(backgroundColorLoopiTextField: GMColor.whiteColor())
         email.setFontLoopiTextField(fontLoopiTextField: UIFont.systemFont(ofSize: ConstraintsView.fontMedium()))
-        email.text = "loopiapp@hotmail.com"
+        email.text = "eltilopes@gmail.com"
         
         cpf.validations = [.OBRIGATORIO,.NUMERO]
         cpf.setBackgroundColorLoopiTextField(backgroundColorLoopiTextField: GMColor.whiteColor())
         cpf.setFontLoopiTextField(fontLoopiTextField: UIFont.systemFont(ofSize: ConstraintsView.fontMedium()))
-        cpf.text = "01234567890"
+        cpf.text = "92871259372"
         
         codigoConvite.validations = [.OBRIGATORIO, .CODIGO_CONVITE]
         codigoConvite.setBackgroundColorLoopiTextField(backgroundColorLoopiTextField: GMColor.whiteColor())
@@ -107,10 +109,6 @@ class PedirConviteViewController: UIViewController, UITextFieldDelegate, UIScrol
         }
     }
     
-    func cardsServiceController() {
-        self.performSegue(withIdentifier: "mainSegue", sender: self.usuario)
-    }
-    
     @objc func temConvite(sender: UIButton) {
         
         if buttonTemConvite.isChecked == true{
@@ -143,16 +141,18 @@ class PedirConviteViewController: UIViewController, UITextFieldDelegate, UIScrol
             codigoConvite.setError(erro: "Campo Obrigatorio")
         }
         if (nomeIsEmpty! == false) && (telefoneIsEmpty! == false) && (emailIsEmpty! == false) && (cpfIsEmpty! == false) && (codigoConviteIsEmpty == false){
-            dismiss(animated: true)
+            //dismiss(animated: true)
+            indicator = activityProgressLoopi.startActivity(controller: self)
             self.solicitarConvite.nome = nome.text
             self.solicitarConvite.telefone = telefone.text
             self.solicitarConvite.email = email.text
             self.solicitarConvite.cpf = cpf.text
             //self.solicitarConvite.codigoConvite = codigoConvite.text
             pedirConviteRest()
-            
+            /*
             let cardsServiceController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CardsServiceController") as! CardsServiceController
             present(cardsServiceController, animated: true, completion: nil)
+            */
             //perform(#selector(presentCardsServiceController), with: nil, afterDelay: 0.01)
         }
     }
@@ -163,56 +163,30 @@ class PedirConviteViewController: UIViewController, UITextFieldDelegate, UIScrol
         present(cardsServiceController, animated: true, completion: nil)
     }
     
+    func loginController() {
+        //self.perform(#selector(self.presentLoginController), with: nil, afterDelay: 0.0)
+        self.activityProgressLoopi.stopActivity(controller: self,indicator: self.indicator)
+        //dismiss(animated: true)
+        let loginController = LoginController()
+        present(loginController, animated: true, completion: nil)
+        //let appDel:AppDelegate = UIApplication.shared.delegate as! AppDelegate
+        //appDel.window?.rootViewController = loginController
+    }
     
     func pedirConviteRest() {
         
         solicitarConviteRest.solicitarConvite(solicitarConvite: solicitarConvite ){  usuario, error in
-            let activityProgressLoopi = ActivityProgressLoopi()
-            let indicator = activityProgressLoopi.startActivity(controller: self)
             if error == nil {
                 self.usuario = usuario!
-                var usuarioCadastrado = false
-                usuarioCadastrado = (self.usuario.cpf?.isNotEmptyAndContainsNoWhitespace())!
-                if usuarioCadastrado {
-                    //DispatchQueue.main.async(execute: {
-                        self.finishedLogIn(usuario: self.usuario)
-                    //})
-                    
-                    //
-                    self.showToast(message: self.usuario.login ??  "Deu certo")
-                }
-                self.showToast(message: "Deu errado")
+                self.loginController()
             }else{
+                self.activityProgressLoopi.stopActivity(controller: self,indicator: self.indicator)
                 self.showToast(message: (error?.localizedDescription)!)
             }
-            ActivityProgressLoopi().stopActivity(controller: self,indicator: indicator)
         }
-        //UserDefaults.standard.setTemConvite(value: true)
-        //self.cardsServiceController()
     }
     
-    func finishedLogIn( usuario : Usuario) {
-        
-        let accessToken = AccessToken()
-        var retorno = ""
-        
-        accessToken.getAccessToken(usuario : usuario, controller: self){ tok, error in
-            
-            if error == nil {
-                retorno = tok!
-                if !retorno.isEmpty {
-                    self.dismiss(animated: true, completion: nil)
-                }else{
-                    self.showToast(message: "Usuario invalido")
-                }
-            }else{
-                self.showToast(message: (error?.localizedDescription)!)
-            }
-            
-        }
-        
-    }
-    
+   
     
     func animatePage() {
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -220,25 +194,7 @@ class PedirConviteViewController: UIViewController, UITextFieldDelegate, UIScrol
         }, completion: nil)
     }
     
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        // get a reference to the second view controller
-        if segue.identifier == "mainSegue" {
-            var filtro  = Filtro()
-            filtro.pesquisaToolbar = "mainSegue"
-            if let mainNavigationController = segue.destination as? MainNavigationController {
-                if let cardsServiceController = mainNavigationController.viewControllers.first as? CardsServiceController {
-                    cardsServiceController.filtro = filtro
-                    // self.window?.rootViewController = controller  // if presented from AppDelegate
-                    // present(controller, animated: true, completion: nil) // if presented from ViewController
-                }
-            }
-        } else if segue.identifier == "novaContaSegue"  {
-            _  = segue.destination as! NovaContaViewController
-        }
-    }
+  
 }
 
 

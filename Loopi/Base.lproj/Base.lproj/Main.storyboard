@@ -40,7 +40,7 @@
                                         <rect key="frame" x="19" y="104" width="337" height="555"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Gt-Xt-TXn">
-                                                <rect key="frame" x="9" y="408" width="322" height="34"/>
+                                                <rect key="frame" x="9" y="396" width="322" height="34"/>
                                                 <color key="backgroundColor" red="0.40000000000000002" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="Trd-Y0-tIi"/>
@@ -146,7 +146,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y2X-Rl-uoD" customClass="CheckBox" customModule="Loopi" customModuleProvider="target">
-                                                <rect key="frame" x="8" y="290" width="150" height="40"/>
+                                                <rect key="frame" x="8" y="282" width="150" height="40"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="ANC-6w-S38"/>
                                                     <constraint firstAttribute="width" constant="150" id="qsW-LC-miS"/>
@@ -157,7 +157,7 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="nip-0E-v6a" firstAttribute="top" secondItem="y2X-Rl-uoD" secondAttribute="bottom" constant="20" id="2Zf-AD-LJu"/>
+                                            <constraint firstItem="nip-0E-v6a" firstAttribute="top" secondItem="y2X-Rl-uoD" secondAttribute="bottom" constant="28" id="2Zf-AD-LJu"/>
                                             <constraint firstItem="3Gt-Xt-TXn" firstAttribute="centerX" secondItem="qqP-wS-Cfh" secondAttribute="centerX" id="2xR-hA-RB3"/>
                                             <constraint firstItem="PMh-J8-Dj6" firstAttribute="top" secondItem="tkF-CI-vdP" secondAttribute="bottom" constant="39" id="5Rb-HI-U6A"/>
                                             <constraint firstAttribute="bottom" secondItem="qqP-wS-Cfh" secondAttribute="bottom" constant="38" id="7fL-BV-EFn"/>
@@ -171,15 +171,15 @@
                                             <constraint firstItem="Tkr-jL-n9p" firstAttribute="leading" secondItem="0Nr-cS-TJP" secondAttribute="leadingMargin" id="XAM-sh-qbZ"/>
                                             <constraint firstItem="Tkr-jL-n9p" firstAttribute="trailing" secondItem="ELK-O6-5v6" secondAttribute="trailing" id="XWG-od-rzg"/>
                                             <constraint firstItem="tkF-CI-vdP" firstAttribute="leading" secondItem="0Nr-cS-TJP" secondAttribute="leading" constant="9" id="YJC-AP-SKl"/>
-                                            <constraint firstItem="3Gt-Xt-TXn" firstAttribute="top" secondItem="nip-0E-v6a" secondAttribute="bottom" constant="28" id="cvE-0p-y7o"/>
+                                            <constraint firstItem="3Gt-Xt-TXn" firstAttribute="top" secondItem="nip-0E-v6a" secondAttribute="bottom" constant="16" id="cvE-0p-y7o"/>
                                             <constraint firstItem="tkF-CI-vdP" firstAttribute="trailing" secondItem="PMh-J8-Dj6" secondAttribute="trailing" id="eaG-BI-rjS"/>
                                             <constraint firstItem="tkF-CI-vdP" firstAttribute="leading" secondItem="PMh-J8-Dj6" secondAttribute="leading" id="edj-Ai-vCG"/>
                                             <constraint firstItem="ELK-O6-5v6" firstAttribute="top" secondItem="Tkr-jL-n9p" secondAttribute="bottom" constant="36" id="eot-6f-7xk"/>
                                             <constraint firstItem="tkF-CI-vdP" firstAttribute="top" secondItem="ELK-O6-5v6" secondAttribute="bottom" constant="37" id="f38-YW-6dA"/>
                                             <constraint firstItem="Tkr-jL-n9p" firstAttribute="trailing" secondItem="0Nr-cS-TJP" secondAttribute="trailingMargin" id="fA5-BQ-BmW"/>
                                             <constraint firstItem="Tkr-jL-n9p" firstAttribute="top" secondItem="0Nr-cS-TJP" secondAttribute="top" constant="50" id="mIW-Dz-iyC"/>
-                                            <constraint firstItem="y2X-Rl-uoD" firstAttribute="top" secondItem="PMh-J8-Dj6" secondAttribute="bottom" constant="8" symbolic="YES" id="qPd-om-qd8"/>
-                                            <constraint firstItem="qqP-wS-Cfh" firstAttribute="top" secondItem="3Gt-Xt-TXn" secondAttribute="bottom" constant="21" id="unx-vk-3Sf"/>
+                                            <constraint firstItem="y2X-Rl-uoD" firstAttribute="top" secondItem="PMh-J8-Dj6" secondAttribute="bottom" id="qPd-om-qd8"/>
+                                            <constraint firstItem="qqP-wS-Cfh" firstAttribute="top" secondItem="3Gt-Xt-TXn" secondAttribute="bottom" constant="33" id="unx-vk-3Sf"/>
                                             <constraint firstItem="nip-0E-v6a" firstAttribute="trailing" secondItem="qqP-wS-Cfh" secondAttribute="trailing" id="x3m-et-YUg"/>
                                             <constraint firstItem="nip-0E-v6a" firstAttribute="leading" secondItem="3Gt-Xt-TXn" secondAttribute="leading" id="xFx-k2-hsa"/>
                                         </constraints>
@@ -1876,7 +1876,7 @@
         <!--Main Navigation Controller-->
         <scene sceneID="g95-v4-owN">
             <objects>
-                <navigationController storyboardIdentifier="mainNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="YEK-dz-5Hf" customClass="MainNavigationController" customModule="Loopi" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="YEK-dz-5Hf" customClass="MainNavigationController" customModule="Loopi" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="NHH-VZ-nrS">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -2378,6 +2378,336 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38U-0C-h0A" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1109.5999999999999" y="1016.9415292353824"/>
+        </scene>
+        <!--Editar Usuario View Controller-->
+        <scene sceneID="uuQ-ck-yua">
+            <objects>
+                <viewController restorationIdentifier="EditarUsuario" storyboardIdentifier="EditarUsuario" id="BjF-Ip-yuh" customClass="EditarUsuarioViewController" customModule="Loopi" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Fqr-FN-lR0"/>
+                        <viewControllerLayoutGuide type="bottom" id="ta5-Zq-YJl"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Plb-Tb-CoE">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Usb-Ch-2Fz">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Cpy-MM-5Mm">
+                                        <rect key="frame" x="127.5" y="79" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="120" id="Leg-rD-YD1"/>
+                                            <constraint firstAttribute="width" constant="120" id="VZE-qR-gRV"/>
+                                        </constraints>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Efj-q6-Cjo" customClass="LoopiTextField" customModule="Loopi" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="249" width="351" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="sug-io-8B0"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelString" value="NOME COMPLETO"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalInset">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="tamanhoCampo">
+                                                <integer key="value" value="200"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2RV-WN-fLd" customClass="LoopiTextField" customModule="Loopi" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="322" width="351" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="qPY-L9-mh3"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelString" value="E-MAIL"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalInset">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="tamanhoCampo">
+                                                <integer key="value" value="100"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Hr-Tg-HvT" customClass="LoopiTextField" customModule="Loopi" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="394" width="351" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="a5i-hN-abd"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelString" value="TELEFONE"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalInset">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="tamanhoCampo">
+                                                <integer key="value" value="13"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="x7x-xX-pWu" customClass="LoopiTextField" customModule="Loopi" customModuleProvider="target">
+                                        <rect key="frame" x="12" y="471" width="351" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="FBa-oV-VEz"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelString" value="CPF / CNPJ"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalInset">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="tamanhoCampo">
+                                                <integer key="value" value="18"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyA-5z-MXR">
+                                        <rect key="frame" x="12" y="526" width="351" height="38"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="BnM-Zs-080"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="ALTERAR SENHA">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rXQ-MF-MOc">
+                                        <rect key="frame" x="12" y="591" width="351" height="38"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="38" id="FLc-22-zJE"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="SALVAR">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Editar Usuario" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sk9-h8-WTa">
+                                        <rect key="frame" x="15" y="36" width="345" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="Sk9-h8-WTa" firstAttribute="centerX" secondItem="Cpy-MM-5Mm" secondAttribute="centerX" id="1ta-fH-CqD"/>
+                                    <constraint firstItem="tyA-5z-MXR" firstAttribute="leading" secondItem="rXQ-MF-MOc" secondAttribute="leading" id="3xR-Lr-573"/>
+                                    <constraint firstItem="x7x-xX-pWu" firstAttribute="top" secondItem="4Hr-Tg-HvT" secondAttribute="bottom" constant="47" id="6g9-s4-C6c"/>
+                                    <constraint firstAttribute="bottom" secondItem="rXQ-MF-MOc" secondAttribute="bottom" constant="38" id="AE8-Eq-0SD"/>
+                                    <constraint firstItem="2RV-WN-fLd" firstAttribute="leading" secondItem="4Hr-Tg-HvT" secondAttribute="leading" id="BSl-u3-8ji"/>
+                                    <constraint firstItem="x7x-xX-pWu" firstAttribute="leading" secondItem="tyA-5z-MXR" secondAttribute="leading" id="Cz9-u4-ixW"/>
+                                    <constraint firstItem="4Hr-Tg-HvT" firstAttribute="trailing" secondItem="x7x-xX-pWu" secondAttribute="trailing" id="G59-oP-1f9"/>
+                                    <constraint firstItem="2RV-WN-fLd" firstAttribute="trailing" secondItem="4Hr-Tg-HvT" secondAttribute="trailing" id="Hku-dc-4yg"/>
+                                    <constraint firstItem="4Hr-Tg-HvT" firstAttribute="leading" secondItem="x7x-xX-pWu" secondAttribute="leading" id="I3H-C1-Akl"/>
+                                    <constraint firstItem="x7x-xX-pWu" firstAttribute="trailing" secondItem="tyA-5z-MXR" secondAttribute="trailing" id="I63-Za-Jf1"/>
+                                    <constraint firstItem="2RV-WN-fLd" firstAttribute="top" secondItem="Efj-q6-Cjo" secondAttribute="bottom" constant="43" id="OSa-7d-7dO"/>
+                                    <constraint firstItem="Efj-q6-Cjo" firstAttribute="trailing" secondItem="2RV-WN-fLd" secondAttribute="trailing" id="Rwn-3o-31I"/>
+                                    <constraint firstItem="rXQ-MF-MOc" firstAttribute="top" secondItem="tyA-5z-MXR" secondAttribute="bottom" constant="27" id="UAd-YA-9u3"/>
+                                    <constraint firstItem="Cpy-MM-5Mm" firstAttribute="centerX" secondItem="Usb-Ch-2Fz" secondAttribute="centerX" id="azk-ja-oRa"/>
+                                    <constraint firstItem="4Hr-Tg-HvT" firstAttribute="top" secondItem="2RV-WN-fLd" secondAttribute="bottom" constant="42" id="bsp-gX-bre"/>
+                                    <constraint firstItem="Efj-q6-Cjo" firstAttribute="top" secondItem="Cpy-MM-5Mm" secondAttribute="bottom" constant="50" id="eJI-qu-N8S"/>
+                                    <constraint firstAttribute="trailing" secondItem="Efj-q6-Cjo" secondAttribute="trailing" constant="12" id="ejc-mt-OIy"/>
+                                    <constraint firstItem="Cpy-MM-5Mm" firstAttribute="centerX" secondItem="Efj-q6-Cjo" secondAttribute="centerX" id="fUL-hI-PV0"/>
+                                    <constraint firstItem="tyA-5z-MXR" firstAttribute="top" secondItem="x7x-xX-pWu" secondAttribute="bottom" constant="25" id="fyr-kj-wXA"/>
+                                    <constraint firstItem="Efj-q6-Cjo" firstAttribute="leading" secondItem="2RV-WN-fLd" secondAttribute="leading" id="m4T-A8-HdI"/>
+                                    <constraint firstItem="Sk9-h8-WTa" firstAttribute="leading" secondItem="Usb-Ch-2Fz" secondAttribute="leading" constant="15" id="o9X-wE-Il7"/>
+                                    <constraint firstItem="Cpy-MM-5Mm" firstAttribute="top" secondItem="Sk9-h8-WTa" secondAttribute="bottom" constant="19" id="oAI-3Z-Zok"/>
+                                    <constraint firstItem="tyA-5z-MXR" firstAttribute="trailing" secondItem="rXQ-MF-MOc" secondAttribute="trailing" id="rL3-CH-h3t"/>
+                                    <constraint firstItem="Efj-q6-Cjo" firstAttribute="leading" secondItem="Usb-Ch-2Fz" secondAttribute="leading" constant="12" id="uHW-ez-ZRT"/>
+                                    <constraint firstItem="Sk9-h8-WTa" firstAttribute="top" secondItem="Usb-Ch-2Fz" secondAttribute="top" constant="36" id="x5i-pd-RdS"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Usb-Ch-2Fz" secondAttribute="trailing" id="0T3-0m-Daa"/>
+                            <constraint firstItem="Usb-Ch-2Fz" firstAttribute="bottom" secondItem="ta5-Zq-YJl" secondAttribute="top" id="3iV-6e-Cpi"/>
+                            <constraint firstItem="Usb-Ch-2Fz" firstAttribute="leading" secondItem="Plb-Tb-CoE" secondAttribute="leading" id="aBC-it-vFG"/>
+                            <constraint firstItem="Usb-Ch-2Fz" firstAttribute="top" secondItem="Plb-Tb-CoE" secondAttribute="top" id="caA-0m-9wn"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonAlterarSenha" destination="tyA-5z-MXR" id="L47-T7-ZrE"/>
+                        <outlet property="buttonSalvar" destination="rXQ-MF-MOc" id="Nw3-gj-n93"/>
+                        <outlet property="imagemUsuario" destination="Cpy-MM-5Mm" id="6aE-ug-K0W"/>
+                        <outlet property="labelEditarUsuario" destination="Sk9-h8-WTa" id="IJ2-gB-VVV"/>
+                        <outlet property="scrollView" destination="Usb-Ch-2Fz" id="am2-dA-UxO"/>
+                        <outlet property="textFieldCpf" destination="x7x-xX-pWu" id="3br-Lm-McK"/>
+                        <outlet property="textFieldEmail" destination="2RV-WN-fLd" id="lHc-ez-yUv"/>
+                        <outlet property="textFieldNome" destination="Efj-q6-Cjo" id="Xg4-7Q-fjt"/>
+                        <outlet property="textFieldTelefone" destination="4Hr-Tg-HvT" id="y7I-BG-DMN"/>
+                        <segue destination="YEK-dz-5Hf" kind="show" identifier="EditarUsuario" id="YVp-Jg-Zlo"/>
+                        <segue destination="ajw-4a-fI3" kind="show" identifier="alterarSenhaSegue" id="rTG-TP-OeM"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X1q-e5-MWP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1226.4000000000001" y="1792.353823088456"/>
+        </scene>
+        <!--Alterar Senha View Controller-->
+        <scene sceneID="bfP-Km-Bxv">
+            <objects>
+                <viewController id="ajw-4a-fI3" customClass="AlterarSenhaViewController" customModule="Loopi" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HKx-aQ-5gW"/>
+                        <viewControllerLayoutGuide type="bottom" id="iiP-MT-Kem"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M5k-ch-lvf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="30o-5p-fe7" customClass="UIScrollView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Altera Senha" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a0J-WL-COg">
+                                        <rect key="frame" x="15" y="36" width="345" height="24"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WOt-hu-a5r" customClass="LoopiTextField" customModule="Loopi" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="128" width="359" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="QSH-dp-cHO"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelString" value="NOVA SENHA"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalInset">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="tamanhoCampo">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Pnz-Jj-L7P" customClass="LoopiTextField" customModule="Loopi" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="208" width="359" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="y1C-tF-3Ej"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelString" value="CONFIRMACAO SENHA"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalInset">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="tamanhoCampo">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Qs2-51-eD3" customClass="LoopiTextField" customModule="Loopi" customModuleProvider="target">
+                                        <rect key="frame" x="8" y="291" width="359" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="NP6-60-scg"/>
+                                        </constraints>
+                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="labelString" value="CODIGO DO E-MAIL"/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="horizontalInset">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="verticalInset">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="tamanhoCampo">
+                                                <integer key="value" value="8"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iX2-3U-e6U">
+                                        <rect key="frame" x="8" y="381" width="359" height="39"/>
+                                        <color key="backgroundColor" red="0.20000000000000001" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="lgf-Kk-wJf"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <state key="normal" title="ALTERAR">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <accessibility key="accessibilityConfiguration">
+                                    <accessibilityTraits key="traits" notEnabled="YES"/>
+                                </accessibility>
+                                <constraints>
+                                    <constraint firstItem="Pnz-Jj-L7P" firstAttribute="top" secondItem="WOt-hu-a5r" secondAttribute="bottom" constant="50" id="AJN-Rh-cCX"/>
+                                    <constraint firstItem="a0J-WL-COg" firstAttribute="centerX" secondItem="WOt-hu-a5r" secondAttribute="centerX" id="CNb-bb-6yz"/>
+                                    <constraint firstItem="iX2-3U-e6U" firstAttribute="top" secondItem="Qs2-51-eD3" secondAttribute="bottom" constant="60" id="FrD-Gu-Ko7"/>
+                                    <constraint firstItem="WOt-hu-a5r" firstAttribute="leading" secondItem="30o-5p-fe7" secondAttribute="leadingMargin" id="Gl7-hb-MQn"/>
+                                    <constraint firstItem="a0J-WL-COg" firstAttribute="leading" secondItem="30o-5p-fe7" secondAttribute="leading" constant="15" id="IbM-Xj-IK1"/>
+                                    <constraint firstItem="WOt-hu-a5r" firstAttribute="leading" secondItem="Pnz-Jj-L7P" secondAttribute="leading" id="QQh-Be-hmZ"/>
+                                    <constraint firstItem="Qs2-51-eD3" firstAttribute="leading" secondItem="iX2-3U-e6U" secondAttribute="leading" id="U19-Mk-f2O"/>
+                                    <constraint firstItem="a0J-WL-COg" firstAttribute="centerX" secondItem="30o-5p-fe7" secondAttribute="centerX" id="Ya5-nB-9Xo"/>
+                                    <constraint firstItem="Pnz-Jj-L7P" firstAttribute="leading" secondItem="Qs2-51-eD3" secondAttribute="leading" id="b1S-Y7-by4"/>
+                                    <constraint firstItem="a0J-WL-COg" firstAttribute="centerX" secondItem="Qs2-51-eD3" secondAttribute="centerX" id="b5X-jz-0nt"/>
+                                    <constraint firstItem="a0J-WL-COg" firstAttribute="centerX" secondItem="Pnz-Jj-L7P" secondAttribute="centerX" id="lbx-LK-ftp"/>
+                                    <constraint firstItem="WOt-hu-a5r" firstAttribute="top" secondItem="30o-5p-fe7" secondAttribute="top" constant="128" id="y3c-GW-3a6"/>
+                                    <constraint firstItem="Qs2-51-eD3" firstAttribute="top" secondItem="Pnz-Jj-L7P" secondAttribute="bottom" constant="53" id="yoa-xn-YUP"/>
+                                    <constraint firstItem="a0J-WL-COg" firstAttribute="top" secondItem="30o-5p-fe7" secondAttribute="top" constant="36" id="yz8-E5-Mby"/>
+                                    <constraint firstItem="a0J-WL-COg" firstAttribute="centerX" secondItem="iX2-3U-e6U" secondAttribute="centerX" id="zVG-zD-fWO"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="30o-5p-fe7" firstAttribute="leading" secondItem="M5k-ch-lvf" secondAttribute="leading" id="KRR-qx-QeY"/>
+                            <constraint firstAttribute="trailing" secondItem="30o-5p-fe7" secondAttribute="trailing" id="Y4w-91-fGc"/>
+                            <constraint firstItem="30o-5p-fe7" firstAttribute="top" secondItem="M5k-ch-lvf" secondAttribute="top" id="hJT-L4-qjb"/>
+                            <constraint firstItem="30o-5p-fe7" firstAttribute="bottom" secondItem="iiP-MT-Kem" secondAttribute="top" id="q1w-FC-OOQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="buttonAlterarSenha" destination="iX2-3U-e6U" id="UGs-61-ZCW"/>
+                        <outlet property="labelAlterarSenha" destination="a0J-WL-COg" id="ZPT-Pc-ZvL"/>
+                        <outlet property="scrollView" destination="30o-5p-fe7" id="hhL-vi-LIT"/>
+                        <outlet property="textFieldCodigo" destination="Qs2-51-eD3" id="CxB-d3-FH6"/>
+                        <outlet property="textFieldConfirmacaoSenha" destination="Pnz-Jj-L7P" id="WJf-uX-ZeV"/>
+                        <outlet property="textFieldNovaSenha" destination="WOt-hu-a5r" id="VNo-6S-zQ1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R2A-dN-zfQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1226.4000000000001" y="2535.3823088455774"/>
         </scene>
         <!--Solicitar Saque View Controller-->
         <scene sceneID="VFn-EU-a9V">
@@ -3703,7 +4033,7 @@ da conta bancária seja o mesmo cadastrado no APP.</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="uuP-JI-2tb"/>
+        <segue reference="YVp-Jg-Zlo"/>
         <segue reference="oXN-Fd-zLp"/>
     </inferredMetricsTieBreakers>
 </document>

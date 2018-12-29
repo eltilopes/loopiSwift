@@ -9,48 +9,53 @@
 import UIKit
 import HandyJSON
 
-class Usuario : NSObject, HandyJSON {
-    required override init() {}
+class Usuario :  HandyJSON {
+    required init() {}
     
     var id : Int64?
     var nome : String?
     var senha : String?
     var login : String?
     var cpf : String?
+    var telefone : String?
+    var urlImagem : String?
     
-    
-   
-    init(dictionary: NSDictionary) {
-      
-       
-        
-        super.init()
-        // Loop
+    func  getUsuario(dictionary: NSDictionary)  -> Usuario {
+        let usuario = Usuario()
         for (key, value) in dictionary {
             let keyName = key as! String
             
             switch(keyName){
             case "id":
                 let keyValue = value as! NSNumber
-                self.id = keyValue.int64Value
+                usuario.id = keyValue.int64Value
                 break
             case "nome":
-                self.nome = getKeyValue(value: value)
+                usuario.nome = getKeyValue(value: value)
                 break
             case "senha":
-                self.senha = getKeyValue(value: value)
+                usuario.senha = getKeyValue(value: value)
                 break
             case "login":
-                self.login = getKeyValue(value: value)
+                usuario.login = getKeyValue(value: value)
                 break
             case "cpf":
-                self.cpf = getKeyValue(value: value)
+                usuario.cpf = getKeyValue(value: value)
+                break
+            case "telefone":
+                usuario.telefone = getKeyValue(value: value)
+                break
+            case "urlImagem":
+                usuario.urlImagem = getKeyValue(value: value)
                 break
             default:
                 break
             }
         }
+        return usuario
     }
+   
+ 
     
     func getKeyValue(value: Any)  -> String {
         var valueString: String

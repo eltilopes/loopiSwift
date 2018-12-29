@@ -25,11 +25,6 @@ class ActivityProgressLoopi: NSObject {
         self.progressLoopiIndicator.color = GMColor.colorPrimaryDark()
         self.progressLoopiIndicator.backgroundColor = GMColor.backgroundAppColor().withAlphaComponent(0.5)
         self.progressLoopiIndicator.center = controller.view.center;
-        /*
-        self.progressLoopiIndicator.layer.cornerRadius = ConstraintsView.borderCornerIndicatorView()
-        self.progressLoopiIndicator.layer.borderColor = GMColor.colorPrimaryDark().cgColor
-        self.progressLoopiIndicator.layer.borderWidth = ConstraintsView.borderCornerIndicatorView()
-        */
         controller.view.addSubview(progressLoopiIndicator);
         
         self.progressLoopiIndicator.startAnimating();

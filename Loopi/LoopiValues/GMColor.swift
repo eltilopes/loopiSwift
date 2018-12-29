@@ -39,6 +39,12 @@ class GMColor {
     class func textColorPrimary() -> UIColor {
         return grey500Color()
     }
+    class func textColorPrimaryDark() -> UIColor {
+        return grey700Color()
+    }
+    class func textColorLoopiTextFieldDisable() -> UIColor {
+        return grey400Color()
+    }
     class func colorRadioAndCheckButtonFill() -> UIColor {
         return grey300Color()
     }
@@ -60,11 +66,20 @@ class GMColor {
     class func backgroundAppColor() -> UIColor {
         return grey300Color()
     }
+    class func backgroundLoopiTextFieldDisable() -> UIColor {
+        return lightBlue100Color()
+    }
     class func backgroundAlertColor() -> UIColor {
-        return red100Color()
+        return redA100Color()
+    }
+    class func backgroundAlertInfoColor() -> UIColor {
+        return blue50Color()
     }
     class func backgroundHeaderColor() -> UIColor {
         return blue300Color()
+    }
+    class func backgroundColorLoopiTextField() -> UIColor {
+        return whiteColor()
     }
     class func buttonBlueColor() -> UIColor {
         return blue300Color()

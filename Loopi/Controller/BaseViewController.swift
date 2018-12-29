@@ -89,10 +89,44 @@ class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerD
         case 4:
             self.openViewControllerBasedOnIdentifier("Termos")
             break
+        case 5:
+            self.logoutUsuario()
+            break
+        case Int32(clamping: ConstraintsView.tagAbrirEditarUsuario()):
+            self.openViewControllerBasedOnIdentifier("EditarUsuario")
+            break
         default:
             break
         }
     }
+    
+    func logoutUsuario() {
+        let usuario = UserDefaults.standard.getUsuario()
+        
+        let accessToken = AccessToken()
+        var retorno = ""
+        
+        accessToken.logoutUsuario(usuario : usuario){ ok, error in
+            
+            if error == nil {
+                retorno = ok!
+                if !retorno.isEmpty {
+                    UserDefaults.standard.setIsLoggedIn(value: false)
+                    UserDefaults.standard.setToken(token: "")
+                    UserDefaults.standard.setLogin(login: "")
+                    let loginController = LoginController()
+                    self.present(loginController, animated: true, completion: nil)
+                    //self.dismiss(animated: true, completion: nil)
+                    //self.show(loginController, sender: self)
+                }else{
+                    self.showToast(message: "Nao foi possivel sair")
+                }
+            }else{
+                self.showToast(message: (error?.localizedDescription)!)
+            }
+        }
+    }
+   
     
     func addHeaderButtons(){
         addFiltroButton()

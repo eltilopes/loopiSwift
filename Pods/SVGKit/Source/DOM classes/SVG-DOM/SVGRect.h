@@ -39,3 +39,5 @@ CGRect CGRectFromSVGRect( SVGRect rect );
 
 /** Convenience method to convert to ObjectiveC's kind of size - ONLY the width and height of this rect */
 CGSize CGSizeFromSVGRect( SVGRect rect );
+
+NSString * _Nonnull NSStringFromSVGRect( SVGRect rect );

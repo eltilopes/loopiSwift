@@ -38,7 +38,9 @@ class SolicitarConviteRest : RestAdapeter {
             
             let jsonString = String(data: data!, encoding: .utf8)
             let usuario = Usuario.deserialize(from: jsonString!)!
-            //UserDefaults.standard.setTemConvite(value: true)
+            usuario.senha = ""
+            UserDefaults.standard.setUsuario(usuario:usuario)
+            UserDefaults.standard.setTemConvite(value: true)
             completionHandler(usuario,nil)
             
         }

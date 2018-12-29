@@ -16,6 +16,9 @@ public enum ValidationLoopiTextFieldType {
     case EMAIL
     case NOME_COMPLETO
     case CODIGO_CONVITE
+    case CODIGO_ALTERAR_SENHA
+    case CPF_CNPJ
+    case SENHA
 }
 
 @IBDesignable
@@ -32,6 +35,11 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
     var fontLoopiTextField = UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
     var textColorLoopiTextField: UIColor = GMColor.textColorPrimary()
     var textFieldDidEndEditing = false
+    var instanceController = false
+    var secureTextEntry = false
+    var editavel = false
+    var existeErro = false
+    var erro = ""
     var label = UILabel()
     var error = UILabel()
     var validations : [ValidationLoopiTextFieldType] = []
@@ -42,23 +50,75 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         self.backgroundColor = backgroundColorLoopiTextField
     }
     
+    fileprivate func setTitleLabel() {
+        if editavel {
+            
+            if validations.contains(.CPF_CNPJ){
+                self.isEnabled = false
+                self.isUserInteractionEnabled = false
+                //self.textColorLoopiTextField = GMColor.colorPrimaryDark()
+                self.alpha = 0.6
+                //self.textColor = GMColor.textColorLoopiTextFieldDisable()
+                //self.tintColor = GMColor.textColorLoopiTextFieldDisable()
+                label.text = labelString
+            }else{
+                var image = UIImage(named:StringValues.iconeEditar)!
+                image.withRenderingMode(.alwaysTemplate)
+                image = image.tint(with: GMColor.colorPrimaryDark())
+                let attachment = NSTextAttachment()
+                attachment.image = image
+                let attachmentString = NSAttributedString(attachment: attachment)
+                let myString = NSMutableAttributedString(string: labelString)
+                myString.append(attachmentString)
+                label.attributedText = myString
+            }
+        }else if validations.contains(.SENHA) {
+            let nomeIcone = secureTextEntry ? StringValues.iconeMostrar :  StringValues.iconeOcultar
+            var image = UIImage(named:nomeIcone)!
+            image.withRenderingMode(.alwaysTemplate)
+            let tintIcone = secureTextEntry ? GMColor.colorPrimary() : GMColor.textColorLoopiTextFieldDisable()
+            image = image.tint(with: tintIcone)
+            let attachment = NSTextAttachment()
+            attachment.image = image
+            let attachmentString = NSAttributedString(attachment: attachment)
+            let myString = NSMutableAttributedString(string: labelString)
+            myString.append(attachmentString)
+            self.isSecureTextEntry = self.secureTextEntry
+            label.attributedText = myString
+            
+            let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(tapAction))
+            label.addGestureRecognizer(gestureRecognizer)
+        }else{
+            label.text = labelString
+        }
+    }
+    
+   
+    @objc func tapAction()  {
+        setSecureTextEntry(secureTextEntry: !self.secureTextEntry)
+        setTitleLabel()
+    }
+    
     func setTitle() {
+        self.delegate = self
         let widthTextField = frame.size.width
         let heightTextField = frame.size.height - CGFloat((2 * ConstraintsView.widthBorderLoopiTextField()))
         label.frame = CGRect(x:0, y: -(heightTextField), width: widthTextField , height:heightTextField)
         label.textAlignment = alignment
-        label.text = labelString
+        setTitleLabel()
         label.font = fontLoopiTextField
         label.tintColor = textColorLoopiTextField
         label.textColor = textColorLoopiTextField
         self.leftViewMode = UITextFieldViewMode.always
         self.leftView = label
+    
     }
     
     func setTitle(frameLoopiTextField : CGRect) {
+        self.delegate = self
         label.frame = frameLoopiTextField
         label.textAlignment = alignment
-        label.text = labelString
+        setTitleLabel()
         label.font = fontLoopiTextField
         label.tintColor = textColorLoopiTextField
         label.textColor = textColorLoopiTextField
@@ -69,6 +129,18 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
     
     func setFontLoopiTextField(fontLoopiTextField : UIFont) {
         self.fontLoopiTextField = fontLoopiTextField
+    }
+    
+    func setInstanceController(instanceController : Bool) {
+        self.instanceController = instanceController
+    }
+    
+    func setSecureTextEntry(secureTextEntry : Bool) {
+        self.secureTextEntry = secureTextEntry
+    }
+    
+    func setEditavel(editavel : Bool) {
+        self.editavel = editavel
     }
     
     func setAlignmentTitle(alignment : NSTextAlignment) {
@@ -92,9 +164,10 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
     }
     
     func setError(erro : String, widthTextField: CGFloat , heightTextField:CGFloat, y:CGFloat) {
+        self.erro = erro
         error.frame = CGRect(x:0, y: y, width: widthTextField , height:heightTextField)
         error.textAlignment = NSTextAlignment.right
-        error.text = erro
+        error.text = self.erro
         error.font = UIFont.italicSystemFont(ofSize: 16.0)
         error.textColor = GMColor.textColorError()
         self.rightViewMode = UITextFieldViewMode.always
@@ -113,16 +186,29 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
+        if validations.contains(.CPF_CNPJ) {
+            if  error.text?.isEmptyAndContainsNoWhitespace() ?? true {
+                textField.text? = LoopiTextFieldUtil.mask(valorMask: textField.text!)
+            }else{
+                textField.text? = LoopiTextFieldUtil.unmask(string: textField.text!)
+            }
+        }
         textFieldDidEndEditing = true
-        //setError(erro: "")
+        if instanceController {
+           textDidEndEditing(erro: error.text!)
+        }
     }
     
-   
     
     override func editingRect(forBounds bounds: CGRect) -> CGRect {
         let value : String = self.text!
-        var erro = ""
-        
+        if validations.contains(.OBRIGATORIO){
+            if value.isEmptyAndContainsNoWhitespace() {
+                erro = "Campo Obrigatorio"
+            }else{
+                erro = ""
+            }
+        }
         if validations.contains(.EMAIL){
             let nameReg = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
             let nameTest = NSPredicate(format: "SELF MATCHES %@", nameReg)
@@ -148,30 +234,52 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         
         if validations.contains(.CODIGO_CONVITE){
             if  value.isNotEmptyAndContainsNoWhitespace() && !(value.count == 8) {
-                    erro = "Codigo do Convite Invalido"
+                erro = "Codigo do Convite Invalido"
             }
         }
         
-        if validations.contains(.OBRIGATORIO){
-            if value.isEmptyAndContainsNoWhitespace() {
-                erro = "Campo Obrigatorio"
+        if validations.contains(.CODIGO_ALTERAR_SENHA){
+            if  value.isNotEmptyAndContainsNoWhitespace() && !(value.count == 6) {
+                erro = "Codigo de Alteracao Invalido"
             }
         }
+        
+        if validations.contains(.CPF_CNPJ){
+            //let valor = value.unmask(string: value)
+            if  !(cpfCnpjValido(valor: value)) {
+                erro = "CPF ou CNPJ Invalido"
+            }
+        }
+        
+       
         if value.isNotEmptyAndContainsNoWhitespace() && value.count > tamanhoCampo{
             self.text?.removeLast()
         }
         if textFieldDidEndEditing {
-            textColorLoopiTextField = erro.isEmptyAndContainsNoWhitespace() ? GMColor.textColorPrimary() :  GMColor.textColorError()
-            erro = ""
-            textFieldDidEndEditing = false
-            setTitle()
+            textDidEndEditing(erro: erro)
         }
-        
-       // self.text = value.applyPatternOnNumbers(pattern: maskString, replacmentCharacter: "#")
         setError(erro: erro)
         return bounds.insetBy(dx: horizontalInset , dy: verticalInset)
     }
    
+    func textDidEndEditing(erro : String) {
+        self.existeErro = erro.isNotEmptyAndContainsNoWhitespace()
+        textColorLoopiTextField = erro.isEmptyAndContainsNoWhitespace() ? GMColor.textColorPrimary() :  GMColor.textColorError()
+        textFieldDidEndEditing = false
+        setTitle()
+        setError(erro: "")
+    }
+    
+    
+    func cpfCnpjValido(valor: String) -> Bool {
+        let unmaskValor = LoopiTextFieldUtil.unmask(string: valor)
+        if (unmaskValor.count == 11){
+            return LoopiTextFieldUtil.isValidCPF(valor:unmaskValor)
+        }else if (unmaskValor.count ==  14){
+            return LoopiTextFieldUtil.isValidCNPJ(valor:unmaskValor)
+        }
+        return false
+    }
     /**
      * Called when 'return' key pressed. return NO to ignore.
      */
@@ -187,9 +295,11 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.endEditing(true)
     }
+    
 }
 
 extension String {
+   
     func isEmptyAndContainsNoWhitespace() -> Bool {
         guard self.isEmpty, self.trimmingCharacters(in: .whitespaces).isEmpty, self.isBlank()
             else {

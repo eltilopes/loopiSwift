@@ -9,6 +9,11 @@ import UIKit
 
 class ConstraintsView {
     class func heightLeftPaddedTextField() -> Int { return 50 }
+    class func heightLoopiTextField() -> CGFloat { return 50.0 }
+    class func marginTopButtonLogin() -> CGFloat { return 15.0 }
+    class func marginButtonLogin() -> CGFloat { return 30.0 }
+    class func marginTopLoopiTextField() -> CGFloat { return 40.0 }
+    class func marginLoopiTextField() -> CGFloat { return 30.0 }
     class func heightCheckBoxButton() -> Int { return 40 }
     class func heightHeaderTitleLabel() -> Int { return 30 }
     class func heightSeparatorLineView() -> Int { return 10 }
@@ -21,5 +26,6 @@ class ConstraintsView {
     class func fontSmall() -> CGFloat { return 16.0 }
     class func fontMedium() -> CGFloat { return 20.0 }
     class func fontBig() -> CGFloat { return 24.0 }
+    class func tagAbrirEditarUsuario() -> Int { return 99}
     
 }

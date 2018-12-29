@@ -10,33 +10,48 @@ import UIKit
 
 class LoginCell: UICollectionViewCell {
     
+    var usuario = Usuario()
+    
     let logoImageView: UIImageView = {
         let image = UIImage(named: "logo_loopi")
         let imageView = UIImageView(image: image)
         return imageView
     }()
     
-    let loginTextField: LeftPaddedTextField = {
-        let textField = LeftPaddedTextField()
-        textField.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
-        textField.layer.borderColor = GMColor.whiteColor().cgColor
-        textField.layer.borderWidth = 2
-        textField.textColor = GMColor.textColorPrimary()
-        textField.attributedPlaceholder = NSAttributedString(string: "CPF / CNPJ", attributes: [NSAttributedStringKey.foregroundColor : GMColor.textColorPrimary()])
-        textField.keyboardType = .numberPad
-        textField.text = "012.345.678-90"
+    lazy var usuarioTextField: LoopiTextField = {
+        let textField = LoopiTextField()
+        textField.backgroundColor = GMColor.backgroundColorLoopiTextField()
+        //textField.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
+        textField.labelString = "CPF / CNPJ"
+        textField.textAlignment = .left
+        textField.setBackgroundColorLoopiTextField(backgroundColorLoopiTextField: GMColor.backgroundColorLoopiTextField())
+        textField.setFontLoopiTextField(fontLoopiTextField: UIFont.systemFont(ofSize: ConstraintsView.fontMedium()))
+        textField.horizontalInset = CGFloat(5)
+        textField.verticalInset = CGFloat(5)
+        textField.validations = [.OBRIGATORIO,.CPF_CNPJ]
+        textField.keyboardType = .namePhonePad
+        textField.tamanhoCampo = 18
+        textField.setInstanceController(instanceController: true)
+        textField.text = LoopiTextFieldUtil.mask(valorMask: usuario.cpf!)
+        textField.setTitle()
         return textField
     }()
     
-    let senhaTextField: LeftPaddedTextField = {
-        let textField = LeftPaddedTextField()
-        textField.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
-        textField.layer.borderColor = GMColor.whiteColor().cgColor
-        textField.layer.borderWidth = 2
-        textField.textColor = GMColor.textColorPrimary()
-        textField.attributedPlaceholder = NSAttributedString(string: "SENHA", attributes: [NSAttributedStringKey.foregroundColor : GMColor.textColorPrimary()])
+    lazy var senhaTextField: LoopiTextField = {
+        let textField = LoopiTextField()
+        textField.backgroundColor = GMColor.backgroundColorLoopiTextField()
+        //textField.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
+        textField.labelString = "SENHA"
+        textField.textAlignment = .left
+        textField.setBackgroundColorLoopiTextField(backgroundColorLoopiTextField: GMColor.backgroundColorLoopiTextField())
+        textField.setFontLoopiTextField(fontLoopiTextField: UIFont.systemFont(ofSize: ConstraintsView.fontMedium()))
+        textField.horizontalInset = CGFloat(5)
+        textField.verticalInset = CGFloat(5)
+        textField.validations = [.OBRIGATORIO]
         textField.isSecureTextEntry = true
-        textField.text = "0123456"
+        textField.setInstanceController(instanceController: true)
+        textField.setTitle()
+        textField.text = (usuario.senha?.isEmptyAndContainsNoWhitespace())! ? "" : usuario.senha
         return textField
     }()
     
@@ -48,30 +63,6 @@ class LoginCell: UICollectionViewCell {
         button.setTitle("ENTRAR", for: .normal)
         button.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
         return button
-    }()
-    
-    lazy var criarContaView: UIStackView = {
-        let criarContaView = UIStackView()
-        criarContaView.clipsToBounds = true
-        criarContaView.axis  = UILayoutConstraintAxis.horizontal
-        criarContaView.distribution  = UIStackViewDistribution.equalSpacing
-        criarContaView.alignment = UIStackViewAlignment.center
-        
-        let dialogViewWidth = frame.width-64
-        
-        let buttonCriarConta = UIButton()
-        buttonCriarConta.backgroundColor = GMColor.grey300Color()
-        buttonCriarConta.addTarget(self, action: #selector(criarConta), for: .touchUpInside)
-        buttonCriarConta.setTitleColor(GMColor.colorPrimary(), for: .normal)
-        buttonCriarConta.setTitle("CRIAR CONTA", for: .normal)
-        buttonCriarConta.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
-        buttonCriarConta.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightHeaderTitleLabel())).isActive = true
-        criarContaView.addArrangedSubview(buttonCriarConta)
-        
-        criarContaView.translatesAutoresizingMaskIntoConstraints = false
-        criarContaView.backgroundColor = UIColor.white
-        criarContaView.layer.cornerRadius = 6
-        return criarContaView
     }()
     
     lazy var pedirConviteView: UIStackView = {
@@ -100,26 +91,28 @@ class LoginCell: UICollectionViewCell {
     
     weak var delegate: LoginControllerDelegate?
     
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
+        usuario = UserDefaults.standard.getUsuario()
         addSubview(logoImageView)
-        addSubview(loginTextField)
+        addSubview(usuarioTextField)
+        //addSubview(loginTextField)
         addSubview(senhaTextField)
         addSubview(loginButton)
-        //addSubview(criarContaView)
         addSubview(pedirConviteView)
         
         _ = logoImageView.anchor(top: centerYAnchor, left: nil, bottom: nil, right: nil, topConstant: -200, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: 120, heightConstant: 120)
         logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
-        _ = loginTextField.anchor(top: logoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
+        _ = usuarioTextField.anchor(top: logoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: ConstraintsView.marginTopLoopiTextField(), leftConstant: ConstraintsView.marginLoopiTextField(), bottomConstant: 0, rightConstant: ConstraintsView.marginLoopiTextField(), widthConstant: 0, heightConstant: ConstraintsView.heightLoopiTextField())
         
-        _ = senhaTextField.anchor(top: loginTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 30, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
+        //_ = loginTextField.anchor(top: usuarioTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
         
-        _ = loginButton.anchor(top: senhaTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 15, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
+        _ = senhaTextField.anchor(top: usuarioTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: ConstraintsView.marginTopLoopiTextField(), leftConstant: ConstraintsView.marginLoopiTextField(), bottomConstant: 0, rightConstant: ConstraintsView.marginLoopiTextField(), widthConstant: 0, heightConstant: ConstraintsView.heightLoopiTextField())
         
-        _ = pedirConviteView.anchor(top: loginButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 15, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
+        _ = loginButton.anchor(top: senhaTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: ConstraintsView.marginTopButtonLogin(), leftConstant:ConstraintsView.marginButtonLogin() , bottomConstant: 0, rightConstant: ConstraintsView.marginButtonLogin(), widthConstant: 0, heightConstant: ConstraintsView.heightLoopiTextField())
+        
+        _ = pedirConviteView.anchor(top: loginButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: ConstraintsView.marginTopButtonLogin(), leftConstant: ConstraintsView.marginButtonLogin(), bottomConstant: 0, rightConstant: ConstraintsView.marginButtonLogin(), widthConstant: 0, heightConstant: ConstraintsView.heightLoopiTextField())
     }
     
     
@@ -130,13 +123,9 @@ class LoginCell: UICollectionViewCell {
     
     @objc func handleLogin() {
         let usuario = Usuario()
-        usuario.cpf = loginTextField.text
-        usuario.senha = senhaTextField.text
+        usuario.cpf = usuarioTextField.existeErro  ? "" : LoopiTextFieldUtil.unmask(string: usuarioTextField.text!)
+        usuario.senha = senhaTextField.existeErro  ? "" : senhaTextField.text
         delegate?.finishedLogIn(usuario: usuario)
-    }
-    
-    @objc func criarConta() {
-        delegate?.criarConta()
     }
     
     @objc func pedirConvite() {

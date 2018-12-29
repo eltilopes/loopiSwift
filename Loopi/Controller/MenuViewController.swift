@@ -127,10 +127,21 @@ class MenuViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let editarUsuarioImage = UIImage(named: "ic_editar")
         let editarUsuarioImageView = UIImageView(image: editarUsuarioImage)
+        let tapGestureRecognizerEditarUsuario = UITapGestureRecognizer(target: self, action: #selector(abrirEditarUsuarioAction))
+        
         editarUsuarioImageView.frame = CGRect(x:tableView.frame.size.width - 2 * ConstraintsView.fontBig() , y:heightTableView - ConstraintsView.fontBig() , width: ConstraintsView.fontBig() , height:ConstraintsView.fontBig())
         editarUsuarioImageView.contentMode = .scaleAspectFill
+        editarUsuarioImageView.isUserInteractionEnabled = true
+        editarUsuarioImageView.addGestureRecognizer(tapGestureRecognizerEditarUsuario)
+        //editarUsuarioImageView.target(forAction: #selector(abrirEditarUsuarioAction), withSender: self)
         vw.addSubview(editarUsuarioImageView)
         return vw
+    }
+    
+    @objc func abrirEditarUsuarioAction() {
+        let btn = UIButton(type: UIButtonType.custom)
+        btn.tag = ConstraintsView.tagAbrirEditarUsuario()
+        self.onCloseMenuClick(btn)
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {

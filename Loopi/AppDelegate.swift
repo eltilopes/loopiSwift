@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var window: UIWindow?
     
+    let customURLScheme = "dlscheme"
     let gcmMessageIDKey = "gcm.message_id"
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -29,7 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // FirebaseApp.configure()
-        
+        // Set deepLinkURLScheme to the custom URL scheme you defined in your
+        // Xcode project.
+        FirebaseOptions.defaultOptions()?.deepLinkURLScheme = self.customURLScheme
         FirebaseApp.configure()
         
         // Register for remote notifications. This shows a permission dialog on first run, to
@@ -76,8 +79,74 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("***** MY FCM token: \(token ?? "")")
         NotificationCenter.default.addObserver(self, selector: "tokenRefreshNotification:", name: NSNotification.Name.InstanceIDTokenRefresh, object: nil)
 
+        
+
         return true
     }
+    
+    
+    // [START openurl]
+    @available(iOS 9.0, *)
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any]) -> Bool {
+        return application(app, open: url,
+                           sourceApplication: options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String,
+                           annotation: "")
+    }
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+            // Handle the deep link. For example, show the deep-linked content or
+            // apply a promotional offer to the user's account.
+            // [START_EXCLUDE]
+            // In this sample, we just open an alert.
+            handleDynamicLink(dynamicLink)
+            // [END_EXCLUDE]
+            return true
+        }
+        // [START_EXCLUDE silent]
+        // Show the deep link that the app was called with.
+        showDeepLinkAlertView(withMessage: "openURL:\n\(url)")
+        // [END_EXCLUDE]
+        return false
+    }
+    // [END openurl]
+    // [START continueuseractivity]
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        let handled = DynamicLinks.dynamicLinks().handleUniversalLink(userActivity.webpageURL!) { (dynamiclink, error) in
+            // [START_EXCLUDE]
+            // [END_EXCLUDE]
+        }
+        
+        // [START_EXCLUDE silent]
+        if !handled {
+            // Show the deep link URL from userActivity.
+            let message = "continueUserActivity webPageURL:\n\(userActivity.webpageURL?.absoluteString ?? "")"
+            showDeepLinkAlertView(withMessage: message)
+        }
+        // [END_EXCLUDE]
+        return handled
+    }
+    // [END continueuseractivity]
+    func handleDynamicLink(_ dynamicLink: DynamicLink) {
+        let matchConfidence: String
+        if dynamicLink.matchType == .weak {
+            matchConfidence = "Weak"
+        } else {
+            matchConfidence = "Strong"
+        }
+        let message = "App URL: \(dynamicLink.url?.absoluteString ?? "")\n" +
+        "Match Confidence: \(matchConfidence)\nMinimum App Version: \(dynamicLink.minimumAppVersion ?? "")"
+        showDeepLinkAlertView(withMessage: message)
+    }
+    
+    func showDeepLinkAlertView(withMessage message: String) {
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        let alertController = UIAlertController(title: "Deep-link Data", message: message, preferredStyle: .alert)
+        alertController.addAction(okAction)
+        self.window?.rootViewController?.present(alertController, animated: true, completion: nil)
+    }
+    
     
     func application(_ application: UIApplication,
                      didRegister notificationSettings: UIUserNotificationSettings) {
