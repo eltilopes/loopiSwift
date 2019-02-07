@@ -15,7 +15,6 @@ class RestError : HandyJSON {
     
     var erro = ""
     var descricao = ""
-    
     func mapping(mapper: HelpingMapper) {
         mapper <<<
             self.erro <-- RestConfig().ERROR

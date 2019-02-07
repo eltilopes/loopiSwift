@@ -55,6 +55,7 @@ class UsuarioRest : RestAdapeter {
         print(usuario.toJSONString(prettyPrint: true)!)
         let usuarioDict = convertToDictionary(jsonString: usuario.toJSONString(prettyPrint: true)! )!
         print(UserDefaults.standard.getToken())
+        let cpf = usuario.cpf
         let url = NSURL(string: API_URL + URL_RESGATAR_SENHA)!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = POST_METHOD
@@ -62,7 +63,7 @@ class UsuarioRest : RestAdapeter {
         request.timeoutInterval = 100.0
         request.addValue(HTTP_HEADER_VALUE_APPLICATION_JSON, forHTTPHeaderField: HTTP_HEADER_FIELD_CONTENT_TYPE)
         request.addValue(HTTP_HEADER_VALUE_APPLICATION_JSON, forHTTPHeaderField: HTTP_HEADER_FIELD_ACCEPT)
-        request.addValue("Bearer " + UserDefaults.standard.getToken(), forHTTPHeaderField: HTTP_HEADER_FIELD_AUTHORIZATION)
+        //request.addValue("Bearer " + UserDefaults.standard.getToken(), forHTTPHeaderField: HTTP_HEADER_FIELD_AUTHORIZATION)
         if let jsonData = try? JSONSerialization.data(withJSONObject: usuarioDict, options: []) {
             request.httpBody = jsonData
         }
@@ -87,8 +88,8 @@ class UsuarioRest : RestAdapeter {
     }
     
     @discardableResult
-    func alterarSenha(alterarSenhaVo : AlterarSenhaVo, completionHandler: @escaping (Usuario?,NSError?) -> Void ) -> URLSessionTask {
-        let alterarSenhaVoDict = convertToDictionary(jsonString: usuario.toJSONString(prettyPrint: true)! )!
+    func alterarSenha(alterarSenhaVo : AlterarSenhaVo, completionHandler: @escaping (Usuario?,String,NSError?) -> Void ) -> URLSessionTask {
+        let alterarSenhaVoDict = convertToDictionary(jsonString: alterarSenhaVo.toJSONString(prettyPrint: true)! )!
         print(alterarSenhaVoDict.jsonString!)
         let url = NSURL(string: API_URL + URL_ALTERAR_SENHA)!
         let request = NSMutableURLRequest(url: url as URL)
@@ -97,7 +98,7 @@ class UsuarioRest : RestAdapeter {
         request.timeoutInterval = 100.0
         request.addValue(HTTP_HEADER_VALUE_APPLICATION_JSON, forHTTPHeaderField: HTTP_HEADER_FIELD_CONTENT_TYPE)
         request.addValue(HTTP_HEADER_VALUE_APPLICATION_JSON, forHTTPHeaderField: HTTP_HEADER_FIELD_ACCEPT)
-        request.addValue("Bearer " + UserDefaults.standard.getToken(), forHTTPHeaderField: HTTP_HEADER_FIELD_AUTHORIZATION)
+        //request.addValue("Bearer " + UserDefaults.standard.getToken(), forHTTPHeaderField: HTTP_HEADER_FIELD_AUTHORIZATION)
         if let jsonData = try? JSONSerialization.data(withJSONObject: alterarSenhaVoDict, options: []) {
             request.httpBody = jsonData
         }
@@ -106,16 +107,21 @@ class UsuarioRest : RestAdapeter {
         
         let task = URLSession.shared.dataTask(with: request as URLRequest){ data,response,error in
             if error != nil{
-                completionHandler(nil, error as NSError?)
+                completionHandler(nil,"", error as NSError?)
                 return
             }
             
             
             let jsonString = String(data: data!, encoding: .utf8)
-            if jsonString?.isNotEmptyAndContainsNoWhitespace() ?? false {
-                self.usuario = Usuario.deserialize(from: jsonString!)!
+            let erro = self.getError(jsonString: jsonString!)
+            if (erro?.erro.isBlank())! {
+                if jsonString?.isNotEmptyAndContainsNoWhitespace() ?? false {
+                    self.usuario = Usuario.deserialize(from: jsonString!)!
+                    completionHandler(self.usuario,"",nil)
+                }
+            }else {
+                completionHandler(nil,(erro?.erro)!, nil)
             }
-            completionHandler(self.usuario,nil)
         }
         task.resume()
         return task

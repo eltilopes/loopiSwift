@@ -24,7 +24,7 @@ class LoopiAlertController : UIAlertController {
         let width = self.view.bounds.width
         let height = UIScreen.main.bounds.height
         subview.backgroundColor = self.backgroundColorLoopiAlert
-        self.view.frame = CGRect(x:margin * 2.0, y:height*0.7, width: width - margin , height:height*0.2)
+        self.view.frame = CGRect(x:margin * 2.0, y:height*0.4, width: width - margin , height:height*0.2)
         
     }
     

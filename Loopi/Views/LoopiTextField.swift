@@ -34,6 +34,7 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
     var borderColorLoopiTextField = GMColor.whiteColor().cgColor
     var fontLoopiTextField = UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
     var textColorLoopiTextField: UIColor = GMColor.textColorPrimary()
+    var keyboardTipo : UIKeyboardType = .default
     var textFieldDidEndEditing = false
     var instanceController = false
     var secureTextEntry = false
@@ -109,6 +110,7 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         label.font = fontLoopiTextField
         label.tintColor = textColorLoopiTextField
         label.textColor = textColorLoopiTextField
+        self.keyboardType = keyboardTipo
         self.leftViewMode = UITextFieldViewMode.always
         self.leftView = label
     
@@ -122,6 +124,7 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         label.font = fontLoopiTextField
         label.tintColor = textColorLoopiTextField
         label.textColor = textColorLoopiTextField
+        self.keyboardType = keyboardTipo
         self.leftViewMode = UITextFieldViewMode.always
         self.leftView = label
         textRect(forBounds: frameLoopiTextField)
@@ -129,6 +132,10 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
     
     func setFontLoopiTextField(fontLoopiTextField : UIFont) {
         self.fontLoopiTextField = fontLoopiTextField
+    }
+    
+    func setKeyboardType(keyboardTipo : UIKeyboardType) {
+        self.keyboardTipo = keyboardTipo
     }
     
     func setInstanceController(instanceController : Bool) {
@@ -239,8 +246,14 @@ class LoopiTextField: UITextField,UITextFieldDelegate {
         }
         
         if validations.contains(.CODIGO_ALTERAR_SENHA){
-            if  value.isNotEmptyAndContainsNoWhitespace() && !(value.count == 6) {
+            if  value.isNotEmptyAndContainsNoWhitespace() && !value.isAlphaNumeric(tamanhoCampo: 6) {
                 erro = "Codigo de Alteracao Invalido"
+            }
+        }
+        
+        if validations.contains(.SENHA){
+            if  value.isNotEmptyAndContainsNoWhitespace() && !value.isAlphaNumeric(tamanhoCampo: 8) {
+                erro = "Senha Invalido"
             }
         }
         
@@ -318,6 +331,16 @@ extension String {
     
     func matches(_ regex: String) -> Bool {
         return self.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil
+    }
+    
+    func isAlphaNumeric(tamanhoCampo: Int) -> Bool {
+        let regex = "^(?=.*[A-Z])(?=.*\\d)[A-Z\\d]{\(tamanhoCampo),}$"
+        let rang = range(of: regex, options: .regularExpression)
+        let retorno = rang == nil
+        print(regex)
+        print(rang)
+        print(retorno)
+        return retorno
     }
     
     func applyPatternOnNumbers(pattern: String, replacmentCharacter: Character) -> String {

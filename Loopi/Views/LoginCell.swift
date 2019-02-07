@@ -29,10 +29,11 @@ class LoginCell: UICollectionViewCell {
         textField.horizontalInset = CGFloat(5)
         textField.verticalInset = CGFloat(5)
         textField.validations = [.OBRIGATORIO,.CPF_CNPJ]
-        textField.keyboardType = .namePhonePad
+        textField.setKeyboardType(keyboardTipo: .phonePad)
         textField.tamanhoCampo = 18
         textField.setInstanceController(instanceController: true)
-        textField.text = LoopiTextFieldUtil.mask(valorMask: usuario.cpf!)
+        //print(usuario.cpf ?? "")
+        textField.text = LoopiTextFieldUtil.mask(valorMask: usuario.cpf ?? "")
         textField.setTitle()
         return textField
     }()
@@ -51,8 +52,44 @@ class LoginCell: UICollectionViewCell {
         textField.isSecureTextEntry = true
         textField.setInstanceController(instanceController: true)
         textField.setTitle()
-        textField.text = (usuario.senha?.isEmptyAndContainsNoWhitespace())! ? "" : usuario.senha
+        let senha = usuario.senha ?? ""
+        textField.text = getSenha(senhaTextField: textField, senha: senha )
         return textField
+    }()
+    
+    func getSenha(senhaTextField: LoopiTextField, senha : String) -> String {
+        var senhaCorreta = senha ?? ""
+        if(senhaCorreta == StringValues.senha){
+            senhaCorreta = ""
+        }
+        return (senhaCorreta.isEmptyAndContainsNoWhitespace()) ? "" : senhaCorreta
+    }
+    
+    lazy var esqueciSenhaView: UIStackView = {
+        let esqueciSenhaView = UIStackView()
+        esqueciSenhaView.clipsToBounds = true
+        esqueciSenhaView.axis  = UILayoutConstraintAxis.horizontal
+        esqueciSenhaView.distribution  = UIStackViewDistribution.equalSpacing
+        esqueciSenhaView.alignment = UIStackViewAlignment.lastBaseline
+        esqueciSenhaView.semanticContentAttribute = UIApplication.shared
+            .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
+        
+        let dialogViewWidth = frame.width-64
+        let heightButton = ConstraintsView.heightHeaderTitleLabel() / 2
+        
+        let buttonEsqueciSenha = UIButton()
+        buttonEsqueciSenha.backgroundColor = GMColor.grey300Color()
+        buttonEsqueciSenha.addTarget(self, action: #selector(esqueciSenha), for: .touchUpInside)
+        buttonEsqueciSenha.setTitleColor(GMColor.colorPrimary(), for: .normal)
+        buttonEsqueciSenha.setTitle("esqueci senha", for: .normal)
+        buttonEsqueciSenha.widthAnchor.constraint(equalToConstant: CGFloat(dialogViewWidth)).isActive = true
+        buttonEsqueciSenha.heightAnchor.constraint(equalToConstant: CGFloat(heightButton)).isActive = true
+        esqueciSenhaView.addArrangedSubview(buttonEsqueciSenha)
+        
+        esqueciSenhaView.translatesAutoresizingMaskIntoConstraints = false
+        esqueciSenhaView.backgroundColor = UIColor.white
+        esqueciSenhaView.layer.cornerRadius = 6
+        return esqueciSenhaView
     }()
     
     lazy var loginButton: UIButton = {
@@ -96,8 +133,8 @@ class LoginCell: UICollectionViewCell {
         usuario = UserDefaults.standard.getUsuario()
         addSubview(logoImageView)
         addSubview(usuarioTextField)
-        //addSubview(loginTextField)
         addSubview(senhaTextField)
+        addSubview(esqueciSenhaView)
         addSubview(loginButton)
         addSubview(pedirConviteView)
         
@@ -105,12 +142,12 @@ class LoginCell: UICollectionViewCell {
         logoImageView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
         
         _ = usuarioTextField.anchor(top: logoImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: ConstraintsView.marginTopLoopiTextField(), leftConstant: ConstraintsView.marginLoopiTextField(), bottomConstant: 0, rightConstant: ConstraintsView.marginLoopiTextField(), widthConstant: 0, heightConstant: ConstraintsView.heightLoopiTextField())
-        
-        //_ = loginTextField.anchor(top: usuarioTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: 20, leftConstant: 30, bottomConstant: 0, rightConstant: 30, widthConstant: 0, heightConstant: 50)
-        
+ 
         _ = senhaTextField.anchor(top: usuarioTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: ConstraintsView.marginTopLoopiTextField(), leftConstant: ConstraintsView.marginLoopiTextField(), bottomConstant: 0, rightConstant: ConstraintsView.marginLoopiTextField(), widthConstant: 0, heightConstant: ConstraintsView.heightLoopiTextField())
         
-        _ = loginButton.anchor(top: senhaTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: ConstraintsView.marginTopButtonLogin(), leftConstant:ConstraintsView.marginButtonLogin() , bottomConstant: 0, rightConstant: ConstraintsView.marginButtonLogin(), widthConstant: 0, heightConstant: ConstraintsView.heightLoopiTextField())
+        _ = esqueciSenhaView.anchor(top: senhaTextField.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: ConstraintsView.marginTopButtonLogin(), leftConstant: ConstraintsView.marginLoopiTextField(), bottomConstant: 0, rightConstant: ConstraintsView.marginLoopiTextField(), widthConstant: 0, heightConstant: ConstraintsView.marginTopButtonLogin())
+        
+        _ = loginButton.anchor(top: esqueciSenhaView.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: ConstraintsView.marginTopButtonLogin(), leftConstant:ConstraintsView.marginButtonLogin() , bottomConstant: 0, rightConstant: ConstraintsView.marginButtonLogin(), widthConstant: 0, heightConstant: ConstraintsView.heightLoopiTextField())
         
         _ = pedirConviteView.anchor(top: loginButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, topConstant: ConstraintsView.marginTopButtonLogin(), leftConstant: ConstraintsView.marginButtonLogin(), bottomConstant: 0, rightConstant: ConstraintsView.marginButtonLogin(), widthConstant: 0, heightConstant: ConstraintsView.heightLoopiTextField())
     }
@@ -130,6 +167,12 @@ class LoginCell: UICollectionViewCell {
     
     @objc func pedirConvite() {
         delegate?.pedirConvite()
+    }
+    
+    @objc func esqueciSenha() {
+        let usuario = Usuario()
+        usuario.cpf = usuarioTextField.existeErro  ? "" : LoopiTextFieldUtil.unmask(string: usuarioTextField.text!)
+        delegate?.esqueciSenha(usuario: usuario)
     }
     
 }

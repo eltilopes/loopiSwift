@@ -19,6 +19,8 @@ class AlterarSenhaViewController: UIViewController, UIScrollViewDelegate  {
     @IBOutlet weak var textFieldConfirmacaoSenha: LoopiTextField!
     @IBOutlet weak var textFieldCodigo: LoopiTextField!
     @IBOutlet var buttonAlterarSenha: UIButton!
+    @IBOutlet var buttonVoltar: UIButton!
+    
     var usuario = Usuario()
     let activityProgressLoopi = ActivityProgressLoopi()
     var indicator:UIActivityIndicatorView!
@@ -51,18 +53,24 @@ class AlterarSenhaViewController: UIViewController, UIScrollViewDelegate  {
         self.textFieldNovaSenha.setBackgroundColorLoopiTextField(backgroundColorLoopiTextField: GMColor.whiteColor())
         self.textFieldNovaSenha.setFontLoopiTextField(fontLoopiTextField: UIFont.systemFont(ofSize: ConstraintsView.fontMedium()))
         self.textFieldNovaSenha.setSecureTextEntry(secureTextEntry: true)
-        self.textFieldNovaSenha.text = (usuario.senha?.isEmptyAndContainsNoWhitespace())! ? "" : usuario.senha
+        //self.textFieldNovaSenha.setKeyboardType(keyboardTipo: .phonePad)
+        self.textFieldNovaSenha.setEditavel(editavel: true)
         self.textFieldNovaSenha.setTitle()
+        
         
         self.textFieldConfirmacaoSenha.validations = [.OBRIGATORIO, .SENHA]
         self.textFieldConfirmacaoSenha.setBackgroundColorLoopiTextField(backgroundColorLoopiTextField: GMColor.whiteColor())
         self.textFieldConfirmacaoSenha.setFontLoopiTextField(fontLoopiTextField: UIFont.systemFont(ofSize: ConstraintsView.fontMedium()))
         self.textFieldConfirmacaoSenha.setSecureTextEntry(secureTextEntry: true)
+        //self.textFieldConfirmacaoSenha.setKeyboardType(keyboardTipo: .phonePad)
+        self.textFieldConfirmacaoSenha.setEditavel(editavel: true)
         self.textFieldConfirmacaoSenha.setTitle()
         
         self.textFieldCodigo.validations = [.OBRIGATORIO,.CODIGO_ALTERAR_SENHA]
         self.textFieldCodigo.setBackgroundColorLoopiTextField(backgroundColorLoopiTextField: GMColor.whiteColor())
         self.textFieldCodigo.setFontLoopiTextField(fontLoopiTextField: UIFont.systemFont(ofSize: ConstraintsView.fontMedium()))
+        //self.textFieldCodigo.setKeyboardType(keyboardTipo: .phonePad)
+        self.textFieldCodigo.setEditavel(editavel: true)
         self.textFieldCodigo.setTitle()
         
         
@@ -74,19 +82,36 @@ class AlterarSenhaViewController: UIViewController, UIScrollViewDelegate  {
         self.buttonAlterarSenha.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightLeftPaddedTextField() )).isActive = true
         
         
+        self.buttonVoltar.setTitle("VOLTAR", for: .normal)
+        self.buttonVoltar.setTitleColor(GMColor.whiteColor(), for: .normal)
+        self.buttonVoltar.backgroundColor = GMColor.buttonOrangeColor()
+        self.buttonVoltar.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+        self.buttonVoltar.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
+        self.buttonVoltar.heightAnchor.constraint(equalToConstant: CGFloat(ConstraintsView.heightLeftPaddedTextField() )).isActive = true
+        
+        
         self.indicator = self.activityProgressLoopi.startActivity(controller: self)
         resgataSenhaRest()
         
     }
     
+    @objc func backAction() {
+        if let nav = self.navigationController {
+            nav.popViewController(animated: true)
+        } else {
+            self.dismiss(animated: true, completion: nil)
+        }
+    }
     
     func resgataSenhaRest() {
         usuarioRest.resgatarSenha(usuario: self.usuario ){  usuario, error in
             if error == nil {
                 self.usuario = usuario!
-                self.activityProgressLoopi.stopActivity(controller: self,indicator: self.indicator)
                 self.showToast(message: "Verifique seu email para obter o codigo", backgroundColorLoopiAlert: GMColor.backgroundAlertInfoColor())
+                self.activityProgressLoopi.stopActivity(controller: self,indicator: self.indicator)
+                
             }else{
+                print((error?.localizedDescription)!)
                 self.activityProgressLoopi.stopActivity(controller: self,indicator: self.indicator)
                 self.showToast(message: (error?.localizedDescription)!)
             }
@@ -99,6 +124,7 @@ class AlterarSenhaViewController: UIViewController, UIScrollViewDelegate  {
         let senhaValida = (textFieldNovaSenha.text?.isEmptyAndContainsNoWhitespace())! && !(textFieldNovaSenha.existeErro)
         let novaSenhaValida = (textFieldConfirmacaoSenha.text?.isEmptyAndContainsNoWhitespace())! && !(textFieldConfirmacaoSenha.existeErro)
         let codigoValido = (textFieldCodigo.text?.isEmptyAndContainsNoWhitespace())! && !(textFieldCodigo.existeErro)
+        
         if !senhaValida  {
             textFieldNovaSenha.setError(erro: "Campo Obrigatorio")
         }
@@ -109,25 +135,33 @@ class AlterarSenhaViewController: UIViewController, UIScrollViewDelegate  {
             textFieldCodigo.setError(erro: "Campo Obrigatorio")
         }
         if (senhaValida == false) && (novaSenhaValida == false) && (codigoValido == false){
-            //dismiss(animated: true)
-            self.indicator = self.activityProgressLoopi.startActivity(controller: self)
-            let alterarSenhaVo = AlterarSenhaVo()
-            alterarSenhaVo.chave = textFieldCodigo.text
-            alterarSenhaVo.senha = textFieldNovaSenha.text
-            alterarSenhaUsuarioRest(alterarSenhaVo: alterarSenhaVo)
+            if (textFieldConfirmacaoSenha.text == textFieldNovaSenha.text){
+                self.indicator = self.activityProgressLoopi.startActivity(controller: self)
+                let alterarSenhaVo = AlterarSenhaVo()
+                alterarSenhaVo.chave = textFieldCodigo.text
+                alterarSenhaVo.senha = textFieldNovaSenha.text
+                alterarSenhaUsuarioRest(alterarSenhaVo: alterarSenhaVo)
+            }else{
+                self.showToast(message: "A confirmacao da senha nao confere")
+            }
         }
     }
     
     func alterarSenhaUsuarioRest(alterarSenhaVo : AlterarSenhaVo) {
-        usuarioRest.alterarSenha(alterarSenhaVo: alterarSenhaVo){  usuario, error in
-            if error == nil {
+        usuarioRest.alterarSenha(alterarSenhaVo: alterarSenhaVo){  usuario,erro, error in
+            if erro.isNotEmptyAndContainsNoWhitespace(){
+                self.activityProgressLoopi.stopActivity(controller: self,indicator: self.indicator)
+                self.showToast(message: erro)
+            }else if error == nil {
                 self.usuario = usuario!
                 self.activityProgressLoopi.stopActivity(controller: self,indicator: self.indicator)
                 UserDefaults.standard.setIsLoggedIn(value: false)
                 UserDefaults.standard.setToken(token: "")
                 UserDefaults.standard.setLogin(login: "")
-                let loginController = LoginController()
-                self.present(loginController, animated: true, completion: nil)
+                self.backAction()
+                //let loginController = LoginController()
+                //self.present(loginController, animated: true, completion: nil)
+                
             }else{
                 self.activityProgressLoopi.stopActivity(controller: self,indicator: self.indicator)
                 self.showToast(message: (error?.localizedDescription)!)

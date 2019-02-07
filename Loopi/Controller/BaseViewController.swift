@@ -127,6 +127,10 @@ class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerD
         }
     }
    
+    func removeHeaderButtons(){
+        self.navigationItem.leftBarButtonItem = nil
+        self.navigationItem.rightBarButtonItems = nil
+    }
     
     func addHeaderButtons(){
         addFiltroButton()
@@ -139,6 +143,16 @@ class BaseViewController: UIViewController, SlideMenuDelegate,CLLocationManagerD
         btnShowMenu.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
         btnShowMenu.addTarget(self, action: #selector(BaseViewController.onSlideMenuButtonPressed(_:)), for: UIControlEvents.touchUpInside)
         let customBarItem = UIBarButtonItem(customView: btnShowMenu)
+        self.navigationItem.leftBarButtonItem = customBarItem;
+    }
+    
+    func addBackMenuButton(){
+        let btnBackMenu = UIButton(type: UIButtonType.system)
+        let backImage = UIImage(named: "ic_back")
+        btnBackMenu.setImage(backImage, for: UIControlState())
+        btnBackMenu.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        btnBackMenu.addTarget(self, action: #selector(CardsServiceController.onBackButtonPressed(_:)), for: UIControlEvents.touchUpInside)
+        let customBarItem = UIBarButtonItem(customView: btnBackMenu)
         self.navigationItem.leftBarButtonItem = customBarItem;
     }
     

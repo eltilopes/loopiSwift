@@ -146,6 +146,8 @@
 		6EE3DFCA20522D89007EF326 /* FloatyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE3DFC920522D89007EF326 /* FloatyViewController.swift */; };
 		6EE75FBF216DA63C00B763AA /* NovaContaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE75FBE216DA63C00B763AA /* NovaContaViewController.swift */; };
 		6EE7F978217EBDF900881DBA /* CheckBoxButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE7F977217EBDF900881DBA /* CheckBoxButton.swift */; };
+		6EF3145A220946440053EEA3 /* SubCategoriaRest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF31459220946430053EEA3 /* SubCategoriaRest.swift */; };
+		6EF3145C220953520053EEA3 /* SubCategoriaViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF3145B220953520053EEA3 /* SubCategoriaViewCell.swift */; };
 		6EF88299218937A2009D055D /* Navigatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF88298218937A2009D055D /* Navigatable.swift */; };
 		6EF8829B21895AE3009D055D /* ImagesUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF8829A21895AE3009D055D /* ImagesUtil.swift */; };
 		6EF8D340203F67B100B93B11 /* CardServicoSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EF8D33F203F67B100B93B11 /* CardServicoSearchResults.swift */; };
@@ -327,6 +329,8 @@
 		6EE3DFCD20523C10007EF326 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		6EE75FBE216DA63C00B763AA /* NovaContaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NovaContaViewController.swift; sourceTree = "<group>"; };
 		6EE7F977217EBDF900881DBA /* CheckBoxButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckBoxButton.swift; sourceTree = "<group>"; };
+		6EF31459220946430053EEA3 /* SubCategoriaRest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriaRest.swift; sourceTree = "<group>"; };
+		6EF3145B220953520053EEA3 /* SubCategoriaViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubCategoriaViewCell.swift; sourceTree = "<group>"; };
 		6EF88298218937A2009D055D /* Navigatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Navigatable.swift; sourceTree = "<group>"; };
 		6EF8829A21895AE3009D055D /* ImagesUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagesUtil.swift; sourceTree = "<group>"; };
 		6EF8D33F203F67B100B93B11 /* CardServicoSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CardServicoSearchResults.swift; path = "../../../../../examples/AKSwiftSlideMenu-master/AKSwiftSlideMenu/Entity/CardServicoSearchResults.swift"; sourceTree = "<group>"; };
@@ -450,6 +454,7 @@
 				6E74C54F209C0260006C4AC4 /* ServicoViewCell.swift */,
 				6EB4E57A20D04C4A00A2687A /* SolicitacaoTableViewCell.swift */,
 				6E32F080206B395B00AD83EB /* TextFieldEffects.swift */,
+				6EF3145B220953520053EEA3 /* SubCategoriaViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -489,6 +494,7 @@
 				6E59D200217ADE8A008E73F5 /* SolicitarConviteRest.swift */,
 				6E2F7C38219A6C8800EB88DF /* ProfissionalRest.swift */,
 				6E37BAFA21B6234C0000C398 /* UsuarioRest.swift */,
+				6EF31459220946430053EEA3 /* SubCategoriaRest.swift */,
 			);
 			path = Rest;
 			sourceTree = "<group>";
@@ -766,7 +772,7 @@
 								enabled = 1;
 							};
 							com.apple.SafariKeychain = {
-								enabled = 1;
+								enabled = 0;
 							};
 							com.apple.WAC = {
 								enabled = 1;
@@ -982,6 +988,7 @@
 				6E2EC60521A3CCCE0056627C /* LoopiTextFieldUtil.swift in Sources */,
 				6E32F081206B395B00AD83EB /* TextFieldEffects.swift in Sources */,
 				6EB2B4C321B076C20062F875 /* EditarUsuarioViewController.swift in Sources */,
+				6EF3145C220953520053EEA3 /* SubCategoriaViewCell.swift in Sources */,
 				6E77321E2125A28400A35BA0 /* ItemServicoViewCell.swift in Sources */,
 				6E2F296320EEE8A0003F5A81 /* AceitarServicoViewController.swift in Sources */,
 				6E2F296120EEE815003F5A81 /* CronometroView.swift in Sources */,
@@ -1067,6 +1074,7 @@
 				6E2733D720649B9E00A01D51 /* CriarContaViewController.swift in Sources */,
 				6EA434B42101569500C347FC /* Bairro.swift in Sources */,
 				6E07ACC8202BC43800041DCC /* UserDefaultsExtension.swift in Sources */,
+				6EF3145A220946440053EEA3 /* SubCategoriaRest.swift in Sources */,
 				6E7073EC2045105700EA50E0 /* Profissional.swift in Sources */,
 				6E12410F205C3392000FA8C5 /* Movimentacao.swift in Sources */,
 				6E13226020C3783700B7317E /* CardServicoSelecionadoViewCell.swift in Sources */,
@@ -1188,7 +1196,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1242,7 +1250,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;

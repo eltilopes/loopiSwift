@@ -31,8 +31,7 @@ class ActivityProgressLoopi: NSObject {
         return self.progressLoopiIndicator;
     }
     
-    func stopActivity(controller:UIViewController,indicator:UIActivityIndicatorView)-> Void
-    {
+    func stopActivity(controller:UIViewController,indicator:UIActivityIndicatorView)-> Void{
         indicator.removeFromSuperview();
     }
     

@@ -35,6 +35,17 @@ class RestAdapeter : RestConfig{
         return RestError()
     }
     
+    func getError(jsonString: String)->RestError?{
+        print(jsonString)
+        let restError = RestError()
+        if jsonString.contains(ERRORS) &&  jsonString.contains(MESSAGE) &&  jsonString.contains(CODIGO_NAO_CONFERE) {
+            restError.erro = CODIGO_NAO_CONFERE
+            restError.descricao = CODIGO_NAO_CONFERE
+            return restError
+        }
+        return restError
+    }
+    
     
     func reLogIn(controller: UIViewController) {
         let accessToken = AccessToken()
@@ -50,6 +61,16 @@ class RestAdapeter : RestConfig{
             }
         }   
     }
+    
+    func getApiUrl() -> String {
+        var apiUrl = API_URL
+        if API_URL.range(of:HTTPS) != nil {
+            apiUrl = API_URL.replacingOccurrences(of: HTTPS, with: HTTP)
+        }
+        return apiUrl
+    }
+    
+    
 }
 
 

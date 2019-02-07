@@ -55,7 +55,14 @@ class Usuario :  HandyJSON {
         return usuario
     }
    
- 
+    func setValoresPadroes(){
+        
+        self.nome = StringValues.nome
+        self.telefone = StringValues.telefone
+        self.senha = StringValues.senha
+        self.urlImagem = StringValues.urlImagem
+        self.login = StringValues.login
+    }
     
     func getKeyValue(value: Any)  -> String {
         var valueString: String

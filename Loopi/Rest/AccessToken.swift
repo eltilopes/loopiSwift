@@ -76,8 +76,9 @@ class AccessToken : RestAdapeter {
 
         let cpf: String = usuario.cpf ?? ""
         let bodyStr = "?cpf=\(String(describing: cpf))"
-        let url = NSURL(string: "http://loopi.online/loopi" + URL_LISTAR_CATEGORIA + bodyStr )!
-        //let url = NSURL(string: API_URL + URL_LOGOUT + bodyStr )!
+        //let url = NSURL(string: "http://loopi.online/loopi" + URL_LISTAR_CATEGORIA + bodyStr )!
+        var apiUrl = getApiUrl()
+        let url = NSURL(string: apiUrl + URL_LOGOUT + bodyStr )!
         let request = NSMutableURLRequest(url: url as URL)
         request.httpMethod = GET_METHOD
         let token = UserDefaults.standard.getToken()
