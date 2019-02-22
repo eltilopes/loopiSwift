@@ -15,6 +15,7 @@ class SubCategoria : Equatable,HandyJSON {
     var id : Int?
     var descricao : String?
     var categoria : Categoria?
+    var urlImagem : String?
     
 }
 

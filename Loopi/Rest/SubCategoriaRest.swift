@@ -15,14 +15,14 @@ class SubCategoriaRest : RestAdapeter {
     var subs: [SubCategoria] = []
     
     @discardableResult
-    func carregarSubCategorias( completionHandler: @escaping ([SubCategoria]?,NSError?) -> Void ) -> URLSessionTask {
+    func carregarSubCategorias(categoria : Categoria,  completionHandler: @escaping ([SubCategoria]?,NSError?) -> Void ) -> URLSessionTask {
         var task = URLSessionTask()
-        task = carregarSubCategoriasAcesso { (subCategorias, error) in
+        task = carregarSubCategoriasAcesso(categoria: categoria) { (subCategorias, error) in
             if error == nil {
                 self.subs = subCategorias!
                 completionHandler(self.subs,nil)
             }else{
-                task = self.carregarSubCategoriasAcesso { (subCategorias, error) in
+                task = self.carregarSubCategoriasAcesso(categoria: categoria) { (subCategorias, error) in
                     if error == nil {
                         self.subs = subCategorias!
                         completionHandler(self.subs,nil)
@@ -37,11 +37,7 @@ class SubCategoriaRest : RestAdapeter {
     }
     
     @discardableResult
-    func carregarSubCategoriasAcesso( completionHandler: @escaping ([SubCategoria]?,NSError?) -> Void ) -> URLSessionTask {
-        let categoria = Categoria()
-        categoria.id = 1
-        categoria.descricao = ""
-        categoria.urlImagem = ""
+    func carregarSubCategoriasAcesso(categoria : Categoria, completionHandler: @escaping ([SubCategoria]?,NSError?) -> Void ) -> URLSessionTask {
         let url = NSURL(string: API_URL + URL_LISTAR_SUB_CATEGORIA )!
         let categoriaDict = convertToDictionary(jsonString: categoria.toJSONString(prettyPrint: true)! )!
         

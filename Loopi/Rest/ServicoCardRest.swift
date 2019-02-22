@@ -38,8 +38,13 @@ class ServicoCardRest : RestAdapeter {
             }
             
             let jsonString = String(data: data!, encoding: .utf8)
-            self.servicoCards = [ServicoCard].deserialize(from: jsonString!)! as! [ServicoCard]
-            self.prepareServicoCards()
+            if (jsonString?.isEmptyAndContainsNoWhitespace())! {
+                self.servicoCards = []
+            }else{
+                self.servicoCards = [ServicoCard].deserialize(from: jsonString!)! as! [ServicoCard]
+                self.prepareServicoCards()
+            }
+            
             completionHandler(self.servicoCards,nil)
             
         }
