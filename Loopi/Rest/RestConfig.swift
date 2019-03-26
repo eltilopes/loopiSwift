@@ -15,6 +15,7 @@ class RestConfig{
     public var ACCESS_TOKEN = "access_token"
     public var USUARIO = "USUARIO"
     public var PROFISSIONAL = "PROFISSIONAL"
+    public var SERVICO_CARD = "SERVICO_CARD"
     public var LOCALIZACAO = "LOCALIZACAO"
     public var MESSAGE = "message"
     public var CODIGO_NAO_CONFERE = "Codigo nao confere"

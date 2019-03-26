@@ -84,6 +84,18 @@ extension UserDefaults {
         return Profissional()
     }
     
+    func setServicoCard(servicoCard: ServicoCard) {
+        set(servicoCard.toJSONString(prettyPrint: true), forKey: RestConfig().SERVICO_CARD)
+        synchronize()
+    }
+    
+    func getServicoCard() -> ServicoCard {
+        if let servicoCard = string(forKey: RestConfig().SERVICO_CARD) {
+            return ServicoCard.deserialize(from: servicoCard)!
+        }
+        return ServicoCard()
+    }
+    
     func isLoggedIn() -> Bool {
         return bool(forKey: UserDefaultsKeys.isLoggedIn.rawValue)
     }

@@ -27,5 +27,8 @@ class ConstraintsView {
     class func fontMedium() -> CGFloat { return 20.0 }
     class func fontBig() -> CGFloat { return 24.0 }
     class func tagAbrirEditarUsuario() -> Int { return 99}
+    class func heightCardSelecionadoImageView() -> CGFloat { return 175.0 }
+    class func widhtCardSelecionadoImageView() -> CGFloat { return 125.0 }
+    
     
 }
