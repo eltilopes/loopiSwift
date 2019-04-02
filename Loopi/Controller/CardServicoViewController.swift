@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
 
     let cardServicoProfissionalViewCellId = "cardServicoProfissionalViewCellId"
     let cardServicosViewCellId = "cardServicosViewCellId"
@@ -19,22 +19,29 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
     var dialogViewHeight: CGFloat!
     let activityProgressLoopi = ActivityProgressLoopi()
     var indicator:UIActivityIndicatorView!
+    var scrollView = UIScrollView()
     
     lazy var headerView: UIView = {
         let headerView = UIView()
         headerView.backgroundColor = GMColor.colorPrimary()
         let btnVoltar = UIButton(type: UIButtonType.system)
         btnVoltar.backgroundColor = GMColor.colorPrimary()
-        btnVoltar.tintColor = GMColor.whiteColor()
         let voltarImage = UIImage(named: "ic_back")
         btnVoltar.setImage(voltarImage, for: UIControlState())
         btnVoltar.frame = CGRect(x: 10, y: 10, width: 30, height: 30)
         btnVoltar.addTarget(self, action: #selector(self.presentCardsServiceController(_:)), for: UIControlEvents.touchUpInside)
+        let label = UILabel()
+        label.backgroundColor = GMColor.colorPrimary()
+        label.textColor = GMColor.whiteColor()
+        label.tintColor = GMColor.whiteColor()
+        label.font =  UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
+        label.textAlignment = .left
+        label.text = "VOLTAR"
+        label.frame = CGRect(x: 10, y: 10, width: 100, height: 30)
         headerView.insertSubview(btnVoltar, at: 0)
+        headerView.insertSubview(label, at: 1)
         return headerView
     }()
-    
-    
     
     lazy var collectionView: UICollectionView = {
         
@@ -80,25 +87,54 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
         return cvs
     }()
     
+    lazy var viewPagamento: UIStackView = {
+        let viewPagamento = UIStackView()
+        viewPagamento.clipsToBounds = true
+        viewPagamento.axis  = UILayoutConstraintAxis.vertical
+        viewPagamento.distribution  = UIStackViewDistribution.equalSpacing
+        viewPagamento.alignment = UIStackViewAlignment.center
+        //dialogView.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        viewPagamento.translatesAutoresizingMaskIntoConstraints = false
+        viewPagamento.addArrangedSubview(testeLabel)
+        viewPagamento.backgroundColor = GMColor.backgroundAlertInfoColor()
+        viewPagamento.layer.cornerRadius = ConstraintsView.cornerRadiusApp()
+        viewPagamento.layer.masksToBounds = true
+        
+        //dialogView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
+        //dialogView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
+        return viewPagamento
+    }()
+    
+    lazy var viewCashBack: UIView = {
+        let viewCashBack = UIView()
+        viewCashBack.backgroundColor = GMColor.backgroundAlertInfoColor()
+        viewCashBack.widthAnchor.constraint(equalToConstant: screenWidth ).isActive = true
+        viewCashBack.heightAnchor.constraint(equalToConstant: screenHeight ).isActive = true
+        return viewCashBack
+    }()
+    
+    lazy var testeLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = GMColor.colorPrimary()
+        label.backgroundColor = GMColor.backgroundAlertColor()
+        label.font =  UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
+        label.textAlignment = .center
+        label.text = "Teste"
+        label.widthAnchor.constraint(equalToConstant: screenWidth ).isActive = true
+        label.heightAnchor.constraint(equalToConstant: screenHeight ).isActive = true
+        label.clipsToBounds = true
+        return label
+    }()
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         screenWidth = self.view.frame.size.width
         screenHeight = self.view.frame.size.height / 3.5
-        dialogViewHeight = CGFloat(ConstraintsView.heightHeaderTitleLabel() * 3)
         loadViewCardServico()
     }
     
-    func addSlideVoltarButton(){
-        let btnVoltar = UIButton(type: UIButtonType.system)
-        let voltarImage = UIImage(named: "ic_back")
-        btnVoltar.setImage(voltarImage, for: UIControlState())
-        btnVoltar.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        btnVoltar.addTarget(self, action: #selector(self.presentCardsServiceController(_:)), for: UIControlEvents.touchUpInside)
-        let customBarItem = UIBarButtonItem(customView: btnVoltar)
   
-        self.navigationItem.leftBarButtonItem = customBarItem;
-    }
-    
     @objc func presentCardsServiceController(_ sender : UIButton){
         //let cardsServiceController = CardsServiceController()
         let cardsServiceController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CardsServiceController") as! CardsServiceController
@@ -114,19 +150,30 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
         observeKeyboardNotifications()
         servicoCard = UserDefaults.standard.getServicoCard()
         servicos = servicoCard.servicos!
-        dialogViewHeight = CGFloat(ConstraintsView.heightHeaderTitleLabel() * 3)
+        dialogViewHeight = ConstraintsView.heightTitleLabel() * 3
+        self.scrollView = UIScrollView(frame: CGRect(x: 0, y: 70, width: screenWidth, height: screenHeight))
+        self.scrollView.isScrollEnabled = true
+        //self.scrollView.alwaysBounceVertical = true
+        //self.scrollView.alwaysBounceHorizontal = false
+        self.scrollView.delegate = self
+        //self.scrollView.scrollsToTop = false
+        //self.scrollView.bounces = true
+        self.scrollView.backgroundColor = GMColor.backgroundAppColor()
+        //self.scrollView.canCancelContentTouches = true
+        //self.scrollView.delegate = self
+        self.scrollView.contentSize = CGSize(width: screenWidth, height: self.view.frame.size.height * 2)
+        //self.scrollView.backgroundColor = GMColor.backgroundAppColor()
+        //self.scrollView.isScrollEnabled = true
+        //self.scrollView.alwaysBounceVertical = true
+        //self.scrollView.alwaysBounceHorizontal = false
         
         view.backgroundColor = GMColor.whiteColor()
         view.addSubview(headerView)
-        view.addSubview(collectionView)
-        view.addSubview(collectionViewServicos)
-        var heightCollectionServicos: CGFloat = 0.0
-        for _ in servicos {
-            heightCollectionServicos = heightCollectionServicos + dialogViewHeight
-        }
+        view.addSubview(scrollView)
+        aplicarScrollView()
        _ = headerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: 50 )
-        _ = collectionView.anchor(top: headerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: screenHeight )
-        _ = collectionViewServicos.anchor(top: collectionView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: heightCollectionServicos )
+        _ = scrollView.anchor(top: headerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: self.view.frame.size.height * 2 )
+        
         
         print("servicos.count")
         print(servicos.count)
@@ -137,6 +184,28 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
 
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.scrollView.isScrollEnabled = true
+    }
+    
+    func aplicarScrollView() {
+        var heightCollectionServicos: CGFloat = 0.0
+        for _ in servicos {
+            heightCollectionServicos = heightCollectionServicos + dialogViewHeight
+        }
+        heightCollectionServicos = heightCollectionServicos + dialogViewHeight
+        self.scrollView.addSubview(collectionView)
+        self.scrollView.addSubview(collectionViewServicos)
+        self.scrollView.addSubview(viewCashBack)
+        self.scrollView.addSubview(testeLabel)
+        
+        _ = collectionView.anchor(top: scrollView.topAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: screenHeight )
+        _ = collectionViewServicos.anchor(top: collectionView.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: heightCollectionServicos )
+        _ = testeLabel.anchor(top: collectionViewServicos.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: screenHeight )
+        _ = viewCashBack.anchor(top: testeLabel.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: screenHeight )
+        self.scrollView.isScrollEnabled = true
+    }
     
     fileprivate func observeKeyboardNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardShow), name: .UIKeyboardDidShow, object: nil)
@@ -160,6 +229,7 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+        self.scrollView.isScrollEnabled = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -183,8 +253,8 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
             cardServicoProfissionalViewCell.cardSelecionadoEspecialidade.text = self.servicoCard.especialidade.descricao
             //cardServicoProfissionalViewCell.layer.borderColor = GMColor.whiteColor().cgColor
             //cardServicoProfissionalViewCell.layer.borderWidth = ConstraintsView.borderCornerIndicatorView()
-            cardServicoProfissionalViewCell.frame.size.width = screenWidth
-            cardServicoProfissionalViewCell.frame.size.height = screenHeight
+            //cardServicoProfissionalViewCell.frame.size.width = screenWidth
+            //cardServicoProfissionalViewCell.frame.size.height = screenHeight
             let imageURL = URL(string: self.servicoCard.thumbnail!)
             var image: UIImage?
             self.indicator = self.activityProgressLoopi.startActivity(controller: self)
@@ -228,7 +298,7 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
+        return UIEdgeInsets(top: 0, left: 10, bottom: 5, right: 0)
     }
     
     
@@ -238,7 +308,7 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
             return CGSize(width: screenWidth  , height: screenHeight )
         } else  {
            // let heightCollectionServicos = CGFloat(ConstraintsView.heightHeaderTitleLabel() * 3 * servicos.count)
-            return CGSize(width: screenWidth * 4/5  , height:  dialogViewHeight )
+            return CGSize(width: screenWidth   , height:  dialogViewHeight )
         }
     }
     

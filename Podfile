@@ -4,7 +4,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 
 target 'Loopi' do
-	pod 'DropDown'
+	pod 'DropDown', '2.3.2'
 	pod 'GoogleMaps', '2.2'
 	pod 'GooglePlaces', '2.2'
     	pod 'Firebase'

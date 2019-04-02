@@ -15,7 +15,6 @@ class CardServicosViewCell: UICollectionViewCell {
     var servicoCard = ServicoProfissional()
     
     var dialogViewWidth = CGFloat(0)
-    var dialogViewHeight = CGFloat(0)
     
     lazy var nomeServicoLabel: UILabel = {
         let label = UILabel()
@@ -23,9 +22,8 @@ class CardServicosViewCell: UICollectionViewCell {
         label.font =  UIFont.boldSystemFont(ofSize: ConstraintsView.fontBig())
         label.textAlignment = .left
         label.widthAnchor.constraint(equalToConstant: dialogViewWidth ).isActive = true
-        label.heightAnchor.constraint(equalToConstant: dialogViewHeight).isActive = true
+        label.heightAnchor.constraint(equalToConstant: ConstraintsView.heightTitleLabel()).isActive = true
         label.clipsToBounds = true
-        label.layoutMargins = UIEdgeInsets(top: 5, left: 20, bottom: 0, right: 20)
         return label
     }()
     
@@ -35,9 +33,8 @@ class CardServicosViewCell: UICollectionViewCell {
         label.font =  UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
         label.textAlignment = .left
         label.widthAnchor.constraint(equalToConstant: dialogViewWidth ).isActive = true
-        label.heightAnchor.constraint(equalToConstant: dialogViewHeight).isActive = true
+        label.heightAnchor.constraint(equalToConstant: ConstraintsView.heightTitleLabel()).isActive = true
         label.clipsToBounds = true
-        label.layoutMargins = UIEdgeInsets(top: 5, left: 20, bottom: 0, right: 20)
         return label
     }()
     
@@ -48,8 +45,8 @@ class CardServicosViewCell: UICollectionViewCell {
         label.font =  UIFont.systemFont(ofSize: ConstraintsView.fontMedium())
         label.textAlignment = .left
         label.widthAnchor.constraint(equalToConstant: dialogViewWidth ).isActive = true
-        label.heightAnchor.constraint(equalToConstant: dialogViewHeight).isActive = true
-        //label.clipsToBounds = true
+        label.heightAnchor.constraint(equalToConstant: ConstraintsView.heightTitleLabel()).isActive = true
+        label.clipsToBounds = true
         //label.layoutMargins = UIEdgeInsets(top: 5, left: 20, bottom: 0, right: 20)
         return label
     }()
@@ -61,7 +58,7 @@ class CardServicosViewCell: UICollectionViewCell {
         dialogView.axis  = UILayoutConstraintAxis.vertical
         dialogView.distribution  = UIStackViewDistribution.equalSpacing
         dialogView.alignment = UIStackViewAlignment.center
-        dialogView.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
+        //dialogView.layoutMargins = UIEdgeInsets(top: 10, left: 20, bottom: 10, right: 20)
         dialogView.addArrangedSubview(nomeServicoLabel)
         dialogView.addArrangedSubview(descricaoServicoLabel)
         dialogView.addArrangedSubview(valorServicoLabel)
@@ -77,8 +74,7 @@ class CardServicosViewCell: UICollectionViewCell {
     
     
     func loadViewCardServicos() {
-        dialogViewWidth = frame.width*2/3
-        dialogViewHeight = CGFloat(ConstraintsView.heightHeaderTitleLabel())
+        dialogViewWidth = frame.width
         addSubview(dialogView)
     }
     

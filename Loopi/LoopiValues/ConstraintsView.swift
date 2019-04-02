@@ -16,6 +16,7 @@ class ConstraintsView {
     class func marginLoopiTextField() -> CGFloat { return 30.0 }
     class func heightCheckBoxButton() -> Int { return 40 }
     class func heightHeaderTitleLabel() -> Int { return 30 }
+    class func heightTitleLabel() -> CGFloat { return 20.0 }
     class func heightSeparatorLineView() -> Int { return 10 }
     class func widhtSeparatorLineView() -> Int { return 2 }
     class func widthBorderLoopiCard() -> Int { return 5 }
