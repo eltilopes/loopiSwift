@@ -8,8 +8,11 @@
 
 import UIKit
 
+
 class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIScrollViewDelegate {
 
+  
+    
     let cardServicoProfissionalViewCellId = "cardServicoProfissionalViewCellId"
     let cardServicosViewCellId = "cardServicosViewCellId"
     var servicoCard = ServicoCard()
@@ -37,7 +40,7 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
         label.font =  UIFont.boldSystemFont(ofSize: ConstraintsView.fontMedium())
         label.textAlignment = .left
         label.text = "VOLTAR"
-        label.frame = CGRect(x: 10, y: 10, width: 100, height: 30)
+        label.frame = CGRect(x: 40, y: 10, width: 100, height: 30)
         headerView.insertSubview(btnVoltar, at: 0)
         headerView.insertSubview(label, at: 1)
         return headerView
@@ -62,6 +65,7 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
         cv.showsHorizontalScrollIndicator = false
         cv.register(CardServicoProfissionalViewCell.self, forCellWithReuseIdentifier: self.cardServicoProfissionalViewCellId)
         cv.reloadData()
+        //cv.translatesAutoresizingMaskIntoConstraints = false
         return cv
     }()
     
@@ -84,6 +88,7 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
         cvs.showsHorizontalScrollIndicator = false
         cvs.register(CardServicosViewCell.self, forCellWithReuseIdentifier: self.cardServicosViewCellId)
         cvs.reloadData()
+        //cvs.translatesAutoresizingMaskIntoConstraints = false
         return cvs
     }()
     
@@ -110,6 +115,7 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
         viewCashBack.backgroundColor = GMColor.backgroundAlertInfoColor()
         viewCashBack.widthAnchor.constraint(equalToConstant: screenWidth ).isActive = true
         viewCashBack.heightAnchor.constraint(equalToConstant: screenHeight ).isActive = true
+        //viewCashBack.translatesAutoresizingMaskIntoConstraints = false
         return viewCashBack
     }()
     
@@ -126,6 +132,41 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
         return label
     }()
     
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+        if (bottomEdge >= scrollView.contentSize.height) {
+            print("bottomEdge: \(bottomEdge) \n")
+        }
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews();
+        
+        self.scrollView.frame = CGRect(x: 0, y: 70, width: screenWidth, height: screenHeight); // Instead of using auto layout
+        self.scrollView.contentSize.height = self.view.frame.size.height * 2
+
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        
+        print("self.scrollView.contentOffset.y: \(self.scrollView.contentOffset.y) \n")
+        print("self.scrollView.contentSize.height: \(self.scrollView.contentSize.height) \n")
+        print("self.scrollView.bounds.size.height: \(self.scrollView.bounds.size.height) \n")
+        print("self.view.frame.size.height: \(self.view.frame.size.height) \n")
+        print("self.bounds.size.height: \(self.view.bounds.size.height) \n")
+        //self.scrollView.scrollToBottom(animated: true)
+        
+        //self.scrollView.scrollRectToVisible(CGRect(x: 0, y: 70, width: screenWidth, height: self.view.frame.size.height * 2), animated: true)
+        //if scrollView.contentOffset.y == (scrollView.contentSize.height - scrollView.frame.size.height) {
+            //self.scrollView.scrollRectToVisible(CGRect(x: 0, y: 70, width: screenWidth, height: scrollView.contentSize.height + 10 ), animated: true)
+        //}
+        
+        //let bottomOffset = CGPoint(x: 0, y: self.view.frame.size.height * 2 )
+        //self.scrollView.setContentOffset(bottomOffset, animated: false)
+        //self.scrollView.scrollIndicatorInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        //self.scrollView.bottomAnchor.constraint(greaterThanOrEqualTo: self.scrollView.bottomAnchor)
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -152,34 +193,22 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
         servicos = servicoCard.servicos!
         dialogViewHeight = ConstraintsView.heightTitleLabel() * 3
         self.scrollView = UIScrollView(frame: CGRect(x: 0, y: 70, width: screenWidth, height: screenHeight))
-        self.scrollView.isScrollEnabled = true
-        //self.scrollView.alwaysBounceVertical = true
-        //self.scrollView.alwaysBounceHorizontal = false
-        self.scrollView.delegate = self
-        //self.scrollView.scrollsToTop = false
-        //self.scrollView.bounces = true
-        self.scrollView.backgroundColor = GMColor.backgroundAppColor()
-        //self.scrollView.canCancelContentTouches = true
-        //self.scrollView.delegate = self
+        //self.scrollView.translatesAutoresizingMaskIntoConstraints = false
         self.scrollView.contentSize = CGSize(width: screenWidth, height: self.view.frame.size.height * 2)
+        
+        
         //self.scrollView.backgroundColor = GMColor.backgroundAppColor()
         //self.scrollView.isScrollEnabled = true
         //self.scrollView.alwaysBounceVertical = true
         //self.scrollView.alwaysBounceHorizontal = false
-        
         view.backgroundColor = GMColor.whiteColor()
         view.addSubview(headerView)
-        view.addSubview(scrollView)
         aplicarScrollView()
+        view.addSubview(scrollView)
        _ = headerView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: 50 )
-        _ = scrollView.anchor(top: headerView.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: self.view.frame.size.height * 2 )
-        
-        
-        print("servicos.count")
-        print(servicos.count)
-        //collectionView.anchorToTop(top: view.topAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor)
-        collectionView.reloadData()
-        collectionViewServicos.reloadData()
+        _ = scrollView.anchor(top: headerView.bottomAnchor, left: view.leftAnchor, bottom: view.bottomAnchor, right: view.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: self.view.frame.size.height * 2 )
+        //collectionView.reloadData()
+        //collectionViewServicos.reloadData()
         
 
     }
@@ -190,6 +219,7 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
     }
     
     func aplicarScrollView() {
+        
         var heightCollectionServicos: CGFloat = 0.0
         for _ in servicos {
             heightCollectionServicos = heightCollectionServicos + dialogViewHeight
@@ -200,11 +230,36 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
         self.scrollView.addSubview(viewCashBack)
         self.scrollView.addSubview(testeLabel)
         
+        
         _ = collectionView.anchor(top: scrollView.topAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 20, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: screenHeight )
         _ = collectionViewServicos.anchor(top: collectionView.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: heightCollectionServicos )
         _ = testeLabel.anchor(top: collectionViewServicos.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: screenHeight )
         _ = viewCashBack.anchor(top: testeLabel.bottomAnchor, left: scrollView.leftAnchor, bottom: nil, right: scrollView.rightAnchor, topConstant: 10, leftConstant: 0, bottomConstant: 0, rightConstant: 0, widthConstant: screenWidth , heightConstant: screenHeight )
-        self.scrollView.isScrollEnabled = true
+        //self.scrollView.isScrollEnabled = true
+        self.scrollView.preservesSuperviewLayoutMargins = true
+        self.scrollView.showsVerticalScrollIndicator = true
+        self.scrollView.delaysContentTouches = true
+        self.scrollView.canCancelContentTouches = true
+        self.scrollView.isMultipleTouchEnabled = true
+        self.scrollView.isUserInteractionEnabled = true
+        self.scrollView.clearsContextBeforeDrawing = true
+        self.scrollView.clipsToBounds = true
+        self.scrollView.autoresizesSubviews = true
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .automatic
+        } else {
+            automaticallyAdjustsScrollViewInsets = false
+        }
+        self.scrollView.alwaysBounceVertical = true
+        self.scrollView.alwaysBounceHorizontal = false
+        //self.scrollView.scrollsToTop = false
+        self.scrollView.translatesAutoresizingMaskIntoConstraints = false
+        //self.scrollView.bounces = true
+        self.scrollView.backgroundColor = GMColor.backgroundAppColor()
+        //self.scrollView.canCancelContentTouches = true
+        self.scrollView.isScrollEnabled = false
+        self.scrollView.delegate = self
+        
     }
     
     fileprivate func observeKeyboardNotifications() {
@@ -229,7 +284,7 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        self.scrollView.isScrollEnabled = true
+        //self.scrollView.isScrollEnabled = true
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -315,5 +370,32 @@ class CardServicoViewController: UIViewController,UICollectionViewDelegate, UICo
 
 }
 
-
+extension UIScrollView {
+    func scrollToBottom(animated: Bool) {
+        print("self.contentSize.height: \(self.contentSize.height) \n")
+        print("self.bounds.size.height: \(self.bounds.size.height) \n")
+        var bottomOffset = CGPoint(x: 0, y: self.contentSize.height )
+        if (self.contentOffset.y >= (self.contentSize.height - self.frame.size.height)) {
+            print("reach bottom")
+            bottomOffset = CGPoint(x: 0, y: self.contentOffset.y + 10)
+            self.setContentOffset(bottomOffset, animated: animated)
+        }
+        
+        if (self.contentOffset.y < 0){
+            print("reach top")
+            bottomOffset = CGPoint(x: 0, y: self.contentOffset.y - 10)
+            self.setContentOffset(bottomOffset, animated: animated)
+        }
+        
+        if (self.contentOffset.y >= 0 && self.contentOffset.y < (self.contentSize.height - self.frame.size.height)){
+            print("not top and not bottom")
+            bottomOffset = CGPoint(x: 0, y: self.contentOffset.y)
+            self.setContentOffset(bottomOffset, animated: animated)
+        }
+        
+        //if self.contentSize.height < self.bounds.size.height { return }
+        //let bottomOffset = CGPoint(x: 0, y: self.contentSize.height - self.bounds.size.height)
+        //self.setContentOffset(bottomOffset, animated: animated)
+    }
+}
 
